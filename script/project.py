@@ -6,6 +6,8 @@ import yaml
 from pyprelude.file_system import *
 from pyprelude.temp_util import *
 
+_PROJECT_YAML_FILE_NAME = "project.yaml"
+
 class FileInfo(object):
     def __init__(self, source_path, output_path_template, is_preprocess):
         self._source_path = source_path
@@ -95,9 +97,9 @@ def _template_values(args):
 
     return values
 
-def _main_inner(script_dir, repo_dir, args):
+def _do_new(script_dir, repo_dir, args):
     template_dir = make_path(repo_dir, args.template_name)
-    yaml_path = make_path(template_dir, "project.yaml")
+    yaml_path = make_path(template_dir, _PROJECT_YAML_FILE_NAME)
 
     if not os.path.isfile(yaml_path):
         raise RuntimeError("No template \"{}\" directory found under {}".format(args.template_name, repo_dir))
@@ -136,6 +138,25 @@ def _main_inner(script_dir, repo_dir, args):
         with temp_cwd(args.output_dir):
             os.system(command)
 
+def _do_templates(script_dir, repo_dir, args):
+    templates = []
+    for item in os.listdir(repo_dir):
+        yaml_path = make_path(item, _PROJECT_YAML_FILE_NAME)
+        if os.path.isfile(yaml_path):
+            with open(yaml_path, "rt") as f:
+                obj = yaml.load(f.read())
+
+            templates.append((os.path.basename(item), obj.get("description", "(no description)")))
+
+    width = 0
+    for project_name, description in templates:
+        t = len(project_name)
+        if t > width:
+            width = t
+
+    for project_name, description in templates:
+        print("{}    {}".format(project_name.ljust(width), description))
+
 def _parse_key_value_pair(s):
     fragments = s.split("=")
     if len(fragments) != 2 or len(fragments[0]) < 1:
@@ -144,27 +165,35 @@ def _parse_key_value_pair(s):
 
 def _main():
     parser = argparse.ArgumentParser(description="Create project from template")
-    parser.add_argument(
+    subparsers = parser.add_subparsers(help="subcommand help")
+
+    new_parser = subparsers.add_parser("new", help="Create new project from template")
+    new_parser.set_defaults(func=_do_new)
+    new_parser.add_argument(
         "template_name",
         metavar="TEMPLATENAME",
         type=str,
         help="Template name")
-    parser.add_argument(
+    new_parser.add_argument(
         "output_dir",
         metavar="OUTPUTDIR",
         type=make_path,
         help="Project output directory")
-    parser.add_argument(
+    new_parser.add_argument(
         "key_value_pairs",
         metavar="KEYVALUEPAIRS",
         type=_parse_key_value_pair,
         nargs="*",
         help="Key-value pairs for substitutions in templates")
+
+    templates_parser = subparsers.add_parser("templates", help="List available templates")
+    templates_parser.set_defaults(func=_do_templates)
+
     args = parser.parse_args()
 
     script_dir = make_path(os.path.dirname(__file__))
     repo_dir = make_path(os.path.dirname(script_dir))
-    _main_inner(script_dir, repo_dir, args)
+    args.func(script_dir, repo_dir, args)
 
 if __name__ == "__main__":
     _main()

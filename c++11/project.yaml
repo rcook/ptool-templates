@@ -1,3 +1,4 @@
+description: Simple C++ project using CMake
 files:
 - path: app/CMakeLists.txt
   preprocess: true

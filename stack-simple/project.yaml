@@ -1,3 +1,4 @@
+description: Simple Haskell project using Stack build tool
 files:
 - stack.yaml
 - path: Setup.hs
