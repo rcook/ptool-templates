@@ -7,6 +7,12 @@ Features:
 * Creates app, library and unit test targets
 * Uses [Catch][catch] framework
 
+## Clone repository
+
+```
+git clone --recurse-submodules git@github.com:rcook/scratch-app-cpp.git
+```
+
 ## Generate and run build
 
 ```
