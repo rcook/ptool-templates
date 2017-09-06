@@ -1,3 +1,5 @@
+$cpp_copyright
+
 #pragma once
 
 #include <string>

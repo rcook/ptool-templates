@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import shutil
 import string
 import yaml
@@ -55,6 +56,9 @@ class FileInfo(object):
         else:
             shutil.copyfile(self._source_path, target_path)
 
+def _home_dir():
+    return os.path.expanduser("~")
+
 def read_file(obj, template_dir):
     if isinstance(obj, dict):
         path = obj["path"]
@@ -75,20 +79,35 @@ def _template_tokens(s):
         tokens.append(a if len(b) == 0 else b)
     return tokens
 
-def _main_inner(script_dir, repo_dir, working_dir, args):
+def _template_values(args):
+    values = {
+        "copyright_year": str(datetime.datetime.now().year),
+        "project_name": os.path.basename(args.output_dir)
+    }
+
+    user_yaml_path = make_path(_home_dir(), ".project.yaml")
+    if os.path.isfile(user_yaml_path):
+        with open(user_yaml_path, "rt") as f:
+            values.update(yaml.load(f))
+
+    for key, value in args.key_value_pairs:
+        values[key] = value
+
+    return values
+
+def _main_inner(script_dir, repo_dir, args):
     template_dir = make_path(repo_dir, args.template_name)
     yaml_path = make_path(template_dir, "project.yaml")
-    output_dir = make_path(working_dir, args.output_dir)
-    project_name = os.path.basename(output_dir)
+
+    if not os.path.isfile(yaml_path):
+        raise RuntimeError("No template \"{}\" directory found under {}".format(args.template_name, repo_dir))
 
     with open(yaml_path, "rt") as f:
         obj = yaml.load(f)
 
-    values = {
-        "author": "AUTHOR",
-        "copyright_year": "COPYRIGHT_YEAR",
-        "project_name": project_name
-    }
+    values = _template_values(args)
+    for key, value in args.key_value_pairs:
+        values[key] = value
 
     files = map(lambda o: read_file(o, template_dir), obj["files"])
 
@@ -111,22 +130,41 @@ def _main_inner(script_dir, repo_dir, working_dir, args):
         raise RuntimeError("Need values for {}".format(", ".join(missing_keys)))
 
     for file in files:
-        file.generate(values, output_dir)
+        file.generate(values, args.output_dir)
 
     for command in commands:
-        with temp_cwd(output_dir):
+        with temp_cwd(args.output_dir):
             os.system(command)
+
+def _parse_key_value_pair(s):
+    fragments = s.split("=")
+    if len(fragments) != 2 or len(fragments[0]) < 1:
+        raise argparse.ArgumentTypeError("Must be a key-value pair")
+    return fragments[0], fragments[1]
 
 def _main():
     parser = argparse.ArgumentParser(description="Create project from template")
-    parser.add_argument("template_name", metavar="TEMPLATENAME", type=str, help="Template name")
-    parser.add_argument("output_dir", metavar="OUTPUTDIR", type=str, help="Project output directory")
+    parser.add_argument(
+        "template_name",
+        metavar="TEMPLATENAME",
+        type=str,
+        help="Template name")
+    parser.add_argument(
+        "output_dir",
+        metavar="OUTPUTDIR",
+        type=make_path,
+        help="Project output directory")
+    parser.add_argument(
+        "key_value_pairs",
+        metavar="KEYVALUEPAIRS",
+        type=_parse_key_value_pair,
+        nargs="*",
+        help="Key-value pairs for substitutions in templates")
     args = parser.parse_args()
 
     script_dir = make_path(os.path.dirname(__file__))
     repo_dir = make_path(os.path.dirname(script_dir))
-    working_dir = os.getcwd()
-    _main_inner(script_dir, repo_dir, working_dir, args)
+    _main_inner(script_dir, repo_dir, args)
 
 if __name__ == "__main__":
     _main()

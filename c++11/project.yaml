@@ -16,7 +16,8 @@ files:
   preprocess: true
 - path: test/ExampleTest.cpp
   preprocess: true
-- test/main.cpp
+- path: test/main.cpp
+  preprocess: true
 - .gitignore
 - path: CMakeLists.txt
   preprocess: true

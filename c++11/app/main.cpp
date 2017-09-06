@@ -1,3 +1,5 @@
+$cpp_copyright
+
 #include "${project_name}lib/Example.h"
 #include <iostream>
 

@@ -1,6 +1,6 @@
-# C++ scratch app
+# $project_name by $author
 
-Template for C++ application with app, library and unit tests using CMake-generated build system
+C++ application with app, library and unit tests using CMake-generated build system
 
 Features:
 
@@ -10,7 +10,7 @@ Features:
 ## Clone repository
 
 ```
-git clone --recurse-submodules git@github.com:rcook/scratch-app-cpp.git
+git clone --recurse-submodules git@github.com:$git_user_name/$project_name.git
 ```
 
 ## Generate and run build
