@@ -1,7 +1,7 @@
-#include "scratchlib/Example.h"
+#include "${project_name}lib/Example.h"
 #include <catch.hpp>
 
-using namespace scratchlib;
+using namespace ${project_name}lib;
 
 TEST_CASE("Example", "[example]")
 {

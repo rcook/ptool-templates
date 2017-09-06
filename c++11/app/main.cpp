@@ -1,7 +1,7 @@
-#include "scratchlib/Example.h"
+#include "${project_name}lib/Example.h"
 #include <iostream>
 
-using namespace scratchlib;
+using namespace ${project_name}lib;
 using namespace std;
 
 int main()

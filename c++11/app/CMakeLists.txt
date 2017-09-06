@@ -1,3 +1,3 @@
-add_executable(scratch-app main.cpp)
-target_include_directories(scratch-app PUBLIC ../lib/public)
-target_link_libraries(scratch-app scratch-lib)
+add_executable($project_name-app main.cpp)
+target_include_directories($project_name-app PUBLIC ../lib/public)
+target_link_libraries($project_name-app $project_name-lib)

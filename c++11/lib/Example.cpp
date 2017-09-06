@@ -1,6 +1,6 @@
-#include "scratchlib/Example.h"
+#include "${project_name}lib/Example.h"
 
-using namespace scratchlib;
+using namespace ${project_name}lib;
 using namespace std;
 
 Example::Example(const string& name) : _name(name) { }

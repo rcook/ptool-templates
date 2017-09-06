@@ -1,6 +1,6 @@
-add_library(scratch-lib
+add_library($project_name-lib
   Example.cpp
-  public/scratchlib/Example.h
+  public/${project_name}lib/Example.h
 )
 
-target_include_directories(scratch-lib PUBLIC public)
+target_include_directories($project_name-lib PUBLIC public)

@@ -1,0 +1,29 @@
+files:
+- path: app/CMakeLists.txt
+  preprocess: true
+- path: app/main.cpp
+  preprocess: true
+- path: lib/public/scratchlib/Example.h
+  output-path: lib/public/${project_name}lib/Example.h
+  preprocess: true
+- path: lib/CMakeLists.txt
+  preprocess: true
+- path: lib/Example.cpp
+  preprocess: true
+- script/run-cmake
+- script/run-cmake.cmd
+- path: test/CMakeLists.txt
+  preprocess: true
+- path: test/ExampleTest.cpp
+  preprocess: true
+- test/main.cpp
+- .gitignore
+- path: CMakeLists.txt
+  preprocess: true
+- path: LICENSE
+  preprocess: true
+- path: README.md
+  preprocess: true
+commands:
+- git init
+- git submodule add https://github.com/philsquared/Catch.git external/catch

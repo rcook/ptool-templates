@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace scratchlib {
+namespace ${project_name}lib {
 
 class Example final
 {
