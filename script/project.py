@@ -136,7 +136,8 @@ def _do_new(script_dir, repo_dir, args):
 
     for command in commands:
         with temp_cwd(args.output_dir):
-            os.system(command)
+            if os.system(command) != 0:
+                raise RuntimeError("Command \"{}\" failed".format(command))
 
 def _do_templates(script_dir, repo_dir, args):
     templates = []
