@@ -1,0 +1,14 @@
+files:
+- stack.yaml
+- path: Setup.hs
+  preprocess: true
+- path: project.cabal
+  output-path: $project_name.cabal
+  preprocess: true
+- path: ../shared/LICENSE
+  output-path: LICENSE
+  preprocess: true
+- path: src/Main.hs
+  preprocess: true
+- path: README.md
+  preprocess: true

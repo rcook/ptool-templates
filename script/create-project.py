@@ -109,9 +109,9 @@ def _main_inner(script_dir, repo_dir, args):
     for key, value in args.key_value_pairs:
         values[key] = value
 
-    files = map(lambda o: read_file(o, template_dir), obj["files"])
+    files = map(lambda o: read_file(o, template_dir), obj.get("files", []))
 
-    commands = obj["commands"]
+    commands = obj.get("commands", [])
 
     unsorted_keys = []
     for file in files:
