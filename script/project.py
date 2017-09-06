@@ -149,7 +149,7 @@ def _do_templates(script_dir, repo_dir, args):
             templates.append((os.path.basename(item), obj.get("description", "(no description)")))
 
     width = 0
-    for project_name, description in templates:
+    for project_name, _ in templates:
         t = len(project_name)
         if t > width:
             width = t
