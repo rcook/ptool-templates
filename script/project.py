@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -----------------------------------------------------------------------------
+#
+# Copyright (C) 2017, Richard Cook. All rights reserved.
+#
+# -----------------------------------------------------------------------------
+
+from __future__ import print_function
 import argparse
 import datetime
 import shutil
