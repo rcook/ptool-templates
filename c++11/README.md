@@ -10,7 +10,7 @@ Features:
 ## Clone repository
 
 ```
-git clone --recurse-submodules git@github.com:$git_user_name/$project_name.git
+git clone --recurse-submodules $public_git_repo:$git_user_name/$project_name.git
 ```
 
 ## Generate and run build

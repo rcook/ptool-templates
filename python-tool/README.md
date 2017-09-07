@@ -5,7 +5,7 @@ Python tool with virtual environment wrappers
 ## Clone repository
 
 ```
-git clone git@github.com:$git_user_name/$project_name.git
+git clone $public_git_repo:$git_user_name/$project_name.git
 ```
 
 ## Licence
