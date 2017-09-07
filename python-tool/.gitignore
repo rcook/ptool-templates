@@ -7,3 +7,4 @@
 /script/tcl/
 /script/lib64
 /script/pip-selfcheck.json
+*.pyc

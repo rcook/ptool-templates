@@ -11,8 +11,11 @@ import datetime
 import shutil
 import string
 import yaml
+
 from pyprelude.file_system import *
 from pyprelude.temp_util import *
+
+from projectlib.util import remove_dir
 
 _PROJECT_YAML_FILE_NAME = "project.yaml"
 
@@ -134,8 +137,11 @@ def _template_values(args):
     return values
 
 def _do_new(script_dir, repo_dir, args):
-    if not args.force_overwrite and os.path.exists(args.output_dir):
-        raise RuntimeError("Output directory \"{}\" already exists: force overwrite with --force".format(args.output_dir))
+    if os.path.exists(args.output_dir):
+        if args.force_overwrite:
+            remove_dir(args.output_dir)
+        else:
+            raise RuntimeError("Output directory \"{}\" already exists: force overwrite with --force".format(args.output_dir))
 
     template_dir = make_path(repo_dir, args.template_name)
     yaml_path = make_path(template_dir, _PROJECT_YAML_FILE_NAME)
