@@ -1,5 +1,4 @@
 $cmake_copyright
-
 add_executable($project_name-test
   ExampleTest.cpp
   main.cpp

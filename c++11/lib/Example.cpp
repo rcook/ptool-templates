@@ -1,5 +1,4 @@
 $cpp_copyright
-
 #include "${project_name}lib/Example.h"
 
 using namespace ${namespace}lib;
