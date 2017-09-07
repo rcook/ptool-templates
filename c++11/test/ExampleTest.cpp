@@ -3,7 +3,7 @@ $cpp_copyright
 #include "${project_name}lib/Example.h"
 #include <catch.hpp>
 
-using namespace ${project_name}lib;
+using namespace ${namespace}lib;
 
 TEST_CASE("Example", "[example]")
 {

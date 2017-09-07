@@ -61,7 +61,7 @@ class FileInfo(object):
 def _home_dir():
     return os.path.expanduser("~")
 
-def read_file(obj, template_dir):
+def _read_file(obj, template_dir):
     if isinstance(obj, dict):
         path = obj["path"]
         output_path_template = obj.get("output-path", path)
@@ -81,10 +81,23 @@ def _template_tokens(s):
         tokens.append(a if len(b) == 0 else b)
     return tokens
 
+def _safe_token(s):
+    h, t = s[0], s[1:]
+    h = h if h.isalpha() else "_"
+    t = "".join(map(lambda c: c if c.isalnum() else "_", t))
+    return h + t
+
+def _safe_namespace(s):
+    fragments = s.replace("-", "_").split("_")
+    namespace = "_".join(map(_safe_token, fragments))
+    return namespace
+
 def _template_values(args):
+    project_name = os.path.basename(args.output_dir)
     values = {
         "copyright_year": str(datetime.datetime.now().year),
-        "project_name": os.path.basename(args.output_dir)
+        "project_name": project_name,
+        "namespace": _safe_namespace(project_name)
     }
 
     user_yaml_path = make_path(_home_dir(), ".project.yaml")
@@ -111,7 +124,7 @@ def _do_new(script_dir, repo_dir, args):
     for key, value in args.key_value_pairs:
         values[key] = value
 
-    files = map(lambda o: read_file(o, template_dir), obj.get("files", []))
+    files = map(lambda o: _read_file(o, template_dir), obj.get("files", []))
 
     commands = obj.get("commands", [])
 

@@ -4,7 +4,7 @@ $cpp_copyright
 
 #include <string>
 
-namespace ${project_name}lib {
+namespace ${namespace}lib {
 
 class Example final
 {

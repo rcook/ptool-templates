@@ -2,7 +2,7 @@ $cpp_copyright
 
 #include "${project_name}lib/Example.h"
 
-using namespace ${project_name}lib;
+using namespace ${namespace}lib;
 using namespace std;
 
 Example::Example(const string& name) : _name(name) { }
