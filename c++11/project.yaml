@@ -34,3 +34,5 @@ commands:
 - git config user.email '$author_email'
 - git submodule add https://github.com/philsquared/Catch.git external/catch
 - git add .
+- git update-index --chmod=+x script/run-cmake
+- git checkout -- script/run-cmake
