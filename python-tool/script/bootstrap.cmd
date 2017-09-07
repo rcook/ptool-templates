@@ -4,20 +4,20 @@ goto :CMDSCRIPT
 ::CMDLITERAL
 #!/bin/bash
 set -euo pipefail
-IFS=$'\n\t'
+IFS=$$'\n\t'
 
-script_dir=$(cd $(dirname $0); pwd -P)
-python_path=$script_dir/bin/python
-pip_path=$script_dir/bin/pip
+script_dir=$$(cd $$(dirname $$0); pwd -P)
+python_path=$$script_dir/bin/python
+pip_path=$$script_dir/bin/pip
 
-if [ ! -e $python_path ]; then
-    virtualenv $script_dir
+if [ ! -e $$python_path ]; then
+    virtualenv $$script_dir
 fi
 
-$pip_path install -q -r $script_dir/requirements.txt
-$python_path $*
+$$pip_path install -q -r $$script_dir/requirements.txt
+$$python_path $$*
 
-exit $?
+exit $$?
 
 :CMDSCRIPT
 @echo off

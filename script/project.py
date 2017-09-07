@@ -84,9 +84,24 @@ def _read_file(obj, template_dir):
 
 def _template_tokens(s):
     tokens = []
-    for _, a, b, _ in string.Template.pattern.findall(s):
-        assert(len(a) == 0 and len(b) > 0 or len(a) > 0 and len(b) == 0)
-        tokens.append(a if len(b) == 0 else b)
+    for escaped, named, braced, invalid in string.Template.pattern.findall(s):
+        escaped_length = len(escaped)
+        named_length = len(named)
+        braced_length = len(braced)
+        invalid_length = len(invalid)
+        total_length = escaped_length + named_length + braced_length + invalid_length
+        if escaped_length > 0:
+            assert escaped_length == total_length
+        elif named_length > 0:
+            assert named_length == total_length
+            tokens.append(named)
+        elif braced_length > 0:
+            assert braced_length == total_length
+            tokens.append(braced)
+        else:
+            assert invalid_length == total_length
+            raise RuntimeError("Template is invalid")
+
     return tokens
 
 def _safe_token(s):
