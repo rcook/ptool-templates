@@ -134,6 +134,9 @@ def _template_values(args):
     return values
 
 def _do_new(script_dir, repo_dir, args):
+    if not args.force_overwrite and os.path.exists(args.output_dir):
+        raise RuntimeError("Output directory \"{}\" already exists: force overwrite with --force".format(args.output_dir))
+
     template_dir = make_path(repo_dir, args.template_name)
     yaml_path = make_path(template_dir, _PROJECT_YAML_FILE_NAME)
 
@@ -207,6 +210,12 @@ def _main():
 
     new_parser = subparsers.add_parser("new", help="Create new project from template")
     new_parser.set_defaults(func=_do_new)
+    new_parser.add_argument(
+        "-f",
+        "--force",
+        dest="force_overwrite",
+        action="store_true",
+        help="Force overwrite of existing output directory")
     new_parser.add_argument(
         "template_name",
         metavar="TEMPLATENAME",
