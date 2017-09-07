@@ -171,9 +171,10 @@ def _do_new(script_dir, repo_dir, args):
         file.generate(values, args.output_dir)
 
     for command in commands:
+        expanded_command = string.Template(command).substitute(values)
         with temp_cwd(args.output_dir):
-            if os.system(command) != 0:
-                raise RuntimeError("Command \"{}\" failed".format(command))
+            if os.system(expanded_command) != 0:
+                raise RuntimeError("Command \"{}\" failed".format(expanded_command))
 
 def _do_templates(script_dir, repo_dir, args):
     templates = []

@@ -30,8 +30,8 @@ files:
   preprocess: true
 commands:
 - git init
-- git config user.name '$author'
-- git config user.email '$author_email'
+- git config user.name "$author"
+- git config user.email "$author_email"
 - git submodule add https://github.com/philsquared/Catch.git external/catch
 - git add .
 - git update-index --chmod=+x script/run-cmake

@@ -17,6 +17,6 @@ files:
 - script/requirements.txt
 commands:
 - git init
-- git config user.name '$author'
-- git config user.email '$author_email'
+- git config user.name "$author"
+- git config user.email "$author_email"
 - git add .
