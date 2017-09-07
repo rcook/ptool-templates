@@ -1,0 +1,19 @@
+author: Some Author
+author_email: some@author.org
+cmake_copyright: |
+    ##################################################
+    # Copyright (C) 2017, All rights reserved.
+    ##################################################
+cpp_copyright: |
+    //////////////////////////////////////////////////
+    // Copyright (C) 2017, All rights reserved.
+    //////////////////////////////////////////////////
+git_user_name: someauthor
+hs_copyright: |
+    --------------------------------------------------
+    -- Copyright (C) 2017, All rights reserved.
+    --------------------------------------------------
+py_copyright: |
+    ##################################################
+    # Copyright (C) 2017, All rights reserved.
+    ##################################################
