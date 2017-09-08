@@ -17,6 +17,7 @@ from pyprelude.file_system import *
 from pyprelude.temp_util import *
 
 from projectlib.git_util import git_execute_attribute, git_symlink
+from projectlib.template_util import template_tokens
 from projectlib.util import remove_dir
 
 _PROJECT_YAML_FILE_NAME = "project.yaml"
@@ -36,7 +37,7 @@ class FileInfo(object):
     @property
     def keys(self):
         if self._keys is None:
-            self._keys = _all_template_tokens(self._output_path_template, self.content if self._is_template else "")
+            self._keys = template_tokens(self._output_path_template, self.content if self._is_template else "")
         return self._keys
 
     @property
@@ -77,7 +78,7 @@ class SimpleCommandInfo(object):
     @property
     def keys(self):
         if self._keys is None:
-            self._keys = _all_template_tokens(self._command_template)
+            self._keys = template_tokens(self._command_template)
         return self._keys
 
     def run(self, values):
@@ -93,7 +94,7 @@ class GitExecuteAttributeCommandInfo(object):
     @property
     def keys(self):
         if self._keys is None:
-            self._keys = _all_template_tokens(self._path_template)
+            self._keys = template_tokens(self._path_template)
         return self._keys
 
     def run(self, values):
@@ -109,7 +110,7 @@ class GitSymlinkCommandInfo(object):
     @property
     def keys(self):
         if self._keys is None:
-            self._keys = _all_template_tokens(self._source_path_template, self._target_path_template)
+            self._keys = template_tokens(self._source_path_template, self._target_path_template)
         return self._keys
 
     def run(self, values):
@@ -154,35 +155,6 @@ def _read_command(obj):
         return SimpleCommandInfo(obj)
     else:
         raise RuntimeError("Unsupported command type {}".format(type(obj)))
-
-def _template_tokens(s):
-    tokens = []
-    for escaped, named, braced, invalid in string.Template.pattern.findall(s):
-        escaped_length = len(escaped)
-        named_length = len(named)
-        braced_length = len(braced)
-        invalid_length = len(invalid)
-        total_length = escaped_length + named_length + braced_length + invalid_length
-        if escaped_length > 0:
-            assert escaped_length == total_length
-        elif named_length > 0:
-            assert named_length == total_length
-            tokens.append(named)
-        elif braced_length > 0:
-            assert braced_length == total_length
-            tokens.append(braced)
-        else:
-            assert invalid_length == total_length
-            raise RuntimeError("Template is invalid")
-
-    return tokens
-
-def _all_template_tokens(*args):
-    keys = []
-    for s in args:
-        keys.extend(_template_tokens(s))
-
-    return sorted(list(set(keys)))
 
 def _safe_token(s):
     h, t = s[0], s[1:]
