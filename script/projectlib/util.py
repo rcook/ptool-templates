@@ -36,3 +36,6 @@ def remove_dir(path):
                 raise RuntimeError("Command {} failed with status {}".format(command, status))
 
         os.rmdir(path)
+
+def home_dir():
+    return os.path.expanduser("~")

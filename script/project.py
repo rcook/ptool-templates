@@ -16,9 +16,11 @@ import yaml
 from pyprelude.file_system import *
 from pyprelude.temp_util import *
 
+from projectlib.arg_util import parse_key_value_pair
 from projectlib.git_util import git_execute_attribute, git_symlink
+from projectlib.lang_util import safe_namespace
 from projectlib.template_util import template_tokens
-from projectlib.util import remove_dir
+from projectlib.util import home_dir, remove_dir
 
 _PROJECT_YAML_FILE_NAME = "project.yaml"
 
@@ -118,9 +120,6 @@ class GitSymlinkCommandInfo(object):
         target_path = string.Template(self._target_path_template).substitute(values)
         git_symlink(os.getcwd(), source_path, target_path)
 
-def _home_dir():
-    return os.path.expanduser("~")
-
 def _read_file(obj, template_dir):
     if isinstance(obj, dict):
         path = obj["path"]
@@ -156,26 +155,15 @@ def _read_command(obj):
     else:
         raise RuntimeError("Unsupported command type {}".format(type(obj)))
 
-def _safe_token(s):
-    h, t = s[0], s[1:]
-    h = h if h.isalpha() else "_"
-    t = "".join(map(lambda c: c if c.isalnum() else "_", t))
-    return h + t
-
-def _safe_namespace(s):
-    fragments = s.replace("-", "_").split("_")
-    namespace = "_".join(map(_safe_token, fragments))
-    return namespace
-
 def _template_values(args):
     project_name = os.path.basename(args.output_dir)
     values = {
         "copyright_year": str(datetime.datetime.now().year),
         "project_name": project_name,
-        "namespace": _safe_namespace(project_name)
+        "namespace": safe_namespace(project_name)
     }
 
-    user_yaml_path = make_path(_home_dir(), ".project.yaml")
+    user_yaml_path = make_path(home_dir(), ".project.yaml")
     if os.path.isfile(user_yaml_path):
         with open(user_yaml_path, "rt") as f:
             values.update(yaml.load(f))
@@ -250,12 +238,6 @@ def _do_templates(script_dir, repo_dir, args):
     for project_name, description in templates:
         print("{}    {}".format(project_name.ljust(width), description))
 
-def _parse_key_value_pair(s):
-    fragments = s.split("=")
-    if len(fragments) != 2 or len(fragments[0]) < 1:
-        raise argparse.ArgumentTypeError("Must be a key-value pair")
-    return fragments[0], fragments[1]
-
 def _main():
     parser = argparse.ArgumentParser(description="Create project from template")
     subparsers = parser.add_subparsers(help="subcommand help")
@@ -281,7 +263,7 @@ def _main():
     new_parser.add_argument(
         "key_value_pairs",
         metavar="KEYVALUEPAIRS",
-        type=_parse_key_value_pair,
+        type=parse_key_value_pair,
         nargs="*",
         help="Key-value pairs for substitutions in templates")
 
