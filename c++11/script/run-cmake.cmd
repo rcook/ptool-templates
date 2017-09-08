@@ -1,3 +1,29 @@
+:<<"::CMDLITERAL"
+@echo off
+goto :CMDSCRIPT
+::CMDLITERAL
+#!/bin/bash
+set -euo pipefail
+IFS=$$'\n\t'
+
+script_dir=$$(cd $$(dirname $$0); pwd -P)
+repo_dir=$$(dirname $$script_dir)
+build_dir=$$repo_dir/_build
+
+if [ -d $$build_dir ]; then
+  rm -rf $$build_dir
+fi
+
+mkdir -p $$build_dir
+cd $$build_dir
+cmake \
+  -G "Unix Makefiles" \
+  -DCMAKE_BUILD_TYPE=Debug \
+  ..
+
+exit $$?
+
+:CMDSCRIPT
 @echo off
 setlocal
 call :Main "%~f0" "%~dp0" "%~dp0.."

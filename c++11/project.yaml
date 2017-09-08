@@ -11,8 +11,8 @@ files:
   preprocess: true
 - path: lib/Example.cpp
   preprocess: true
-- script/run-cmake
-- script/run-cmake.cmd
+- path: script/run-cmake.cmd
+  preprocess: true
 - path: test/CMakeLists.txt
   preprocess: true
 - path: test/ExampleTest.cpp
@@ -36,4 +36,7 @@ commands:
 - git submodule add https://github.com/philsquared/Catch.git external/catch
 - git add .
 - git-execute-attribute:
-    path: script/run-cmake
+    path: script/run-cmake.cmd
+- git-symlink:
+    source-path: script/run-cmake.cmd
+    target-path: script/run-cmake
