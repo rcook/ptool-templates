@@ -261,7 +261,7 @@ def _do_new(script_dir, repo_dir, args):
 
 def _do_templates(script_dir, repo_dir, args):
     templates = []
-    for item in os.listdir(repo_dir):
+    for item in sorted(os.listdir(repo_dir)):
         yaml_path = make_path(repo_dir, item, _PROJECT_YAML_FILE_NAME)
         if os.path.isfile(yaml_path):
             with open(yaml_path, "rt") as f:
