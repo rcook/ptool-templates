@@ -21,3 +21,13 @@ commands:
 - git config user.name "$author"
 - git config user.email "$author_email"
 - git add .
+- git-execute-attribute:
+    path: script/bootstrap.cmd
+- git-execute-attribute:
+    path: script/$project_name.cmd
+- git-symlink:
+    source-path: script/bootstrap.cmd
+    target-path: script/bootstrap
+- git-symlink:
+    source-path: script/$project_name.cmd
+    target-path: script/$project_name
