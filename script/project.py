@@ -17,7 +17,7 @@ from pyprelude.temp_util import *
 from projectlib.arg_util import parse_key_value_pair
 from projectlib.lang_util import safe_namespace
 from projectlib.project_yaml import read_command, read_file
-from projectlib.util import home_dir, remove_dir
+from projectlib.util import home_dir
 
 _PROJECT_YAML_FILE_NAME = "project.yaml"
 
