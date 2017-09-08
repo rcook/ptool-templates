@@ -10,6 +10,7 @@ import argparse
 import datetime
 import shutil
 import string
+import sys
 import yaml
 
 from pyprelude.file_system import *
@@ -18,6 +19,10 @@ from pyprelude.temp_util import *
 from projectlib.util import remove_dir
 
 _PROJECT_YAML_FILE_NAME = "project.yaml"
+
+class Informational(Exception):
+    def __init__(self, message):
+        super(Informational, self).__init__(message)
 
 class FileInfo(object):
     def __init__(self, source_path, output_path_template, is_preprocess):
@@ -141,7 +146,7 @@ def _do_new(script_dir, repo_dir, args):
         if args.force_overwrite:
             remove_dir(args.output_dir)
         else:
-            raise RuntimeError("Output directory \"{}\" already exists: force overwrite with --force".format(args.output_dir))
+            raise Informational("Output directory \"{}\" already exists: force overwrite with --force".format(args.output_dir))
 
     template_dir = make_path(repo_dir, args.template_name)
     yaml_path = make_path(template_dir, _PROJECT_YAML_FILE_NAME)
@@ -174,7 +179,7 @@ def _do_new(script_dir, repo_dir, args):
             missing_keys.append(key)
 
     if len(missing_keys) > 0:
-        raise RuntimeError("Need values for {}".format(", ".join(missing_keys)))
+        raise Informational("Provide values for {} in ~/.project.yaml or via command line".format(", ".join(map(lambda k: "\"{}\"".format(k), missing_keys))))
 
     for file in files:
         file.generate(values, args.output_dir)
@@ -246,7 +251,12 @@ def _main():
 
     script_dir = make_path(os.path.dirname(__file__))
     repo_dir = make_path(os.path.dirname(script_dir))
-    args.func(script_dir, repo_dir, args)
+
+    try:
+        args.func(script_dir, repo_dir, args)
+    except Informational as e:
+        print(e.message)
+        sys.exit(1)
 
 if __name__ == "__main__":
     _main()
