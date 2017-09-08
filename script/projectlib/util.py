@@ -8,6 +8,7 @@ import os
 import shutil
 import stat
 
+from pyprelude.process import *
 from pyprelude.temp_util import *
 
 def _is_path_writeable(path):
@@ -29,11 +30,9 @@ def remove_dir(path):
         shutil.rmtree(path, onerror=_remove_dir_on_error)
     except WindowsError:
         with temp_dir() as d:
-            print("TEST {}".format(d))
-            command = "robocopy \"{}\" \"{}\" /mir".format(d, path)
-            status = os.system(command)
+            status, output, error = execute("robocopy.exe", d, path, "/mir", can_fail=True)
             if status != 2:
-                raise RuntimeError("Command {} failed with status {}".format(command, status))
+                raise RuntimeError("robocopy failed with status {} (output={}, error={})".format(status, output, error))
 
         os.rmdir(path)
 
