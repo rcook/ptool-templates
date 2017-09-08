@@ -13,6 +13,14 @@ Features:
 git clone --recurse-submodules $public_git_repo:$git_user_name/$project_name.git
 ```
 
+## Install prerequisites
+
+### Linux (Ubuntu)
+
+```
+sudo apt-get install cmake
+```
+
 ## Generate and run build
 
 ```

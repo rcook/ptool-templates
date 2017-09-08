@@ -2,6 +2,16 @@
 
 Python tool for generating skeleton projects in various programming languages
 
+## Install prerequisites
+
+### Linux (Ubuntu)
+
+```
+sudo apt-get install python-minimal python-pip
+pip install --upgrade pip
+sudo pip install virtualenv
+```
+
 ## Usage
 
 ```
