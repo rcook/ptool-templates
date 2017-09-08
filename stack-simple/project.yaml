@@ -15,6 +15,7 @@ files:
   preprocess: true
 commands:
 - git init
+- git remote add origin $public_git_repo:$git_user_name/$project_name.git
 - git config user.name "$author"
 - git config user.email "$author_email"
 - git add .
