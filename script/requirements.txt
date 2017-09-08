@@ -1,3 +1,0 @@
-pyprelude >= 0.5
-pysimplevcs
-pyyaml
