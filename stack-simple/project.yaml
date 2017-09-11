@@ -6,7 +6,7 @@ files:
 - path: project.cabal
   output-path: $project_name.cabal
   preprocess: true
-- path: ../shared/LICENSE
+- path: ../_shared/LICENSE
   output-path: LICENSE
   preprocess: true
 - path: src/Main.hs

@@ -1,7 +1,7 @@
 description: Simple Python tool with virtual environment
 files:
 - .gitignore
-- path: ../shared/LICENSE
+- path: ../_shared/LICENSE
   output-path: LICENSE
   preprocess: true
 - path: README.md
