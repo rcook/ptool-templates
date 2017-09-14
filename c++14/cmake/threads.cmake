@@ -1,7 +1,4 @@
-############################################################
-# Copyright (C) 2017, Richard Cook. All rights reserved.
-############################################################
-
+$cmake_copyright
 find_package(Threads REQUIRED)
 
 function(add_threads target)
