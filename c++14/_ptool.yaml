@@ -4,6 +4,8 @@ files:
   preprocess: true
 - path: app/main.cpp
   preprocess: true
+- path: cmake/threads.cmake
+  preprocess: true
 - path: lib/public/projectlib/Example.h
   output-path: lib/public/${project_name}lib/Example.h
   preprocess: true
