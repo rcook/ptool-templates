@@ -1,5 +1,6 @@
 description: Simple Haskell project using Stack build tool
 files:
+- .gitignore
 - stack.yaml
 - path: Setup.hs
   preprocess: true
@@ -9,7 +10,12 @@ files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
   preprocess: true
-- path: src/Main.hs
+- path: app/Main.hs
+  preprocess: true
+- path: lib/Project.hs
+  output-path: lib/$hs_module_name.hs
+  preprocess: true
+- path: test/Spec.hs
   preprocess: true
 - path: README.md
   preprocess: true
