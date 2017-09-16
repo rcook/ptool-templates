@@ -6,6 +6,7 @@ list(APPEND CMAKE_MODULE_PATH "$${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 set(CMAKE_CXX_STANDARD 14)
 
+include(sanitizers)
 include(threads)
 
 add_subdirectory(app)

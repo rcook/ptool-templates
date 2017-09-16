@@ -1,8 +1,10 @@
-description: Simple C++ 14 project using CMake
+description: Simple C++14 project using CMake
 files:
 - path: app/CMakeLists.txt
   preprocess: true
 - path: app/main.cpp
+  preprocess: true
+- path: cmake/sanitizers.cmake
   preprocess: true
 - path: cmake/threads.cmake
   preprocess: true
@@ -35,6 +37,7 @@ commands:
 - git remote add origin $public_git_repo:$git_user_name/$project_name.git
 - git config user.name "$author"
 - git config user.email "$author_email"
+- git submodule add https://github.com/arsenm/sanitizers-cmake.git external/sanitizers-cmake
 - git submodule add https://github.com/philsquared/Catch.git external/catch
 - git add .
 - git-execute-attribute:

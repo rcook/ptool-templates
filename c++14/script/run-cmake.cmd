@@ -19,6 +19,7 @@ cd $$build_dir
 cmake \
   -G "Unix Makefiles" \
   -DCMAKE_BUILD_TYPE=Debug \
+  -DSANITIZE_ADDRESS=On \
   ..
 
 exit $$?
