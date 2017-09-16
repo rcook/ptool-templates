@@ -3,7 +3,7 @@ $cpp_copyright
 
 #include <string>
 
-namespace ${namespace}lib {
+namespace ${cpp_namespace}lib {
 
 class Example final
 {
