@@ -1,4 +1,7 @@
 $hs_copyright
+module Main (main) where
 
-import Distribution.Simple
+import           Distribution.Simple
+
+main :: IO ()
 main = defaultMain
