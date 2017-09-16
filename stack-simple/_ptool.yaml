@@ -1,7 +1,8 @@
 description: Simple Haskell project using Stack build tool
 files:
 - .gitignore
-- stack.yaml
+- path: stack.yaml
+  preprocess: true
 - path: Setup.hs
   preprocess: true
 - path: project.cabal
