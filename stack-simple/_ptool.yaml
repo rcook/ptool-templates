@@ -17,6 +17,9 @@ files:
   preprocess: true
 - path: test/Spec.hs
   preprocess: true
+- path: test/ProjectSpec.hs
+  output-path: test/${hs_module_name}Spec.hs
+  preprocess: true
 - path: README.md
   preprocess: true
 commands:
