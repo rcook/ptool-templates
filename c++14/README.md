@@ -21,13 +21,21 @@ git clone --recurse-submodules $public_git_repo:$git_user_name/$project_name.git
 sudo apt-get install cmake
 ```
 
-## Generate and run build
+## Generate build system
 
 ```
-script/run-cmake
-cd _build
-make
+script/setup
 ```
+
+This will generate build or project files under the `_build` directory.
+
+## Build
+
+```
+script/build
+```
+
+Once a `_build` directory exists, this script will perform a build.
 
 ## Licence
 
