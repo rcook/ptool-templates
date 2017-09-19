@@ -37,6 +37,14 @@ script/build
 
 Once a `_build` directory exists, this script will perform a build.
 
+## Test
+
+```
+script/test
+```
+
+Once a `_build` directory exists, this script will build and run the `test` target.
+
 ## Licence
 
 Released under [MIT License][licence]

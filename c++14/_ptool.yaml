@@ -19,6 +19,8 @@ files:
   preprocess: true
 - path: script/setup.cmd
   preprocess: true
+- path: script/test.cmd
+  preprocess: true
 - path: test/CMakeLists.txt
   preprocess: true
 - path: test/ExampleTest.cpp
@@ -46,9 +48,14 @@ commands:
     path: script/build.cmd
 - git-execute-attribute:
     path: script/setup.cmd
+- git-execute-attribute:
+    path: script/test.cmd
 - git-symlink:
     source-path: script/build.cmd
     target-path: script/build
 - git-symlink:
     source-path: script/setup.cmd
     target-path: script/setup
+- git-symlink:
+    source-path: script/test.cmd
+    target-path: script/test
