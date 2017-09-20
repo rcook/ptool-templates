@@ -1,0 +1,9 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <Compile Include="Main.cs"/>
+    </ItemGroup>
+    <Target Name="Build">
+        <Csc Sources="@(Compile)"
+             OutputAssembly="$project_name.exe"/>
+    </Target>
+</Project>
