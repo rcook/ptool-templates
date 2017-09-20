@@ -26,4 +26,4 @@ set script_dir=%~f2
 set repo_dir=%~f3
 set build_dir=%repo_dir%\_build
 
-cmake --build "%build_dir%" --target test
+cmake --build "%build_dir%" --target RUN_TESTS
