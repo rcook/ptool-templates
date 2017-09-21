@@ -1,0 +1,29 @@
+description: Simple Java project using Maven
+files:
+- path: .gitignore
+  preprocess: true
+- path: README.md
+  preprocess: true
+- path: pom.xml
+  preprocess: true
+- path: src/main/java/com/company/app/App.java
+  output-path: src/main/java/com/$java_company_name/app/App.java
+  preprocess: true
+- path: src/main/java/com/company/app/Example.java
+  output-path: src/main/java/com/$java_company_name/app/Example.java
+  preprocess: true
+- path: src/test/java/com/company/app/AppTest.java
+  output-path: src/test/java/com/$java_company_name/app/AppTest.java
+  preprocess: true
+- path: src/test/java/com/company/app/ExampleTest.java
+  output-path: src/test/java/com/$java_company_name/app/ExampleTest.java
+  preprocess: true
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+  preprocess: true
+commands:
+- git init
+- git remote add origin $public_git_repo:$git_user_name/$project_name.git
+- git config user.name "$author"
+- git config user.email "$author_email"
+- git add .
