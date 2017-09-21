@@ -1,4 +1,11 @@
 description: Simple C# project using MSBuild
+
+template-values:
+  cs_copyright: |
+    //////////////////////////////////////////////////
+    // Copyright (C) 2017, All rights reserved.
+    //////////////////////////////////////////////////
+
 files:
 - path: .gitignore
   preprocess: true
@@ -12,6 +19,7 @@ files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
   preprocess: true
+
 commands:
 - git init
 - git remote add origin $public_git_repo:$git_user_name/$project_name.git

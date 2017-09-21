@@ -1,4 +1,12 @@
 description: Simple Haskell project using Stack build tool
+
+template-values:
+  default_stack_resolver: lts-9.3
+  hs_copyright: |
+    --------------------------------------------------
+    -- Copyright (C) 2017, All rights reserved.
+    --------------------------------------------------
+
 files:
 - .gitignore
 - path: stack.yaml
@@ -23,6 +31,7 @@ files:
   preprocess: true
 - path: README.md
   preprocess: true
+
 commands:
 - git init
 - git remote add origin $public_git_repo:$git_user_name/$project_name.git

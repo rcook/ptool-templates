@@ -1,4 +1,15 @@
 description: Simple C++14 project using CMake
+
+template-values:
+  cmake_copyright: |
+    ##################################################
+    # Copyright (C) 2017, All rights reserved.
+    ##################################################
+  cpp_copyright: |
+    //////////////////////////////////////////////////
+    // Copyright (C) 2017, All rights reserved.
+    //////////////////////////////////////////////////
+
 files:
 - path: app/CMakeLists.txt
   preprocess: true
@@ -36,6 +47,7 @@ files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
   preprocess: true
+
 commands:
 - git init
 - git remote add origin $public_git_repo:$git_user_name/$project_name.git
