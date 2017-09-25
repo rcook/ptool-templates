@@ -1,7 +1,7 @@
 $hs_copyright
 module Main (main) where
 
-import $hs_module_name
+import $project_module_name
 
 main :: IO ()
 main = do

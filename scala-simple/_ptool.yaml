@@ -19,7 +19,7 @@ files:
 - path: project/build.properties
   preprocess: true
 - path: src/main/scala/project.scala
-  output-path: src/main/scala/$hs_module_name.scala
+  output-path: src/main/scala/$project_module_name.scala
   preprocess: true
 
 commands:

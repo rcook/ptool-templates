@@ -2,7 +2,7 @@ $cpp_copyright
 #include "${project_name}lib/Example.h"
 #include <iostream>
 
-using namespace ${cpp_namespace}lib;
+using namespace ${project_namespace}lib;
 using namespace std;
 
 int main()

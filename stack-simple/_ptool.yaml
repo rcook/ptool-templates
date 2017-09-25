@@ -22,12 +22,12 @@ files:
 - path: app/Main.hs
   preprocess: true
 - path: lib/Project.hs
-  output-path: lib/$hs_module_name.hs
+  output-path: lib/$project_module_name.hs
   preprocess: true
 - path: test/Spec.hs
   preprocess: true
 - path: test/ProjectSpec.hs
-  output-path: test/${hs_module_name}Spec.hs
+  output-path: test/${project_module_name}Spec.hs
   preprocess: true
 - path: README.md
   preprocess: true

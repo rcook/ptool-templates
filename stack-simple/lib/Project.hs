@@ -1,5 +1,5 @@
 $hs_copyright
-module $hs_module_name (sample) where
+module $project_module_name (sample) where
 
 sample :: IO ()
-sample = putStrLn "Hello from $hs_module_name.sample"
+sample = putStrLn "Hello from $project_module_name.sample"

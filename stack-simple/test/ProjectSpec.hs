@@ -1,7 +1,7 @@
 $hs_copyright
-module ${hs_module_name}Spec (spec) where
+module ${project_module_name}Spec (spec) where
 
-import           $hs_module_name
+import           $project_module_name
 import           Test.Hspec
 
 spec :: Spec
