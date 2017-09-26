@@ -1,0 +1,42 @@
+description: Simple Python game using PyGame
+
+template-values:
+  py_copyright: |
+    ##################################################
+    # Copyright (C) 2017, All rights reserved.
+    ##################################################
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+  preprocess: true
+- .gitignore
+- path: README.md
+  preprocess: true
+- path: bootstrap.cmd
+  preprocess: true
+- intro_ball.gif
+- path: project.cmd
+  output-path: $project_name.cmd
+  preprocess: true
+- path: project.py
+  output-path: $project_name.py
+  preprocess: true
+- requirements.txt
+
+commands:
+- git init
+- git remote add origin $public_git_repo:$git_user_name/$project_name.git
+- git config user.name "$author"
+- git config user.email "$author_email"
+- git add .
+- git-execute-attribute:
+    path: bootstrap.cmd
+- git-execute-attribute:
+    path: $project_name.cmd
+- git-symlink:
+    source-path: bootstrap.cmd
+    target-path: bootstrap
+- git-symlink:
+    source-path: $project_name.cmd
+    target-path: $project_name
