@@ -5,7 +5,7 @@ Python game using [pygame][PyGame]
 ## Clone repository
 
 ```
-git clone {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+git clone {{ project_name | git_url(git_server) }}
 ```
 
 ## Running the game

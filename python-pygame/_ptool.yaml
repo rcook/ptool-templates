@@ -26,7 +26,7 @@ files:
 
 commands:
 - git init
-- git remote add origin {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+- git remote add origin {{ project_name | git_url(git_server) }}
 - git config user.name "{{author}}"
 - git config user.email "{{author_email}}"
 - git add .

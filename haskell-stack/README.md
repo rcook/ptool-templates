@@ -5,7 +5,7 @@ Haskell application with main executable only built using Stack
 ## Clone repository
 
 ```
-git clone {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+git clone {{ project_name | git_url(git_server) }}
 ```
 
 ## Install compiler

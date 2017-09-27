@@ -10,7 +10,7 @@ Features:
 ## Clone repository
 
 ```
-git clone --recurse-submodules {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+git clone --recurse-submodules {{ project_name | git_url(git_server) }}
 ```
 
 ## Install prerequisites

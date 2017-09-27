@@ -5,7 +5,7 @@ This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/
 ## Clone repository
 
 ```
-git clone {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+git clone {{ project_name | git_url(git_server) }}
 ```
 
 Below you will find some information on how to perform basic tasks.  
