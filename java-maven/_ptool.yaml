@@ -8,27 +8,19 @@ template-values:
     //////////////////////////////////////////////////
 
 files:
-- path: .gitignore
-  preprocess: true
-- path: README.md
-  preprocess: true
-- path: pom.xml
-  preprocess: true
-- path: src/main/java/com/company/app/App.java
-  output-path: src/main/java/com/{{java_company_name}}/app/App.java
-  preprocess: true
-- path: src/main/java/com/company/app/Example.java
-  output-path: src/main/java/com/{{java_company_name}}/app/Example.java
-  preprocess: true
-- path: src/test/java/com/company/app/AppTest.java
-  output-path: src/test/java/com/{{java_company_name}}/app/AppTest.java
-  preprocess: true
-- path: src/test/java/com/company/app/ExampleTest.java
-  output-path: src/test/java/com/{{java_company_name}}/app/ExampleTest.java
-  preprocess: true
 - path: ../_shared/LICENSE
   output-path: LICENSE
-  preprocess: true
+- .gitignore
+- README.md
+- pom.xml
+- path: src/main/java/com/company/app/App.java
+  output-path: src/main/java/com/{{java_company_name}}/app/App.java
+- path: src/main/java/com/company/app/Example.java
+  output-path: src/main/java/com/{{java_company_name}}/app/Example.java
+- path: src/test/java/com/company/app/AppTest.java
+  output-path: src/test/java/com/{{java_company_name}}/app/AppTest.java
+- path: src/test/java/com/company/app/ExampleTest.java
+  output-path: src/test/java/com/{{java_company_name}}/app/ExampleTest.java
 
 commands:
 - git init

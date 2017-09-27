@@ -8,29 +8,20 @@ template-values:
     --------------------------------------------------
 
 files:
-- .gitignore
-- path: stack.yaml
-  preprocess: true
-- path: Setup.hs
-  preprocess: true
-- path: project.cabal
-  output-path: "{{project_name}}.cabal"
-  preprocess: true
 - path: ../_shared/LICENSE
   output-path: LICENSE
-  preprocess: true
-- path: app/Main.hs
-  preprocess: true
+- .gitignore
+- stack.yaml
+- Setup.hs
+- path: project.cabal
+  output-path: "{{project_name}}.cabal"
+- app/Main.hs
 - path: lib/Project.hs
   output-path: lib/{{project_module_name}}.hs
-  preprocess: true
-- path: test/Spec.hs
-  preprocess: true
+- test/Spec.hs
 - path: test/ProjectSpec.hs
   output-path: test/{{project_module_name}}Spec.hs
-  preprocess: true
-- path: README.md
-  preprocess: true
+- README.md
 
 commands:
 - git init

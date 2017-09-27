@@ -9,19 +9,15 @@ template-values:
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
-  preprocess: true
 - .gitignore
-- path: README.md
-  preprocess: true
-- path: bootstrap.cmd
-  preprocess: true
-- intro_ball.gif
+- README.md
+- bootstrap.cmd
+- path: intro_ball.gif
+  preprocess: false
 - path: project.cmd
   output-path: "{{project_name}}.cmd"
-  preprocess: true
 - path: project.py
   output-path: "{{project_name}}.py"
-  preprocess: true
 - requirements.txt
 
 commands:

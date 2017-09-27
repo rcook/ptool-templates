@@ -7,18 +7,13 @@ template-values:
     //////////////////////////////////////////////////
 
 files:
-- path: .gitignore
-  preprocess: true
-- path: Main.cs
-  preprocess: true
-- path: project.csproj
-  output-path: "{{project_name}}.csproj"
-  preprocess: true
-- path: README.md
-  preprocess: true
 - path: ../_shared/LICENSE
   output-path: LICENSE
-  preprocess: true
+- .gitignore
+- Main.cs
+- path: project.csproj
+  output-path: "{{project_name}}.csproj"
+- README.md
 
 commands:
 - git init

@@ -9,18 +9,12 @@ template-values:
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
-  preprocess: true
-- path: .gitignore
-  preprocess: true
-- path: README.md
-  preprocess: true
-- path: build.sbt
-  preprocess: true
-- path: project/build.properties
-  preprocess: true
+- .gitignore
+- README.md
+- build.sbt
+- project/build.properties
 - path: src/main/scala/project.scala
   output-path: src/main/scala/{{project_module_name}}.scala
-  preprocess: true
 
 commands:
 - git init

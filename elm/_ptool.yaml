@@ -9,24 +9,19 @@ template-values:
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
-  preprocess: true
 - .gitignore
-- path: README.md
-  preprocess: true
-- path: elm-package.json
-  preprocess: true
-- path: src/App.elm
-  preprocess: true
-- src/favicon.ico
-- path: src/index.html
-  preprocess: true
+- README.md
+- elm-package.json
+- src/App.elm
+- path: src/favicon.ico
+  preprocess: false
+- src/index.html
 - src/index.js
-- src/logo.svg
+- path: src/logo.svg
+  preprocess: false
 - src/main.css
-- path: tests/Tests.elm
-  preprocess: true
-- path: tests/elm-package.json
-  preprocess: true
+- tests/Tests.elm
+- tests/elm-package.json
 
 commands:
 - git init

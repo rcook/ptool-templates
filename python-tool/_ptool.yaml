@@ -7,20 +7,15 @@ template-values:
     ##################################################
 
 files:
-- .gitignore
 - path: ../_shared/LICENSE
   output-path: LICENSE
-  preprocess: true
-- path: README.md
-  preprocess: true
-- path: script/bootstrap.cmd
-  preprocess: true
+- .gitignore
+- README.md
+- script/bootstrap.cmd
 - path: script/project.cmd
   output-path: script/{{project_name}}.cmd
-  preprocess: true
 - path: script/project.py
   output-path: script/{{project_name}}.py
-  preprocess: true
 - script/requirements.txt
 
 commands:
