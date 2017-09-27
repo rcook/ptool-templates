@@ -1,0 +1,35 @@
+description: Simple Elm project using elm-app
+
+template-values:
+  elm_copyright: |
+    --------------------------------------------------
+    -- Copyright (C) 2017, All rights reserved.
+    --------------------------------------------------
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+  preprocess: true
+- .gitignore
+- path: README.md
+  preprocess: true
+- path: elm-package.json
+  preprocess: true
+- path: src/App.elm
+  preprocess: true
+- src/favicon.ico
+- src/index.html
+- src/index.js
+- src/logo.svg
+- src/main.css
+- path: tests/Tests.elm
+  preprocess: true
+- path: tests/elm-package.json
+  preprocess: true
+
+commands:
+- git init
+- git remote add origin $public_git_repo:$git_user_name/$project_name.git
+- git config user.name "$author"
+- git config user.email "$author_email"
+- git add .
