@@ -1,9 +1,9 @@
-$cpp_copyright
+{{cpp_copyright}}
 #pragma once
 
 #include <string>
 
-namespace ${project_namespace}lib {
+namespace {{project_namespace}}lib {
 
 class Example final
 {

@@ -5,11 +5,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.$java_company_name.app</groupId>
-    <artifactId>$project_name</artifactId>
+    <groupId>com.{{java_company_name}}.app</groupId>
+    <artifactId>{{project_name}}</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>$project_name</name>
+    <name>{{project_name}}</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>

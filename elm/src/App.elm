@@ -1,4 +1,4 @@
-$elm_copyright
+{{elm_copyright}}
 module App exposing (..)
 
 import Html exposing (Html, text, div, img)
@@ -16,7 +16,7 @@ type alias Model =
 
 init : String -> ( Model, Cmd Msg )
 init path =
-    ( { message = "$project_name is working!", logo = path }, Cmd.none )
+    ( { message = "{{project_name}} is working!", logo = path }, Cmd.none )
 
 
 

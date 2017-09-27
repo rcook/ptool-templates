@@ -4,6 +4,6 @@
     </ItemGroup>
     <Target Name="Build">
         <Csc Sources="@(Compile)"
-             OutputAssembly="$project_name.exe"/>
+             OutputAssembly="{{project_name}}.exe"/>
     </Target>
 </Project>

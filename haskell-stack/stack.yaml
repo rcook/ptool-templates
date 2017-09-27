@@ -1,1 +1,1 @@
-resolver: $default_stack_resolver
+resolver: {{default_stack_resolver}}

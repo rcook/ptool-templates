@@ -1,4 +1,4 @@
-$elm_copyright
+{{elm_copyright}}
 module Tests exposing (..)
 
 import Test exposing (..)

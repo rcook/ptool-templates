@@ -17,26 +17,26 @@ files:
   preprocess: true
 - intro_ball.gif
 - path: project.cmd
-  output-path: $project_name.cmd
+  output-path: "{{project_name}}.cmd"
   preprocess: true
 - path: project.py
-  output-path: $project_name.py
+  output-path: "{{project_name}}.py"
   preprocess: true
 - requirements.txt
 
 commands:
 - git init
-- git remote add origin $public_git_repo:$git_user_name/$project_name.git
-- git config user.name "$author"
-- git config user.email "$author_email"
+- git remote add origin {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
 - git add .
 - git-execute-attribute:
     path: bootstrap.cmd
 - git-execute-attribute:
-    path: $project_name.cmd
+    path: "{{project_name}}.cmd"
 - git-symlink:
     source-path: bootstrap.cmd
     target-path: bootstrap
 - git-symlink:
-    source-path: $project_name.cmd
-    target-path: $project_name
+    source-path: "{{project_name}}.cmd"
+    target-path: "{{project_name}}"

@@ -1,4 +1,4 @@
-$cs_copyright
+{{cs_copyright}}
 namespace HelloWorld
 {
     using System;
@@ -7,7 +7,7 @@ namespace HelloWorld
     {
         internal static void Main(string[] args)
         {
-            Console.WriteLine("Hello from $project_name!");
+            Console.WriteLine("Hello from {{project_name}}!");
 
             foreach (var arg in args)
             {

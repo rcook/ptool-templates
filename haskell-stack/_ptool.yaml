@@ -14,7 +14,7 @@ files:
 - path: Setup.hs
   preprocess: true
 - path: project.cabal
-  output-path: $project_name.cabal
+  output-path: "{{project_name}}.cabal"
   preprocess: true
 - path: ../_shared/LICENSE
   output-path: LICENSE
@@ -22,19 +22,19 @@ files:
 - path: app/Main.hs
   preprocess: true
 - path: lib/Project.hs
-  output-path: lib/$project_module_name.hs
+  output-path: lib/{{project_module_name}}.hs
   preprocess: true
 - path: test/Spec.hs
   preprocess: true
 - path: test/ProjectSpec.hs
-  output-path: test/${project_module_name}Spec.hs
+  output-path: test/{{project_module_name}}Spec.hs
   preprocess: true
 - path: README.md
   preprocess: true
 
 commands:
 - git init
-- git remote add origin $public_git_repo:$git_user_name/$project_name.git
-- git config user.name "$author"
-- git config user.email "$author_email"
+- git remote add origin {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
 - git add .

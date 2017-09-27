@@ -1,11 +1,11 @@
-name:                                       $project_name
+name:                                       {{project_name}}
 version:                                    0.1.0.0
-homepage:                                   https://github.com/$git_user_name/$project_name#readme
+homepage:                                   https://github.com/{{git_user_name}}/{{project_name}}#readme
 license:                                    MIT
 license-file:                               LICENSE
-author:                                     $author
-maintainer:                                 $author_email
-copyright:                                  $copyright_year $author
+author:                                     {{author}}
+maintainer:                                 {{author_email}}
+copyright:                                  {{copyright_year}} {{author}}
 category:                                   Command Line
 build-type:                                 Simple
 cabal-version:                              >= 1.10
@@ -13,7 +13,7 @@ extra-source-files:                         README.md
 
 source-repository head
   type:                                     git
-  location:                                 https://github.com/$git_user_name/$project_name.git
+  location:                                 https://github.com/{{git_user_name}}/{{project_name}}.git
 
 library
   default-language:                         Haskell2010
@@ -25,10 +25,10 @@ library
     cpp-options:                            -DOS_WINDOWS
   hs-source-dirs:                           lib
   ghc-options:                              -W -Wall -fwarn-incomplete-patterns -fwarn-unused-imports
-  exposed-modules:                          $project_module_name
+  exposed-modules:                          {{project_module_name}}
   build-depends:                            base >= 4.7 && < 5
 
-executable $project_name-app
+executable {{project_name}}-app
   default-language:                         Haskell2010
   if os(darwin)
     cpp-options:                            -DOS_MACOS
@@ -40,9 +40,9 @@ executable $project_name-app
   main-is:                                  Main.hs
   ghc-options:                              -threaded -rtsopts -with-rtsopts=-N -W -Wall -fwarn-incomplete-patterns -fwarn-unused-imports
   build-depends:                            base >= 4.7 && < 5
-                                          , $project_name
+                                          , {{project_name}}
 
-test-suite $project_name-test
+test-suite {{project_name}}-test
   default-language:                         Haskell2010
   type:                                     exitcode-stdio-1.0
   if os(darwin)
@@ -54,7 +54,7 @@ test-suite $project_name-test
   hs-source-dirs:                           test
   main-is:                                  Spec.hs
   ghc-options:                              -threaded -rtsopts -with-rtsopts=-N -W -Wall -fwarn-incomplete-patterns -fwarn-unused-imports
-  other-modules:                            ${project_module_name}Spec
+  other-modules:                            {{project_module_name}}Spec
   build-depends:                            base >= 4.7 && < 5
                                           , hspec
-                                          , $project_name
+                                          , {{project_name}}

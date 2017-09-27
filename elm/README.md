@@ -1,11 +1,11 @@
-# $project_name by $author
+# {{project_name}} by {{author}}
 
 This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/create-elm-app).
 
 ## Clone repository
 
 ```
-git clone $public_git_repo:$git_user_name/$project_name.git
+git clone {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
 ```
 
 Below you will find some information on how to perform basic tasks.  

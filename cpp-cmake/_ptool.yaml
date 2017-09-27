@@ -20,7 +20,7 @@ files:
 - path: cmake/threads.cmake
   preprocess: true
 - path: lib/public/projectlib/Example.h
-  output-path: lib/public/${project_name}lib/Example.h
+  output-path: lib/public/{{project_name}}lib/Example.h
   preprocess: true
 - path: lib/CMakeLists.txt
   preprocess: true
@@ -50,9 +50,9 @@ files:
 
 commands:
 - git init
-- git remote add origin $public_git_repo:$git_user_name/$project_name.git
-- git config user.name "$author"
-- git config user.email "$author_email"
+- git remote add origin {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
 - git submodule add --depth 1 https://github.com/arsenm/sanitizers-cmake.git external/sanitizers-cmake
 - git config --file .gitmodules submodule.external/sanitizers-cmake.shallow true
 - git submodule add --depth 1 https://github.com/philsquared/Catch.git external/catch

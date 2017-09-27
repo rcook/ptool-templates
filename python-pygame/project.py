@@ -1,4 +1,4 @@
-$py_copyright
+{{py_copyright}}
 from __future__ import print_function
 import sys, pygame
 #from pygame.locals import *
@@ -10,7 +10,7 @@ size = width, height = 320, 240
 speed = [2, 2]
 black = 0, 0, 0
 
-pygame.display.set_caption("Welcome to $project_name!")
+pygame.display.set_caption("Welcome to {{project_name}}!")
 screen = pygame.display.set_mode(size)
 #screen = pygame.display.set_mode(size, RESIZABLE)
 

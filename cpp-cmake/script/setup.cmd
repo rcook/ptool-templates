@@ -4,25 +4,25 @@ goto :CMDSCRIPT
 ::CMDLITERAL
 #!/bin/bash
 set -euo pipefail
-IFS=$$'\n\t'
+IFS=$'\n\t'
 
-script_dir=$$(cd $$(dirname $$0); pwd -P)
-repo_dir=$$(dirname $$script_dir)
-build_dir=$$repo_dir/_build
+script_dir=$(cd $(dirname $0); pwd -P)
+repo_dir=$(dirname $script_dir)
+build_dir=$repo_dir/_build
 
-if [ -d $$build_dir ]; then
-  rm -rf $$build_dir
+if [ -d $build_dir ]; then
+  rm -rf $build_dir
 fi
 
-mkdir -p $$build_dir
-cd $$build_dir
+mkdir -p $build_dir
+cd $build_dir
 cmake \
   -G "Unix Makefiles" \
   -DCMAKE_BUILD_TYPE=Debug \
   -DSANITIZE_ADDRESS=On \
   ..
 
-exit $$?
+exit $?
 
 :CMDSCRIPT
 @echo off

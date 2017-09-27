@@ -18,7 +18,8 @@ files:
 - path: src/App.elm
   preprocess: true
 - src/favicon.ico
-- src/index.html
+- path: src/index.html
+  preprocess: true
 - src/index.js
 - src/logo.svg
 - src/main.css
@@ -29,7 +30,7 @@ files:
 
 commands:
 - git init
-- git remote add origin $public_git_repo:$git_user_name/$project_name.git
-- git config user.name "$author"
-- git config user.email "$author_email"
+- git remote add origin {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
 - git add .

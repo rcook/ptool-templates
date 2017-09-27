@@ -12,7 +12,7 @@ files:
 - path: Main.cs
   preprocess: true
 - path: project.csproj
-  output-path: $project_name.csproj
+  output-path: "{{project_name}}.csproj"
   preprocess: true
 - path: README.md
   preprocess: true
@@ -22,7 +22,7 @@ files:
 
 commands:
 - git init
-- git remote add origin $public_git_repo:$git_user_name/$project_name.git
-- git config user.name "$author"
-- git config user.email "$author_email"
+- git remote add origin {{public_git_repo}}:{{git_user_name}}/{{project_name}}.git
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
 - git add .

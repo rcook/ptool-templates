@@ -1,4 +1,4 @@
-$hs_copyright
+{{hs_copyright}}
 module Main (main) where
 
 import           Distribution.Simple

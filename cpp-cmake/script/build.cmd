@@ -4,15 +4,15 @@ goto :CMDSCRIPT
 ::CMDLITERAL
 #!/bin/bash
 set -euo pipefail
-IFS=$$'\n\t'
+IFS=$'\n\t'
 
-script_dir=$$(cd $$(dirname $$0); pwd -P)
-repo_dir=$$(dirname $$script_dir)
-build_dir=$$repo_dir/_build
+script_dir=$(cd $(dirname $0); pwd -P)
+repo_dir=$(dirname $script_dir)
+build_dir=$repo_dir/_build
 
-cmake --build $$build_dir
+cmake --build $build_dir
 
-exit $$?
+exit $?
 
 :CMDSCRIPT
 @echo off

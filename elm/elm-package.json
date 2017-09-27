@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "summary": "Summary of $project_name, less than 80 characters",
-    "repository": "$public_git_repo:$git_user_name/$project_name.git",
+    "summary": "Summary of {{project_name}}, less than 80 characters",
+    "repository": "{{public_git_repo}}:{{git_user_name}}/{{project_name}}.git",
     "license": "MIT",
     "source-directories": [
         ".",

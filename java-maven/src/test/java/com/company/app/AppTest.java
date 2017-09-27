@@ -1,5 +1,5 @@
-$java_copyright
-package com.$java_company_name.app;
+{{java_copyright}}
+package com.{{java_company_name}}.app;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
