@@ -1,9 +1,9 @@
 {{hs_copyright}}
 module {{project_module_name}}Spec (spec) where
 
-import           {{project_module_name}}
-import           Test.Hspec
-
+{% for module in [project_module_name, "Test.Hspec"] | sort -%}
+import           {{module}}
+{% endfor %}
 spec :: Spec
 spec = do
     describe "sample" $
