@@ -16,16 +16,21 @@ template-globals:
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
-- .gitignore
-- stack.yaml
-- Setup.hs
-- path: project.cabal
+- path: ../_shared/haskell-stack/.gitignore
+  output-path: .gitignore
+- path: ../_shared/haskell-stack/stack.yaml
+  output-path: stack.yaml
+- path: ../_shared/haskell-stack/Setup.hs
+  output-path: Setup.hs
+- path: ../_shared/haskell-stack/project.cabal
   output-path: "{{project_name}}.cabal"
-- app/Main.hs
-- path: lib/Project.hs
+- path: ../_shared/haskell-stack/app/Main.hs
+  output-path: app/Main.hs
+- path: ../_shared/haskell-stack/lib/Project.hs
   output-path: lib/{{module_name}}.hs
-- test/Spec.hs
-- path: test/ProjectSpec.hs
+- path: ../_shared/haskell-stack/test/Spec.hs
+  output-path: test/Spec.hs
+- path: ../_shared/haskell-stack/test/ProjectSpec.hs
   output-path: test/{{module_name}}Spec.hs
 - README.md
 
