@@ -1,0 +1,12 @@
+{
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "{{ project_name | git_clone_url(git_server) }}"
+    },
+    "dependencies": {
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-es2016": "^6.24.1",
+        "babel-preset-es2017": "^6.24.1"
+    }
+}

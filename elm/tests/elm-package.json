@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "Test suites for {{project_name}}",
-    "repository": "{{ project_name | git_url(git_server) }}",
+    "repository": "{{ project_name | git_clone_url(git_server) }}",
     "license": "MIT",
     "source-directories": [
         ".",

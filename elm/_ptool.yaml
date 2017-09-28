@@ -12,6 +12,7 @@ files:
 - .gitignore
 - README.md
 - elm-package.json
+- package.json
 - src/App.elm
 - path: src/favicon.ico
   preprocess: false
@@ -29,3 +30,4 @@ commands:
 - git config user.name "{{author}}"
 - git config user.email "{{author_email}}"
 - git add .
+- npm install

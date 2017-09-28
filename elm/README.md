@@ -8,6 +8,18 @@ This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/
 git clone {{ project_name | git_url(git_server) }}
 ```
 
+## Install additional Elm packages
+
+```
+elm-app package install <package-name>
+```
+
+## Install additional NPM packages
+
+```
+npm install --save <package-name>
+```
+
 Below you will find some information on how to perform basic tasks.  
 You can find the most recent version of this guide [here](https://github.com/halfzebra/create-elm-app/blob/master/template/README.md).
 

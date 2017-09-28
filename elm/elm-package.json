@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "Summary of {{project_name}} (up to 80 characters)",
-    "repository": "{{ project_name | git_url(git_server) }}",
+    "repository": "{{ project_name | git_clone_url(git_server) }}",
     "license": "MIT",
     "source-directories": [
         ".",
