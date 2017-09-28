@@ -1,4 +1,5 @@
 {
+    "description": "Description of {{project_name}} (up to 80 characters)",
     "license": "MIT",
     "repository": {
         "type": "git",
