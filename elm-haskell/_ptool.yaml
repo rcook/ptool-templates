@@ -5,9 +5,19 @@ template-values:
     --------------------------------------------------
     -- Copyright (C) 2017, All rights reserved.
     --------------------------------------------------
-  hs_copyright: &elm_copyright
+  hs_copyright: |
+    --------------------------------------------------
+    -- Copyright (C) 2017, All rights reserved.
+    --------------------------------------------------
+
+template-filters:
+  module_name: "lambda ctx, s: \"\".join(map(lambda s: s.title(), ctx.tokenize(s)))"
+
+template-globals:
+  module_name: "{{ project_name | module_name }}"
 
 files:
+- README.md
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - path: ../_shared/elm/.gitignore
@@ -34,7 +44,22 @@ files:
   output-path: frontend/tests/Tests.elm
 - path: ../_shared/elm/tests/elm-package.json
   output-path: frontend/tests/elm-package.json
-- README.md
+- path: ../_shared/haskell-stack/.gitignore
+  output-path: backend/.gitignore
+- path: ../_shared/haskell-stack/stack.yaml
+  output-path: backend/stack.yaml
+- path: ../_shared/haskell-stack/Setup.hs
+  output-path: backend/Setup.hs
+- path: ../_shared/haskell-stack/project.cabal
+  output-path: backend/{{project_name}}.cabal
+- path: ../_shared/haskell-stack/app/Main.hs
+  output-path: backend/app/Main.hs
+- path: ../_shared/haskell-stack/lib/Project.hs
+  output-path: backend/lib/{{module_name}}.hs
+- path: ../_shared/haskell-stack/test/Spec.hs
+  output-path: backend/test/Spec.hs
+- path: ../_shared/haskell-stack/test/ProjectSpec.hs
+  output-path: backend/test/{{module_name}}Spec.hs
 
 commands:
 - git init
@@ -42,4 +67,10 @@ commands:
 - git config user.name "{{author}}"
 - git config user.email "{{author_email}}"
 - git add .
-#- npm install
+- git-symlink:
+    source-path: LICENSE
+    target-path: backend/LICENSE
+- git-symlink:
+    source-path: README.md
+    target-path: backend/README.md
+- npm install
