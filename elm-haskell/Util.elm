@@ -22,3 +22,4 @@ dropTrailingPathSeparator s =
         String.slice 0 (n - 1) s
     else
         s
+

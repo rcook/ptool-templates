@@ -1,10 +1,12 @@
 {%- set imports = [
+    "{}.Decode exposing (users)".format(module_name),
+    "{}.Types exposing (Flags, User)".format(module_name),
     "{}.Util exposing (dropTrailingPathSeparator)".format(module_name),
-    "Html exposing (Html, button, div, img, text)",
+    "Html exposing (Html, button, div, img, li, text, ul)",
     "Html.Attributes exposing (src)",
     "Html.Events exposing (onClick)",
     "Http exposing (Error, get, send)",
-    "Json.Decode exposing (Decoder, at, list, string)"
+    "RemoteData exposing (RemoteData(..), WebData, sendRequest)"
     ] -%}
 {{elm_copyright}}
 
@@ -14,20 +16,6 @@ module App exposing (main)
 import {{i}}
 {% endfor %}
 
----- TYPES ----
-
-
-type alias Email =
-    String
-
-
-type alias Flags =
-    { logoPath : String
-    , apiRootUrl : String
-    }
-
-
-
 ---- MODEL ----
 
 
@@ -35,7 +23,7 @@ type alias Model =
     { message : String
     , logoPath : String
     , apiRootUrl : String
-    , usersResponse : Maybe (List Email)
+    , users : WebData (List User)
     }
 
 
@@ -44,7 +32,7 @@ init flags =
     ( { message = "{{project_name}} is working!"
       , logoPath = flags.logoPath
       , apiRootUrl = dropTrailingPathSeparator flags.apiRootUrl
-      , usersResponse = Nothing
+      , users = NotAsked
       }
     , Cmd.none
     )
@@ -57,7 +45,7 @@ init flags =
 type Msg
     = NoOp
     | GetUsers
-    | UsersResponse (Result Error (List Email))
+    | UsersResponse (WebData (List User))
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -69,11 +57,8 @@ update msg model =
         GetUsers ->
             ( model, getUsers model )
 
-        UsersResponse (Ok emails) ->
-            ( { model | usersResponse = Just emails }, Cmd.none )
-
-        UsersResponse (Err e) ->
-            ( { model | message = toString e }, Cmd.none )
+        UsersResponse response ->
+            ( { model | users = response }, Cmd.none )
 
 
 
@@ -92,12 +77,28 @@ view model =
 
 usersView : Model -> Html msg
 usersView model =
-    case model.usersResponse of
-        Nothing ->
-            div [] [ text "(not loaded)" ]
+    case model.users of
+        NotAsked ->
+            div [] [ text "(not asked)" ]
 
-        Just emails ->
-            div [] [ text (toString emails) ]
+        Loading ->
+            div [] [ text "(loading)" ]
+
+        Failure e ->
+            div [] [ text <| "Error: " ++ toString e ]
+
+        Success users ->
+            ul [] (List.map (\user -> li [] [ userView user ]) users)
+
+
+userView : User -> Html msg
+userView user =
+    ul []
+        [ li [] [ text <| "E-mail: " ++ user.email ]
+        , li [] [ text <| "Age: " ++ toString user.age ]
+        , li [] [ text <| "Name: " ++ user.name ]
+        , li [] [ text <| "Registration date: " ++ toString user.registrationDate ]
+        ]
 
 
 
@@ -120,14 +121,7 @@ main =
 
 getUsers : Model -> Cmd Msg
 getUsers model =
-    send UsersResponse <| get (model.apiRootUrl ++ "/users") decodeEmails
+    get (model.apiRootUrl ++ "/users") users
+        |> sendRequest
+        |> Cmd.map UsersResponse
 
-
-decodeEmails : Decoder (List Email)
-decodeEmails =
-    list decodeEmail
-
-
-decodeEmail : Decoder Email
-decodeEmail =
-    at [ "email" ] string

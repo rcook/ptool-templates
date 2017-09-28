@@ -69,6 +69,10 @@ files:
   preprocess: false
 - path: ../_shared/elm/src/main.css
   output-path: frontend/src/main.css
+- path: Decode.elm
+  output-path: frontend/src/{{module_name}}/Decode.elm
+- path: Types.elm
+  output-path: frontend/src/{{module_name}}/Types.elm
 - path: Util.elm
   output-path: frontend/src/{{module_name}}/Util.elm
 - path: ../_shared/elm/tests/Tests.elm
