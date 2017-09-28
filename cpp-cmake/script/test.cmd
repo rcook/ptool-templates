@@ -1,7 +1,6 @@
-:<<"::CMDLITERAL"
-@echo off
-goto :CMDSCRIPT
-::CMDLITERAL
+{% extends "_shared/universal_script.cmd" %}
+
+{% block bash %}
 #!/bin/bash
 set -euo pipefail
 IFS=$'\n\t'
@@ -13,8 +12,9 @@ build_dir=$repo_dir/_build
 cmake --build $build_dir --target test
 
 exit $?
+{% endblock %}
 
-:CMDSCRIPT
+{% block cmd %}
 @echo off
 setlocal
 call :Main "%~f0" "%~dp0" "%~dp0.."
@@ -27,3 +27,4 @@ set repo_dir=%~f3
 set build_dir=%repo_dir%\_build
 
 cmake --build "%build_dir%" --target RUN_TESTS
+{% endblock %}

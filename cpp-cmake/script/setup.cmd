@@ -1,7 +1,6 @@
-:<<"::CMDLITERAL"
-@echo off
-goto :CMDSCRIPT
-::CMDLITERAL
+{% extends "_shared/universal_script.cmd" %}
+
+{% block bash %}
 #!/bin/bash
 set -euo pipefail
 IFS=$'\n\t'
@@ -23,8 +22,9 @@ cmake \
   ..
 
 exit $?
+{% endblock %}
 
-:CMDSCRIPT
+{% block cmd %}
 @echo off
 setlocal
 call :Main "%~f0" "%~dp0" "%~dp0.."
@@ -43,3 +43,4 @@ if exist "%build_dir%" (
 mkdir "%build_dir%"
 cd /d "%build_dir%"
 cmake -G "Visual Studio 14 2015 Win64" ..
+{% endblock %}

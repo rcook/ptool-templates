@@ -1,7 +1,6 @@
-:<<"::CMDLITERAL"
-@echo off
-goto :CMDSCRIPT
-::CMDLITERAL
+{% extends "_shared/universal_script.cmd" %}
+
+{% block bash %}
 #!/bin/bash
 set -euo pipefail
 IFS=$'\n\t'
@@ -18,8 +17,9 @@ $pip_path install -q -r $script_dir/requirements.txt
 $python_path $*
 
 exit $?
+{% endblock %}
 
-:CMDSCRIPT
+{% block cmd %}
 @echo off
 setlocal
 
@@ -46,3 +46,4 @@ if errorlevel 1 (
     echo script failed
     exit /b 1
 )
+{% endblock %}
