@@ -1,5 +1,5 @@
 {{hs_copyright}}
-module {{project_module_name}} (sample) where
+module {{module_name}} (sample) where
 
 sample :: IO ()
-sample = putStrLn "Hello from {{project_module_name}}.sample"
+sample = putStrLn "Hello from {{module_name}}.sample"

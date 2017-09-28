@@ -7,6 +7,12 @@ template-values:
     -- Copyright (C) 2017, All rights reserved.
     --------------------------------------------------
 
+template-filters:
+  module_name: "lambda tokens: \"\".join(map(lambda s: s.title(), tokens))"
+
+template-globals:
+  module_name: "{{ project_name | module_name }}"
+
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
@@ -17,10 +23,10 @@ files:
   output-path: "{{project_name}}.cabal"
 - app/Main.hs
 - path: lib/Project.hs
-  output-path: lib/{{project_module_name}}.hs
+  output-path: lib/{{module_name}}.hs
 - test/Spec.hs
 - path: test/ProjectSpec.hs
-  output-path: test/{{project_module_name}}Spec.hs
+  output-path: test/{{module_name}}Spec.hs
 - README.md
 
 commands:

@@ -1,8 +1,8 @@
 {{hs_copyright}}
-module {{project_module_name}}Spec (spec) where
+module {{module_name}}Spec (spec) where
 
-{% for module in [project_module_name, "Test.Hspec"] | sort -%}
-import           {{module}}
+{% for m in [module_name, "Test.Hspec"] | sort -%}
+import           {{m}}
 {% endfor %}
 spec :: Spec
 spec = do

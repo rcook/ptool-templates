@@ -6,6 +6,12 @@ template-values:
     // Copyright (C) 2017, All rights reserved.
     //////////////////////////////////////////////////
 
+template-filters:
+  module_name: "lambda tokens: \"\".join(map(lambda s: s.title(), tokens))"
+
+template-globals:
+  module_name: "{{ project_name | module_name }}"
+
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
@@ -13,8 +19,8 @@ files:
 - README.md
 - build.sbt
 - project/build.properties
-- path: src/main/scala/project.scala
-  output-path: src/main/scala/{{project_module_name}}.scala
+- path: src/main/scala/Project.scala
+  output-path: src/main/scala/{{module_name}}.scala
 
 commands:
 - git init

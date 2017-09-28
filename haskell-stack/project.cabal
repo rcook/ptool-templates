@@ -25,7 +25,7 @@ library
     cpp-options:                            -DOS_WINDOWS
   hs-source-dirs:                           lib
   ghc-options:                              -W -Wall -fwarn-incomplete-patterns -fwarn-unused-imports
-  exposed-modules:                          {{project_module_name}}
+  exposed-modules:                          {{module_name}}
   build-depends:                            base >= 4.7 && < 5
 
 executable {{project_name}}-app
@@ -54,7 +54,7 @@ test-suite {{project_name}}-test
   hs-source-dirs:                           test
   main-is:                                  Spec.hs
   ghc-options:                              -threaded -rtsopts -with-rtsopts=-N -W -Wall -fwarn-incomplete-patterns -fwarn-unused-imports
-  other-modules:                            {{project_module_name}}Spec
+  other-modules:                            {{module_name}}Spec
   build-depends:                            base >= 4.7 && < 5
                                           , hspec
                                           , {{project_name}}
