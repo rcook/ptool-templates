@@ -48,6 +48,7 @@ stack build
 ### Running server
 
 ```
+cd backend
 stack exec {{project_name}}-app -- --port 3333
 ```
 {% endblock %}
