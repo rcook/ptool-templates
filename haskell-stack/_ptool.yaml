@@ -26,7 +26,7 @@ files:
   output-path: Setup.hs
 - path: ../_shared/haskell/project.cabal
   output-path: "{{project_name}}.cabal"
-- path: ../_shared/haskell/app/Main.hs
+- path: Main.hs
   output-path: app/Main.hs
 - path: ../_shared/haskell/lib/Project.hs
   output-path: lib/{{module_name}}.hs

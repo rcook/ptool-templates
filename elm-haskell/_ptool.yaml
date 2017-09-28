@@ -56,7 +56,7 @@ files:
   output-path: backend/Setup.hs
 - path: ../_shared/haskell/project.cabal
   output-path: backend/{{project_name}}.cabal
-- path: ../_shared/haskell/app/Main.hs
+- path: Main.hs
   output-path: backend/app/Main.hs
 - path: ../_shared/haskell/lib/Project.hs
   output-path: backend/lib/{{module_name}}.hs
@@ -77,4 +77,4 @@ commands:
 - git-symlink:
     source-path: README.md
     target-path: backend/README.md
-- cd frontend && npm install
+#- cd frontend && npm install
