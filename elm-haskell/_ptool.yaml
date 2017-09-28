@@ -9,6 +9,10 @@ template-values:
     --------------------------------------------------
     -- Copyright (C) 2017, All rights reserved.
     --------------------------------------------------
+  app_dependencies:
+    - servant
+    - time
+  test_dependencies: []
 
 template-filters:
   module_name: "lambda ctx, s: \"\".join(map(lambda s: s.title(), ctx.tokenize(s)))"
