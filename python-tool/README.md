@@ -1,15 +1,8 @@
-# {{project_name}} by {{author}}
+{% extends "_shared/README.md" %}
 
+{% block description %}
 Python tool with virtual environment wrappers
+{% endblock %}
 
-## Clone repository
-
-```
-git clone {{ project_name | git_url(git_server) }}
-```
-
-## Licence
-
-Released under [MIT License][licence]
-
-[licence]: LICENSE
+{% block content -%}
+{% endblock %}

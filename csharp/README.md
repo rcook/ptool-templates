@@ -1,22 +1,17 @@
-# {{project_name}} by {{author}}
+{% extends "_shared/README.md" %}
 
+{% block description %}
 C# application with app built using MSBuild or [xbuild][xbuild]
+{% endblock %}
 
-## Clone repository
-
-```
-git clone {{ project_name | git_url(git_server) }}
-```
-
+{% block content %}
 ## Build
 
 ```
 msbuild {{project_name}}.csproj /t:Build
 ```
+{% endblock %}
 
-## Licence
-
-Released under [MIT License][licence]
-
-[licence]: LICENSE
+{% block end_matter %}
 [xbuild]: http://www.mono-project.com/docs/tools+libraries/tools/xbuild/
+{% endblock %}

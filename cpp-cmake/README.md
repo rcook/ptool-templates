@@ -1,18 +1,19 @@
-# {{project_name}} by {{author}}
+{% extends "_shared/README.md" %}
 
+{% block description %}
 C++ application with app, library and unit tests using CMake-generated build system
 
 Features:
 
 * Creates app, library and unit test targets
 * Uses [Catch][catch] framework
+{% endblock %}
 
-## Clone repository
+{%- block cloning_repo %}
+git clone --recurse-submodules {{ project_name | git_clone_url(git_server) }}
+{% endblock %}
 
-```
-git clone --recurse-submodules {{ project_name | git_url(git_server) }}
-```
-
+{% block content %}
 ## Install prerequisites
 
 ### Linux (Ubuntu)
@@ -44,10 +45,8 @@ script/test
 ```
 
 Once a `_build` directory exists, this script will build and run the `test` target.
+{% endblock %}
 
-## Licence
-
-Released under [MIT License][licence]
-
+{% block end_matter %}
 [catch]: https://github.com/philsquared/Catch
-[licence]: LICENSE
+{% endblock %}

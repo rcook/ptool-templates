@@ -1,13 +1,10 @@
-# {{project_name}} by {{author}}
+{% extends "_shared/README.md" %}
 
+{% block description %}
 This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/create-elm-app).
+{% endblock %}
 
-## Clone repository
-
-```
-git clone {{ project_name | git_url(git_server) }}
-```
-
+{% block content %}
 ## Install additional Elm packages
 
 ```
@@ -220,9 +217,4 @@ The path must be `./` so the assets are served using relative paths.
 elm-app build
 gh-pages -d dist
 ```
-
-## Licence
-
-Released under [MIT License][licence]
-
-[licence]: LICENSE
+{% endblock %}

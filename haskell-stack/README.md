@@ -1,13 +1,10 @@
-# {{project_name}} by {{author}}
+{% extends "_shared/README.md" %}
 
+{% block description %}
 Haskell application with main executable only built using Stack
+{% endblock %}
 
-## Clone repository
-
-```
-git clone {{ project_name | git_url(git_server) }}
-```
-
+{% block content %}
 ## Install compiler
 
 ```
@@ -31,9 +28,4 @@ stack exec {{project_name}}-app
 ```
 stack test
 ```
-
-## Licence
-
-Released under [MIT License][licence]
-
-[licence]: LICENSE
+{% endblock %}

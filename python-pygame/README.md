@@ -1,13 +1,10 @@
-# {{project_name}} by {{author}}
+{% extends "_shared/README.md" %}
 
+{% block description %}
 Python game using [pygame][PyGame]
+{% endblock %}
 
-## Clone repository
-
-```
-git clone {{ project_name | git_url(git_server) }}
-```
-
+{% block content %}
 ## Running the game
 
 ```
@@ -15,11 +12,9 @@ git clone {{ project_name | git_url(git_server) }}
 ```
 
 This will bootstrap and run the game. It should work on Windows, macOS and Linux (including [Raspbian][raspbian]).
+{% endblock %}
 
-## Licence
-
-Released under [MIT License][licence]
-
-[licence]: LICENSE
+{% block end_matter %}
 [pygame]: https://www.pygame.org/
 [raspbian]: https://www.raspbian.org/
+{% endblock %}

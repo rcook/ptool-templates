@@ -1,13 +1,10 @@
-# {{project_name}} by {{author}}
+{% extends "_shared/README.md" %}
 
+{% block description %}
 Java application with app built using Maven
+{% endblock %}
 
-## Clone repository
-
-```
-git clone {{ project_name | git_url(git_server) }}
-```
-
+{% block content %}
 ## Build
 
 ```
@@ -21,7 +18,4 @@ This builds and runs test before generating the output package.
 ```
 java -cp target/{{project_name}}-1.0-SNAPSHOT.jar com.{{java_company_name}}.app.App
 ```
-
-## Licence
-
-Released under [MIT License][licence]
+{% endblock %}
