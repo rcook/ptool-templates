@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace {{project_namespace}}lib {
+namespace {{namespace}}lib {
 
 class Example final
 {
