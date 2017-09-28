@@ -103,4 +103,4 @@ commands:
 - git-symlink:
     source-path: README.md
     target-path: backend/README.md
-#- cd frontend && npm install
+- cd frontend && npm install
