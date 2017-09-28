@@ -15,7 +15,7 @@ files:
   output-path: elm-package.json
 - path: ../_shared/elm/package.json
   output-path: package.json
-- path: ../_shared/elm/src/App.elm
+- path: App.elm
   output-path: src/App.elm
 - path: ../_shared/elm/src/favicon.ico
   output-path: src/favicon.ico

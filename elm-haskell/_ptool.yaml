@@ -18,12 +18,15 @@ template-values:
     - time
     - vcs-revision
     - wai
+    - wai-cors
+    - wai-logger
     - warp
   app_other_module_suffixes:
     - API
     - App
     - CommandLine
     - Types
+    - Util
     - VersionInfo
   test_dependencies: []
 
@@ -42,11 +45,11 @@ files:
   output-path: LICENSE
 - path: ../_shared/elm/.gitignore
   output-path: frontend/.gitignore
-- path: ../_shared/elm/elm-package.json
+- path: elm-package.json
   output-path: frontend/elm-package.json
 - path: ../_shared/elm/package.json
   output-path: frontend/package.json
-- path: ../_shared/elm/src/App.elm
+- path: App.elm
   output-path: frontend/src/App.elm
 - path: ../_shared/elm/src/favicon.ico
   output-path: frontend/src/favicon.ico
@@ -82,6 +85,8 @@ files:
   output-path: backend/app/{{module_name}}App/CommandLine.hs
 - path: Types.hs
   output-path: backend/app/{{module_name}}App/Types.hs
+- path: Util.hs
+  output-path: backend/app/{{module_name}}App/Util.hs
 - path: VersionInfo.hs
   output-path: backend/app/{{module_name}}App/VersionInfo.hs
 - path: ../_shared/haskell/lib/Project.hs

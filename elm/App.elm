@@ -1,6 +1,6 @@
 {{elm_copyright}}
 
-module App exposing (..)
+module App exposing (main)
 
 import Html exposing (Html, div, img, text)
 import Html.Attributes exposing (src)

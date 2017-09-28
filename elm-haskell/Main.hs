@@ -1,5 +1,5 @@
-{%- set app_module_names = ["App", "CommandLine", "VersionInfo"] | to_app_module_names -%}
-{%- set other_module_names = [paths_module_name, module_name, "Network.Wai.Handler.Warp"] -%}
+{%- set app_module_names = ["App", "CommandLine", "Util", "VersionInfo"] | to_app_module_names -%}
+{%- set other_module_names = [paths_module_name, module_name, "Network.Wai.Handler.Warp", "Network.Wai.Logger"] -%}
 {{hs_copyright}}
 module Main (main) where
 
@@ -9,9 +9,10 @@ import           {{m}}
 main :: IO ()
 main = parseCommand >>= handleCommand
     where
-        handleCommand (RunCommand port) = do
+        handleCommand (RunCommand port) = withStdoutLogger $ \logger -> do
+            let settings = setPort port $ setLogger logger defaultSettings
             putStrLn "Hello from {{module_name}}.main"
             putStrLn $ "Listening on port " ++ show port
             sample
-            run port app
+            runSettings settings (apiCors app)
         handleCommand VersionCommand = putStrLn $ "{{project_name}}-app " ++ fullVersionString version
