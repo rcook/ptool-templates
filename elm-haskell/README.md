@@ -9,8 +9,7 @@ This project is bootstrapped with [create-elm-app][create-elm-app].{% endblock %
 ### Running app
 
 ```
-cd frontend
-elm-app start
+script/frontend
 ```
 
 ### Other tasks
@@ -27,22 +26,22 @@ elm-app start
 
 Elm packages:
 ```
+cd frontend
 elm-app package install <package-name>
 ```
 
 NPM packages:
 ```
+cd frontend
 npm install --save <package-name>
 ```
 
 ## Backend
 
-### Building app
+### Running app
 
 ```
-cd backend
-stack setup
-stack build --fast
+script/backend
 ```
 
 ### Running server
