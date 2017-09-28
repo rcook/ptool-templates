@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+script_dir=$(cd $(dirname $0); pwd -P)
+repo_dir=$(dirname $script_dir)
+
+source $repo_dir/.env
+cd $repo_dir/backend
+stack build --fast
+stack ghci

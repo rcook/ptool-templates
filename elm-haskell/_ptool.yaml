@@ -31,11 +31,13 @@ template-values:
   test_dependencies: []
 
 template-filters:
+  to_app_module_names: "lambda ctx, ms: map(lambda m: \"{}App.{}\".format(ctx.get(\"module_name\"), m), ms)"
+  to_env_project_name: "lambda ctx, s: \"_\".join(map(lambda s: s.upper(), ctx.tokenize(s)))"
   to_module_name: "lambda ctx, s: \"\".join(map(lambda s: s.title(), ctx.tokenize(s)))"
   to_paths_module_name: "lambda ctx, s: \"Paths_{}\".format(\"_\".join(map(lambda s: s.lower(), ctx.tokenize(s))))"
-  to_app_module_names: "lambda ctx, ms: map(lambda m: \"{}App.{}\".format(ctx.get(\"module_name\"), m), ms)"
 
 template-globals:
+  env_project_name: "{{ project_name | to_env_project_name }}"
   module_name: "{{ project_name | to_module_name }}"
   paths_module_name: "{{ project_name | to_paths_module_name }}"
 
@@ -45,6 +47,10 @@ files:
   output-path: LICENSE
 - path: ../_shared/elm/.gitignore
   output-path: frontend/.gitignore
+- .env.template
+- path: .env.template
+  output-path: .env
+- .gitignore
 - path: elm-package.json
   output-path: frontend/elm-package.json
 - path: ../_shared/elm/package.json
@@ -56,13 +62,15 @@ files:
   preprocess: false
 - path: ../_shared/elm/src/index.html
   output-path: frontend/src/index.html
-- path: ../_shared/elm/src/index.js
+- path: index.js
   output-path: frontend/src/index.js
 - path: ../_shared/elm/src/logo.svg
   output-path: frontend/src/logo.svg
   preprocess: false
 - path: ../_shared/elm/src/main.css
   output-path: frontend/src/main.css
+- path: Util.elm
+  output-path: frontend/src/{{module_name}}/Util.elm
 - path: ../_shared/elm/tests/Tests.elm
   output-path: frontend/tests/Tests.elm
 - path: ../_shared/elm/tests/elm-package.json
@@ -95,6 +103,8 @@ files:
   output-path: backend/test/Spec.hs
 - path: ../_shared/haskell/test/ProjectSpec.hs
   output-path: backend/test/{{module_name}}Spec.hs
+- script/backend
+- script/frontend
 
 commands:
 - git init
@@ -102,10 +112,14 @@ commands:
 - git config user.name "{{author}}"
 - git config user.email "{{author_email}}"
 - git add .
+- git-execute-attribute:
+    path: script/backend
+- git-execute-attribute:
+    path: script/frontend
 - git-symlink:
     source-path: LICENSE
     target-path: backend/LICENSE
 - git-symlink:
     source-path: README.md
     target-path: backend/README.md
-- cd frontend && npm install
+#- cd frontend && npm install

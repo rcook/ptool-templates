@@ -1,0 +1,13 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+script_dir=$(cd $(dirname $0); pwd -P)
+repo_dir=$(dirname $script_dir)
+
+cd $repo_dir/frontend
+npm install
+source $repo_dir/.env
+{{env_project_name}}_API_ROOT_PORT=${{env_project_name}}_API_ROOT_PORT \
+{{env_project_name}}_API_ROOT_URL=${{env_project_name}}_API_ROOT_URL \
+elm-app start
