@@ -1,6 +1,6 @@
 # {{project_name}} by {{author}}
 
-C# application with app built using MSBuild
+C# application with app built using MSBuild or [xbuild][xbuild]
 
 ## Clone repository
 
@@ -17,3 +17,6 @@ msbuild {{project_name}}.csproj /t:Build
 ## Licence
 
 Released under [MIT License][licence]
+
+[licence]: LICENSE
+[xbuild]: http://www.mono-project.com/docs/tools+libraries/tools/xbuild/
