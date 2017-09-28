@@ -11,7 +11,7 @@ template-values:
     //////////////////////////////////////////////////
 
 template-filters:
-  namespace: "lambda tokens: \"_\".join(tokens)"
+  namespace: "lambda ctx, s: \"_\".join(ctx.tokenize(s))"
 
 template-globals:
   namespace: "{{ project_name | namespace }}"

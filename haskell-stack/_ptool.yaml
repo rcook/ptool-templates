@@ -8,7 +8,7 @@ template-values:
     --------------------------------------------------
 
 template-filters:
-  module_name: "lambda tokens: \"\".join(map(lambda s: s.title(), tokens))"
+  module_name: "lambda ctx, s: \"\".join(map(lambda s: s.title(), ctx.tokenize(s)))"
 
 template-globals:
   module_name: "{{ project_name | module_name }}"
