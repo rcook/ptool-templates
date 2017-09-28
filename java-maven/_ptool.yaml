@@ -1,27 +1,35 @@
 description: Simple Java project using Maven
 
 template-values:
-  java_company_name: mycompany
+  java_domain: mycompany.com
   java_copyright: |
     //////////////////////////////////////////////////
     // Copyright (C) 2017, All rights reserved.
     //////////////////////////////////////////////////
 
+template-filters:
+  to_reversed_domain: "lambda ctx, s: \".\".join(reversed(s.split(\".\")))"
+  to_domain_file_path: "lambda ctx, s: \"/\".join(reversed(s.split(\".\")))"
+
+template-globals:
+  reversed_domain: "{{ java_domain | to_reversed_domain }}"
+  domain_file_path: "{{ java_domain | to_domain_file_path }}"
+
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
+- .vscode/launch.json
 - README.md
 - pom.xml
-- path: src/main/java/com/company/app/App.java
-  output-path: src/main/java/com/{{java_company_name}}/app/App.java
-- path: src/main/java/com/company/app/Example.java
-  output-path: src/main/java/com/{{java_company_name}}/app/Example.java
-- path: src/test/java/com/company/app/AppTest.java
-  output-path: src/test/java/com/{{java_company_name}}/app/AppTest.java
-- path: src/test/java/com/company/app/ExampleTest.java
-  output-path: src/test/java/com/{{java_company_name}}/app/ExampleTest.java
-- .vscode/launch.json
+- path: App.java
+  output-path: src/main/java/{{domain_file_path}}/app/App.java
+- path: Example.java
+  output-path: src/main/java/{{domain_file_path}}/app/Example.java
+- path: AppTest.java
+  output-path: src/test/java/{{domain_file_path}}/app/AppTest.java
+- path: ExampleTest.java
+  output-path: src/test/java/{{domain_file_path}}/app/ExampleTest.java
 
 commands:
 - git init

@@ -1,21 +1,21 @@
 {{java_copyright}}
-package com.{{java_company_name}}.app;
+package {{reversed_domain}}.app;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for Example class
+ * Unit test for App class
  */
-public final class ExampleTest extends TestCase
+public final class AppTest extends TestCase
 {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public ExampleTest(String testName)
+    public AppTest(String testName)
     {
         super(testName);
     }
@@ -25,16 +25,14 @@ public final class ExampleTest extends TestCase
      */
     public static Test suite()
     {
-        return new TestSuite(ExampleTest.class);
+        return new TestSuite(AppTest.class);
     }
 
     /**
      * Example test
      */
-    public void testAdd()
+    public void testApp()
     {
-        Example example = new Example(5);
-        int result = example.add(6);
-        assertEquals(11, result);
+        assertTrue(true);
     }
 }

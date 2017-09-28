@@ -5,7 +5,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.{{java_company_name}}.app</groupId>
+    <groupId>{{reversed_domain}}.app</groupId>
     <artifactId>{{project_name}}</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>

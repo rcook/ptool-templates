@@ -1,5 +1,5 @@
 {{java_copyright}}
-package com.{{java_company_name}}.app;
+package {{reversed_domain}}.app;
 
 /**
  * Example class

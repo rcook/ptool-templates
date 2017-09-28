@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Debug (Launch)",
             "request": "launch",
-            "mainClass": "com.{{java_company_name}}.app.App",
+            "mainClass": "{{reversed_domain}}.app.App",
             "args": ""
         },
         {
