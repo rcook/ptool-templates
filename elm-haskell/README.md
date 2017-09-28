@@ -42,7 +42,7 @@ npm install --save <package-name>
 ```
 cd backend
 stack setup
-stack build
+stack build --fast
 ```
 
 ### Running server

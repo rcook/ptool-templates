@@ -14,7 +14,7 @@ stack setup
 ## Build
 
 ```
-stack build
+stack build --fast
 ```
 
 ## Run application
