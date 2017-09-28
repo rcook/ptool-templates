@@ -21,6 +21,7 @@ files:
   output-path: src/test/java/com/{{java_company_name}}/app/AppTest.java
 - path: src/test/java/com/company/app/ExampleTest.java
   output-path: src/test/java/com/{{java_company_name}}/app/ExampleTest.java
+- .vscode/launch.json
 
 commands:
 - git init
