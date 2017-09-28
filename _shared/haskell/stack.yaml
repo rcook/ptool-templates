@@ -1,1 +1,3 @@
 resolver: {{default_stack_resolver}}
+{%- block additional_config %}
+{% endblock %}

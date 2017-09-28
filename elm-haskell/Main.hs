@@ -1,25 +1,17 @@
+{%- set app_module_names = ["App", "CommandLine", "VersionInfo"] | to_app_module_names -%}
+{%- set other_module_names = [paths_module_name, module_name, "Network.Wai.Handler.Warp"] -%}
 {{hs_copyright}}
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeOperators #-}
-{-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
-
 module Main (main) where
 
-{% for m in [module_name, "Data.Time (UTCTime)", "Servant.API"] | sort -%}
+{% for m in (app_module_names + other_module_names | sort) -%}
 import           {{m}}
 {% endfor %}
-type UserAPI = "users" :> QueryParam "sortby" SortBy :> Get '[JSON] [User]
-
-data SortBy = Age | Name
-
-data User = User
-    { name :: String
-    , age :: Int
-    , email :: String
-    , registration_date :: UTCTime
-    }
-
 main :: IO ()
-main = do
-    putStrLn "Hello from {{module_name}}.main"
-    sample
+main = parseCommand >>= handleCommand
+    where
+        handleCommand (RunCommand port) = do
+            putStrLn "Hello from {{module_name}}.main"
+            putStrLn $ "Listening on port " ++ show port
+            sample
+            run port app
+        handleCommand VersionCommand = putStrLn $ "{{project_name}}-app " ++ fullVersionString version

@@ -10,15 +10,31 @@ template-values:
     -- Copyright (C) 2017, All rights reserved.
     --------------------------------------------------
   app_dependencies:
+    - aeson
+    - optparse-applicative
     - servant
+    - servant-server
+    - template-haskell
     - time
+    - vcs-revision
+    - wai
+    - warp
+  app_other_module_suffixes:
+    - API
+    - App
+    - CommandLine
+    - Types
+    - VersionInfo
   test_dependencies: []
 
 template-filters:
-  module_name: "lambda ctx, s: \"\".join(map(lambda s: s.title(), ctx.tokenize(s)))"
+  to_module_name: "lambda ctx, s: \"\".join(map(lambda s: s.title(), ctx.tokenize(s)))"
+  to_paths_module_name: "lambda ctx, s: \"Paths_{}\".format(\"_\".join(map(lambda s: s.lower(), ctx.tokenize(s))))"
+  to_app_module_names: "lambda ctx, ms: map(lambda m: \"{}App.{}\".format(ctx.get(\"module_name\"), m), ms)"
 
 template-globals:
-  module_name: "{{ project_name | module_name }}"
+  module_name: "{{ project_name | to_module_name }}"
+  paths_module_name: "{{ project_name | to_paths_module_name }}"
 
 files:
 - README.md
@@ -50,7 +66,7 @@ files:
   output-path: frontend/tests/elm-package.json
 - path: ../_shared/haskell/.gitignore
   output-path: backend/.gitignore
-- path: ../_shared/haskell/stack.yaml
+- path: stack.yaml
   output-path: backend/stack.yaml
 - path: ../_shared/haskell/Setup.hs
   output-path: backend/Setup.hs
@@ -58,6 +74,16 @@ files:
   output-path: backend/{{project_name}}.cabal
 - path: Main.hs
   output-path: backend/app/Main.hs
+- path: API.hs
+  output-path: backend/app/{{module_name}}App/API.hs
+- path: App.hs
+  output-path: backend/app/{{module_name}}App/App.hs
+- path: CommandLine.hs
+  output-path: backend/app/{{module_name}}App/CommandLine.hs
+- path: Types.hs
+  output-path: backend/app/{{module_name}}App/Types.hs
+- path: VersionInfo.hs
+  output-path: backend/app/{{module_name}}App/VersionInfo.hs
 - path: ../_shared/haskell/lib/Project.hs
   output-path: backend/lib/{{module_name}}.hs
 - path: ../_shared/haskell/test/Spec.hs

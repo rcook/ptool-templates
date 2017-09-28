@@ -1,0 +1,6 @@
+{% extends "_shared/haskell/stack.yaml" %}
+
+{% block additional_config %}
+extra-deps:
+- vcs-revision-0.0.2
+{% endblock %}

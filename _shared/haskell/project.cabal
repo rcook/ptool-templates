@@ -36,6 +36,13 @@ executable {{project_name}}-app
   hs-source-dirs:                           app
   main-is:                                  Main.hs
   ghc-options:                              -threaded -rtsopts -with-rtsopts=-N {{common_ghc_options}}
+{%- for m in app_other_module_suffixes | to_app_module_names | sort %}
+{%- if loop.first %}
+  other-modules:                            {{m}}
+{%- else %}
+                                          , {{m}}
+{%- endif -%}
+{% endfor %}
 {%- for d in (["base >= 4.7 && < 5", project_name] + app_dependencies) | sort %}
 {%- if loop.first %}
   build-depends:                            {{d}}
