@@ -4,6 +4,12 @@
 This project is bootstrapped with [create-elm-app][create-elm-app].{% endblock %}
 
 {% block content %}
+## Code generation
+
+```
+script/codegen
+```
+
 ## Frontend
 
 ### Running app
