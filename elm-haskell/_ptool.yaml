@@ -1,6 +1,7 @@
 description: Simple Elm frontend with Haskell/Servant backend
 
 template-values:
+  default_stack_resolver: lts-9.3
   elm_copyright: |
     --------------------------------------------------
     -- Copyright (C) 2017, All rights reserved.

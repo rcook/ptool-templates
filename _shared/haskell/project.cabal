@@ -78,6 +78,7 @@ test-suite {{project_name}}-test
 {%- endif -%}
 {% endfor %}
 
+{% if codegen_dependencies is defined %}
 executable {{project_name}}-codegen
 {{- self.common_settings() }}
   hs-source-dirs:                           codegen
@@ -91,3 +92,4 @@ executable {{project_name}}-codegen
                                           , {{d}}
 {%- endif -%}
 {% endfor %}
+{% endif %}
