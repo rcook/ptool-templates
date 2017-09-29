@@ -2,8 +2,11 @@
     "{}.Decode exposing (users)".format(module_name),
     "{}.Types exposing (Flags, User)".format(module_name),
     "{}.Util exposing (dropTrailingPathSeparator)".format(module_name),
-    "Html exposing (Html, button, div, img, li, text, ul)",
-    "Html.Attributes exposing (src)",
+    "Date exposing (Date)",
+    "Date.Extra.Config.Config_en_us exposing (config)",
+    "Date.Extra.Format as Format exposing (format)",
+    "Html exposing (Attribute, Html, button, div, img, li, text, ul)",
+    "Html.Attributes exposing (src, style)",
     "Html.Events exposing (onClick)",
     "Http exposing (Error, get, send)",
     "RemoteData exposing (RemoteData(..), WebData, sendRequest)"
@@ -88,17 +91,36 @@ usersView model =
             div [] [ text <| "Error: " ++ toString e ]
 
         Success users ->
-            ul [] (List.map (\user -> li [] [ userView user ]) users)
+            ul [ usersStyle ] (List.map (\user -> li [] [ userView user ]) users)
+
+
+usersStyle : Attribute msg
+usersStyle =
+    style
+        [ ( "background-color", "silver" )
+        , ( "padding", "0.5em" )
+        , ( "text-align", "left" )
+        , ( "font-size", "50%" )
+        ]
 
 
 userView : User -> Html msg
 userView user =
-    ul []
-        [ li [] [ text <| "E-mail: " ++ user.email ]
-        , li [] [ text <| "Age: " ++ toString user.age ]
-        , li [] [ text <| "Name: " ++ user.name ]
-        , li [] [ text <| "Registration date: " ++ toString user.registrationDate ]
+    div []
+        [ text.name
+        , ul []
+            [ li [] [ text <| "E-mail: " ++ user.email ]
+            , li [] [ text <| "Age: " ++ toString user.age ]
+            , li [] [ text <| "Registration date: " ++ toString user.registrationDate ]
+            ]
         ]
+
+
+dateString : Date -> String
+dateString date =
+    format config
+        config.format.date
+        date
 
 
 
