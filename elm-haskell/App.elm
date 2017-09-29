@@ -93,7 +93,7 @@ userView user =
         , ul []
             [ li [] [ text <| "E-mail: " ++ user.email ]
             , li [] [ text <| "Age: " ++ toString user.age ]
-            , li [] [ text <| "Registration date: " ++ toString user.registrationDate ]
+            , li [] [ text <| "Registration date: " ++ dateString user.registrationDate ]
             ]
         ]
 
