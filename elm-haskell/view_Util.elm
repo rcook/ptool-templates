@@ -5,11 +5,20 @@
     ] -%}
 {{elm_copyright}}
 
-module {{module_name}}.View.Util exposing (requestButton, wrappedView)
+module {{module_name}}.View.Util
+    exposing
+        ( Part
+        , requestButton
+        , wrappedView
+        )
 
 {% for i in imports | sort -%}
 import {{i}}
 {% endfor %}
+
+type alias Part msg =
+    List (Html msg)
+
 
 requestButton : Model -> List (Attribute msg) -> List (Html msg) -> Html msg
 requestButton model attrs =

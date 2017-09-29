@@ -13,4 +13,5 @@ import {{i}}
 type Msg
     = ShowSpinner
     | GetUsers
+    | ClearUsers
     | UsersResponse (WebData (List User))

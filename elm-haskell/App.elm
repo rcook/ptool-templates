@@ -3,7 +3,7 @@
     "{}.Model exposing (Model, decrementRequestCount, incrementRequestCount, initModel)".format(module_name),
     "{}.Msg exposing (Msg(..))".format(module_name),
     "{}.Types exposing (Flags, User)".format(module_name),
-    "{}.View.Util exposing (requestButton, wrappedView)".format(module_name),
+    "{}.View.Util exposing (Part, requestButton, wrappedView)".format(module_name),
     "Date exposing (Date)",
     "Date.Extra.Config.Config_en_us exposing (config)",
     "Date.Extra.Format as Format exposing (format)",
@@ -31,7 +31,10 @@ update msg model =
             ( { model | showSpinner = model.requestCount > 0 }, Cmd.none )
 
         GetUsers ->
-            getUsers model
+            getUsers { model | users = Loading }
+
+        ClearUsers ->
+            ( { model | users = NotAsked }, Cmd.none )
 
         UsersResponse response ->
             ( decrementRequestCount { model | users = response }, Cmd.none )
@@ -44,29 +47,33 @@ update msg model =
 view : Model -> Html Msg
 view model =
     wrappedView model <|
-        div []
-            [ img [ src model.logoPath ] []
-            , div [] [ text model.message ]
-            , div [] [ text <| "Active requests: " ++ toString model.requestCount ]
-            , requestButton model [ onClick GetUsers ] [ text "Get users" ]
-            , usersView model
-            ]
+        div [] <|
+            List.append
+                [ img [ src model.logoPath ] []
+                , div [] [ text model.message ]
+                , div [] [ text <| "Active requests: " ++ toString model.requestCount ]
+                , requestButton model [ onClick GetUsers ] [ text "Get users" ]
+                ]
+            <|
+                usersPart model
 
 
-usersView : Model -> Html msg
-usersView model =
+usersPart : Model -> Part Msg
+usersPart model =
     case model.users of
         NotAsked ->
-            div [] [ text "(not asked)" ]
+            [ div [] [ text "(not asked)" ] ]
 
         Loading ->
-            div [] [ text "(loading)" ]
+            [ div [] [ text "(loading)" ] ]
 
         Failure e ->
-            div [] [ text <| "Error: " ++ toString e ]
+            [ div [] [ text <| "Error: " ++ toString e ] ]
 
         Success users ->
-            ul [ usersStyle ] (List.map (\user -> li [] [ userView user ]) users)
+            [ requestButton model [ onClick ClearUsers ] [ text "Clear users" ]
+            , ul [ usersStyle ] (List.map (\user -> li [] [ userView user ]) users)
+            ]
 
 
 usersStyle : Attribute msg
