@@ -126,13 +126,10 @@ files:
   output-path: backend/test/Spec.hs
 - path: ../_shared/haskell/test/ProjectSpec.hs
   output-path: backend/test/{{module_name}}Spec.hs
-
 - path: codegen_CommandLine.hs
   output-path: backend/codegen/{{module_name}}Codegen/CommandLine.hs
 - path: codegen_Main.hs
   output-path: backend/codegen/Main.hs
-
-
 - script/backend
 - script/codegen
 - script/frontend
