@@ -115,7 +115,7 @@ main =
 
 getUsers : Model -> ( Model, Cmd Msg )
 getUsers model =
-    ( { model | activeRequestCount = model.activeRequestCount + 1 }
+    ( { model | requestCount = model.requestCount + 1 }
     , get (model.apiRootUrl ++ "/users") users
         |> sendRequest
         |> Cmd.map UsersResponse
