@@ -1,5 +1,5 @@
 {%- set imports = [
-    "{}.Types exposing (User)".format(module_name),
+    "{}.Codegen exposing (User, Widget)".format(module_name),
     "RemoteData exposing (WebData)"
     ] -%}
 {{elm_copyright}}
@@ -13,5 +13,9 @@ import {{i}}
 type Msg
     = ShowSpinner
     | GetUsers
-    | ClearUsers
     | UsersResponse (WebData (List User))
+    | ClearUsers
+    | GetWidgets
+    | WidgetsResponse (WebData (List Widget))
+    | ClearWidgets
+

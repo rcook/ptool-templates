@@ -1,6 +1,7 @@
 {%- set imports = [
+    "{}.Codegen exposing (User, Widget)".format(module_name),
     "{}.Msg exposing (Msg(..))".format(module_name),
-    "{}.Types exposing (Flags, User)".format(module_name),
+    "{}.Types exposing (Flags)".format(module_name),
     "{}.Util exposing (dropTrailingPathSeparator)".format(module_name),
     "Process exposing (sleep)"
     "RemoteData exposing (RemoteData(..), WebData)",
@@ -26,6 +27,7 @@ type alias Model =
     , logoPath : String
     , apiRootUrl : String
     , users : WebData (List User)
+    , widgets : WebData (List Widget)
     , requestCount : Int
     , showSpinner : Bool
     }
@@ -37,6 +39,7 @@ initModel flags =
       , logoPath = flags.logoPath
       , apiRootUrl = dropTrailingPathSeparator flags.apiRootUrl
       , users = NotAsked
+      , widgets = NotAsked
       , requestCount = 0
       , showSpinner = False
       }

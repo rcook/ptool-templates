@@ -1,11 +1,20 @@
+{%- set imports = [
+    "Date exposing (Date)",
+    "Date.Extra.Config.Config_en_us exposing (config)",
+    "Date.Extra.Format as Format exposing (format)"
+    ] -%}
 {{elm_copyright}}
 
 module {{module_name}}.Util
     exposing
-        ( dropTrailingPathSeparator
+        ( dateString
+        , dropTrailingPathSeparator
         , hasTrailingPathSeparator
         )
 
+{% for i in imports | sort -%}
+import {{i}}
+{% endfor %}
 
 hasTrailingPathSeparator : String -> Bool
 hasTrailingPathSeparator =
@@ -22,4 +31,11 @@ dropTrailingPathSeparator s =
         String.slice 0 (n - 1) s
     else
         s
+
+
+dateString : Date -> String
+dateString date =
+    format config
+        config.format.date
+        date
 

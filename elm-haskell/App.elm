@@ -1,16 +1,13 @@
 {%- set imports = [
-    "{}.Decode exposing (users)".format(module_name),
+    "{}.Codegen exposing (User, Widget, getUsers, getWidgets)".format(module_name),
     "{}.Model exposing (Model, decrementRequestCount, incrementRequestCount, initModel)".format(module_name),
     "{}.Msg exposing (Msg(..))".format(module_name),
-    "{}.Types exposing (Flags, User)".format(module_name),
+    "{}.Types exposing (Flags)".format(module_name),
+    "{}.Util exposing (dateString)".format(module_name),
     "{}.View.Util exposing (Part, requestButton, wrappedView)".format(module_name),
-    "Date exposing (Date)",
-    "Date.Extra.Config.Config_en_us exposing (config)",
-    "Date.Extra.Format as Format exposing (format)",
     "Html exposing (Attribute, Html, div, img, li, text, ul)",
     "Html.Attributes exposing (src, style)",
     "Html.Events exposing (onClick)",
-    "Http exposing (Error, get, send)",
     "RemoteData exposing (RemoteData(..), sendRequest)"
     ] -%}
 {{elm_copyright}}
@@ -31,13 +28,28 @@ update msg model =
             ( { model | showSpinner = model.requestCount > 0 }, Cmd.none )
 
         GetUsers ->
-            getUsers { model | users = Loading }
+            getUsers model.apiRootUrl
+                |> sendRequest
+                |> Cmd.map UsersResponse
+                |> incrementRequestCount { model | users = Loading }
+
+        UsersResponse response ->
+            ( decrementRequestCount { model | users = response }, Cmd.none )
 
         ClearUsers ->
             ( { model | users = NotAsked }, Cmd.none )
 
-        UsersResponse response ->
-            ( decrementRequestCount { model | users = response }, Cmd.none )
+        GetWidgets ->
+            getWidgets model.apiRootUrl
+                |> sendRequest
+                |> Cmd.map WidgetsResponse
+                |> incrementRequestCount { model | widgets = Loading }
+
+        WidgetsResponse response ->
+            ( decrementRequestCount { model | widgets = response }, Cmd.none )
+
+        ClearWidgets ->
+            ( { model | widgets = NotAsked }, Cmd.none )
 
 
 
@@ -48,14 +60,16 @@ view : Model -> Html Msg
 view model =
     wrappedView model <|
         div [] <|
-            List.append
-                [ img [ src model.logoPath ] []
-                , div [] [ text model.message ]
-                , div [] [ text <| "Active requests: " ++ toString model.requestCount ]
-                , requestButton model [ onClick GetUsers ] [ text "Get users" ]
+            List.concat
+                [ [ img [ src model.logoPath ] []
+                  , div [] [ text model.message ]
+                  , div [] [ text <| "Active requests: " ++ toString model.requestCount ]
+                  , requestButton model [ onClick GetUsers ] [ text "Get users" ]
+                  , requestButton model [ onClick GetWidgets ] [ text "Get widgets" ]
+                  ]
+                , usersPart model
+                , widgetsPart model
                 ]
-            <|
-                usersPart model
 
 
 usersPart : Model -> Part Msg
@@ -71,19 +85,9 @@ usersPart model =
             [ div [] [ text <| "Error: " ++ toString e ] ]
 
         Success users ->
-            [ requestButton model [ onClick ClearUsers ] [ text "Clear users" ]
-            , ul [ usersStyle ] (List.map (\user -> li [] [ userView user ]) users)
+            [ ul [ panelStyle ] (List.map (\user -> li [] [ userView user ]) users)
+            , requestButton model [ onClick ClearUsers ] [ text "Clear users" ]
             ]
-
-
-usersStyle : Attribute msg
-usersStyle =
-    style
-        [ ( "background-color", "silver" )
-        , ( "padding", "0.5em" )
-        , ( "text-align", "left" )
-        , ( "font-size", "50%" )
-        ]
 
 
 userView : User -> Html msg
@@ -98,11 +102,42 @@ userView user =
         ]
 
 
-dateString : Date -> String
-dateString date =
-    format config
-        config.format.date
-        date
+widgetsPart : Model -> Part Msg
+widgetsPart model =
+    case model.widgets of
+        NotAsked ->
+            [ div [] [ text "(not asked)" ] ]
+
+        Loading ->
+            [ div [] [ text "(loading)" ] ]
+
+        Failure e ->
+            [ div [] [ text <| "Error: " ++ toString e ] ]
+
+        Success widgets ->
+            [ ul [ panelStyle ] (List.map (\widget -> li [] [ widgetView widget ]) widgets)
+            , requestButton model [ onClick ClearWidgets ] [ text "Clear widgets" ]
+            ]
+
+
+widgetView : Widget -> Html msg
+widgetView widget =
+    div []
+        [ text widget.name
+        , ul []
+            [ li [] [ text <| "Description: " ++ widget.description ]
+            ]
+        ]
+
+
+panelStyle : Attribute msg
+panelStyle =
+    style
+        [ ( "background-color", "silver" )
+        , ( "padding", "0.5em" )
+        , ( "text-align", "left" )
+        , ( "font-size", "50%" )
+        ]
 
 
 
@@ -117,16 +152,4 @@ main =
         , update = update
         , subscriptions = \_ -> Sub.none
         }
-
-
-
----- API ----
-
-
-getUsers : Model -> ( Model, Cmd Msg )
-getUsers model =
-    get (model.apiRootUrl ++ "/users") users
-        |> sendRequest
-        |> Cmd.map UsersResponse
-        |> incrementRequestCount model
 

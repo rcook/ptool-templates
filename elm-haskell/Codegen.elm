@@ -1,5 +1,5 @@
 -- Generated code
-module {{module_name}}.Codegen exposing (User, getAlbert, getIsaac, getUsers)
+module {{module_name}}.Codegen exposing (User, Widget, getAlbert, getIsaac, getUsers, getWidgets)
 
 import Date exposing (Date)
 import {{module_name}}.Decode exposing (decodeDate)
@@ -33,6 +33,24 @@ encodeUser x =
         , ( "age", Json.Encode.int x.age )
         , ( "email", Json.Encode.string x.email )
         , ( "registrationDate", (Json.Encode.string << toString) x.registrationDate )
+        ]
+
+type alias Widget =
+    { name : String
+    , description : String
+    }
+
+decodeWidget : Decoder Widget
+decodeWidget =
+    decode Widget
+        |> required "name" string
+        |> required "description" string
+
+encodeWidget : Widget -> Json.Encode.Value
+encodeWidget x =
+    Json.Encode.object
+        [ ( "name", Json.Encode.string x.name )
+        , ( "description", Json.Encode.string x.description )
         ]
 
 getUsers : String -> Http.Request (List (User))
@@ -101,4 +119,25 @@ getIsaac urlBase =
             False
         }
 
+getWidgets : String -> Http.Request (List (Widget))
+getWidgets urlBase =
+    Http.request
+        { method =
+            "GET"
+        , headers =
+            []
+        , url =
+            String.join "/"
+                [ urlBase
+                , "widgets"
+                ]
+        , body =
+            Http.emptyBody
+        , expect =
+            Http.expectJson (list decodeWidget)
+        , timeout =
+            Nothing
+        , withCredentials =
+            False
+        }
 

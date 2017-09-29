@@ -1,47 +1,26 @@
 {%- set imports = [
-    "{}.Types exposing (User)".format(module_name),
     "Date exposing (Date)",
-    "Json.Decode exposing (Decoder, andThen, fail, int, list, string, succeed)",
-    "Json.Decode.Pipeline exposing (decode, required)"
+    "Json.Decode exposing (Decoder, andThen, fail, string, succeed)"
     ] -%}
 {{elm_copyright}}
 
-module {{module_name}}.Decode
-    exposing
-        ( date
-        , user
-        , users
-        )
+module {{module_name}}.Decode exposing (decodeDate)
 
 {% for i in imports | sort -%}
 import {{i}}
 {% endfor %}
 
-users : Decoder (List User)
-users =
-    list user
+convertDate : String -> Decoder Date
+convertDate raw =
+    case Date.fromString raw of
+        Ok date ->
+            succeed date
 
-
-user : Decoder User
-user =
-    decode User
-        |> required "email" string
-        |> required "age" int
-        |> required "name" string
-        |> required "registrationDate" date
+        Err error ->
+            fail error
 
 
 date : Decoder Date
 date =
-    let
-        convert : String -> Decoder Date
-        convert raw =
-            case Date.fromString raw of
-                Ok date ->
-                    succeed date
-
-                Err error ->
-                    fail error
-    in
-    string |> andThen convert
+    string |> andThen convertDate
 

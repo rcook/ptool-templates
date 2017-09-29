@@ -35,12 +35,15 @@ main = parseCommand >>= handleCommand
                     : toElmTypeSource (Proxy :: Proxy User)
                     : toElmDecoderSource (Proxy :: Proxy User)
                     : toElmEncoderSource (Proxy :: Proxy User)
-                    : generateElmForAPIWith elmOpts (Proxy :: Proxy UserAPI))
+                    : toElmTypeSource (Proxy :: Proxy Widget)
+                    : toElmDecoderSource (Proxy :: Proxy Widget)
+                    : toElmEncoderSource (Proxy :: Proxy Widget)
+                    : generateElmForAPIWith elmOpts (Proxy :: Proxy API))
 
             withFile outputPath WriteMode $ \h -> do
                 let w = Text.hPutStrLn h
                 w "-- Generated code"
-                w $ Text.concat ["module ", moduleName, " exposing (User, getAlbert, getIsaac, getUsers)"]
+                w $ Text.concat ["module ", moduleName, " exposing (User, Widget, getAlbert, getIsaac, getUsers, getWidgets)"]
                 w ""
                 w "import Date exposing (Date)"
                 w "import {{module_name}}.Decode exposing (decodeDate)"

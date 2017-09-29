@@ -1,9 +1,11 @@
 {{hs_copyright}}
 {-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DuplicateRecordFields #-}
 
 module {{module_name}}.Types
     ( User (..)
+    , Widget (..)
     ) where
 
 import           Data.Aeson
@@ -19,3 +21,11 @@ data User = User
     } deriving (ElmType, Eq, Show, Generic)
 
 instance ToJSON User
+
+data Widget = Widget
+    { name :: String
+    , description :: String
+    } deriving (ElmType, Eq, Show, Generic)
+
+instance ToJSON Widget
+
