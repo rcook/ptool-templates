@@ -1,10 +1,13 @@
-{%- set app_module_names = ["App", "CommandLine", "Util"] | to_app_module_names -%}
-{%- set lib_module_names = ["VersionInfo"] | to_lib_module_names -%}
-{%- set other_module_names = [paths_module_name, module_name, "Network.Wai.Handler.Warp", "Network.Wai.Logger"] -%}
+{%-
+    set imported_module_names =
+        (["App", "CommandLine", "Util"] | map("child_module_name", "App") | list) +
+        (["VersionInfo"] | map("child_module_name") | list) +
+        [module_name, paths_module_name, "Network.Wai.Handler.Warp", "Network.Wai.Logger"]
+-%}
 {{hs_copyright}}
 module Main (main) where
 
-{% for m in (app_module_names + lib_module_names + other_module_names | sort) -%}
+{% for m in imported_module_names | sort -%}
 import           {{m}}
 {% endfor %}
 main :: IO ()

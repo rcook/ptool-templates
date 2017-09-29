@@ -35,7 +35,7 @@ library
                                           , {{d}}
 {%- endif -%}
 {% endfor %}
-{%- for m in ([module_name] + lib_exposed_modules | to_lib_module_names) | sort %}
+{%- for m in ([module_name] + lib_exposed_modules | map("child_module_name") | list) | sort %}
 {%- if loop.first %}
   exposed-modules:                          {{m}}
 {%- else %}
@@ -48,7 +48,7 @@ executable {{project_name}}-app
   hs-source-dirs:                           app
   main-is:                                  Main.hs
   ghc-options:                              -threaded -rtsopts -with-rtsopts=-N {{common_ghc_options}}
-{%- for m in app_other_modules | to_app_module_names | sort %}
+{%- for m in app_other_modules | map("child_module_name", "App") | sort %}
 {%- if loop.first %}
   other-modules:                            {{m}}
 {%- else %}
