@@ -1,15 +1,17 @@
 {%- set imports = [
     "{}.Decode exposing (users)".format(module_name),
+    "{}.Model exposing (Model, initModel)".format(module_name),
+    "{}.Msg exposing (Msg(..))".format(module_name),
     "{}.Types exposing (Flags, User)".format(module_name),
-    "{}.Util exposing (dropTrailingPathSeparator)".format(module_name),
+    "{}.View.Util exposing (requestButton, wrappedView)".format(module_name),
     "Date exposing (Date)",
     "Date.Extra.Config.Config_en_us exposing (config)",
     "Date.Extra.Format as Format exposing (format)",
-    "Html exposing (Attribute, Html, button, div, img, li, text, ul)",
+    "Html exposing (Attribute, Html, div, img, li, text, ul)",
     "Html.Attributes exposing (src, style)",
     "Html.Events exposing (onClick)",
-    "Http exposing (Error, get, send)",
-    "RemoteData exposing (RemoteData(..), WebData, sendRequest)"
+    "Http exposing (Error, get, send)"
+    "RemoteData exposing (RemoteData(..), sendRequest)"
     ] -%}
 {{elm_copyright}}
 
@@ -19,51 +21,17 @@ module App exposing (main)
 import {{i}}
 {% endfor %}
 
----- MODEL ----
-
-
-type alias Model =
-    { message : String
-    , logoPath : String
-    , apiRootUrl : String
-    , users : WebData (List User)
-    , activeRequestCount : Int
-    }
-
-
-init : Flags -> ( Model, Cmd Msg )
-init flags =
-    ( { message = "{{project_name}} is working!"
-      , logoPath = flags.logoPath
-      , apiRootUrl = dropTrailingPathSeparator flags.apiRootUrl
-      , users = NotAsked
-      , activeRequestCount = 0
-      }
-    , Cmd.none
-    )
-
-
-
 ---- UPDATE ----
-
-
-type Msg
-    = NoOp
-    | GetUsers
-    | UsersResponse (WebData (List User))
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        NoOp ->
-            ( model, Cmd.none )
-
         GetUsers ->
             getUsers model
 
         UsersResponse response ->
-            ( { model | activeRequestCount = model.activeRequestCount - 1, users = response }, Cmd.none )
+            ( { model | requestCount = model.requestCount - 1, users = response }, Cmd.none )
 
 
 
@@ -72,13 +40,14 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ img [ src model.logoPath ] []
-        , div [] [ text model.message ]
-        , div [] [ text <| "Active requests: " ++ toString model.activeRequestCount ]
-        , button [ onClick GetUsers ] [ text "Get users" ]
-        , usersView model
-        ]
+    wrappedView model <|
+        div []
+            [ img [ src model.logoPath ] []
+            , div [] [ text model.message ]
+            , div [] [ text <| "Active requests: " ++ toString model.requestCount ]
+            , requestButton model [ onClick GetUsers ] [ text "Get users" ]
+            , usersView model
+            ]
 
 
 usersView : Model -> Html msg
@@ -134,7 +103,7 @@ main : Program Flags Model Msg
 main =
     Html.programWithFlags
         { view = view
-        , init = init
+        , init = initModel
         , update = update
         , subscriptions = \_ -> Sub.none
         }

@@ -19,6 +19,5 @@ main = parseCommand >>= handleCommand
             putStrLn $ "Port : " ++ show port
             when (ms > 0) $ putStrLn $ "Delay: " ++ show ms ++ " ms"
             sample
-            runSettings settings (apiCors app)
             runSettings settings (delayMiddleware delay $ apiCorsMiddleware app)
         handleCommand VersionCommand = putStrLn $ "{{project_name}}-app " ++ fullVersionString version

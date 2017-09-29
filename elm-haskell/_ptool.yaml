@@ -84,16 +84,22 @@ files:
 - path: ../_shared/elm/src/logo.svg
   output-path: frontend/src/logo.svg
   preprocess: false
-- path: ../_shared/elm/src/main.css
+- path: main.css
   output-path: frontend/src/main.css
 - path: Codegen.elm
   output-path: frontend/src/{{module_name}}/Codegen.elm
 - path: Decode.elm
   output-path: frontend/src/{{module_name}}/Decode.elm
+- path: Model.elm
+  output-path: frontend/src/{{module_name}}/Model.elm
+- path: Msg.elm
+  output-path: frontend/src/{{module_name}}/Msg.elm
 - path: Types.elm
   output-path: frontend/src/{{module_name}}/Types.elm
 - path: Util.elm
   output-path: frontend/src/{{module_name}}/Util.elm
+- path: view_Util.elm
+  output-path: frontend/src/{{module_name}}/View/Util.elm
 - path: ../_shared/elm/tests/Tests.elm
   output-path: frontend/tests/Tests.elm
 - path: ../_shared/elm/tests/elm-package.json
