@@ -1,19 +1,20 @@
---------------------------------------------------
--- Copyright (C) 2017, All rights reserved.
---------------------------------------------------
-
-module HelloWorldCodegen.CommandLine
+{%- set lib_module_names = ["VersionInfo"] | to_lib_module_names -%}
+{%- set other_module_names = [
+        paths_module_name,
+        "Data.Monoid",
+        "Data.Text (Text)",
+        "Options.Applicative",
+        "Options.Applicative.Text"
+    ] -%}
+{{hs_copyright}}
+module {{module_name}}Codegen.CommandLine
     ( Command (..)
     , parseCommand
     ) where
 
-import           Data.Monoid
-import           Data.Text (Text)
-import           HelloWorld.VersionInfo
-import           Options.Applicative
-import           Options.Applicative.Text
-import           Paths_hello_world
-
+{% for m in (lib_module_names + other_module_names) | sort -%}
+import           {{m}}
+{% endfor %}
 data Command =
     RunCommand FilePath Text
     | VersionCommand
@@ -38,4 +39,4 @@ commandP = runCommandP <|> versionCommandP
 parseCommand :: IO Command
 parseCommand = execParser $ info
     (helper <*> commandP)
-    (fullDesc <> progDesc "Run hello-world-app" <> header ("hello-world-app " ++ fullVersionString version))
+    (fullDesc <> progDesc "Run {{project_name}}-app" <> header ("{{project_name}}-app " ++ fullVersionString version))

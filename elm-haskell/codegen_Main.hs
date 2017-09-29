@@ -11,11 +11,11 @@ import           Data.Proxy (Proxy (..))
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
 import           Elm (toElmDecoderSource, toElmEncoderSource, toElmTypeSource)
-import           HelloWorldCodegen.CommandLine
-import           HelloWorld.API
-import           HelloWorld.Types
-import           HelloWorld.VersionInfo
-import           Paths_hello_world
+import           {{module_name}}Codegen.CommandLine
+import           {{module_name}}.API
+import           {{module_name}}.Types
+import           {{module_name}}.VersionInfo
+import           {{paths_module_name}}
 import           Servant.Elm
     ( ElmOptions (..)
     , UrlPrefix (..)
@@ -46,7 +46,7 @@ main = parseCommand >>= handleCommand
                 w $ Text.concat ["module ", moduleName, " exposing (User, getAlbert, getIsaac, getUsers)"]
                 w ""
                 w "import Date exposing (Date)"
-                w "import HelloWorld.Decode exposing (decodeDate)"
+                w "import {{module_name}}.Decode exposing (decodeDate)"
                 w ""
                 forM_ sourceLines $ \l -> w l >> w ""
-        handleCommand VersionCommand = putStrLn $ "hello-world-codegen " ++ fullVersionString version
+        handleCommand VersionCommand = putStrLn $ "{{project_name}}-codegen " ++ fullVersionString version

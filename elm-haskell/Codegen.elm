@@ -1,8 +1,8 @@
 -- Generated code
-module HelloWorld.Codegen exposing (User, getAlbert, getIsaac, getUsers)
+module {{module_name}}.Codegen exposing (User, getAlbert, getIsaac, getUsers)
 
 import Date exposing (Date)
-import HelloWorld.Decode exposing (decodeDate)
+import {{module_name}}.Decode exposing (decodeDate)
 
 import Json.Decode exposing (..)
 import Json.Decode.Pipeline exposing (..)

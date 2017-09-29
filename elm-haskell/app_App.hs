@@ -3,7 +3,7 @@
 {{hs_copyright}}
 module {{module_name}}App.App (app) where
 
-{% for m in (lib_module_names + other_module_names | sort) -%}
+{% for m in (lib_module_names + other_module_names) | sort -%}
 import           {{m}}
 {% endfor %}
 isaac :: User
@@ -22,4 +22,4 @@ userAPIProxy = Proxy
 
 app :: Application
 app = serve userAPIProxy userAPIServer
-    
+
