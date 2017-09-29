@@ -1,4 +1,4 @@
-{%- set app_module_names = ["VersionInfo"] | to_app_module_names -%}
+{%- set lib_module_names = ["VersionInfo"] | to_lib_module_names -%}
 {%- set other_module_names = [paths_module_name, "Data.Monoid", "Network.Wai.Handler.Warp", "Options.Applicative"] -%}
 {{hs_copyright}}
 module {{module_name}}App.CommandLine
@@ -6,7 +6,7 @@ module {{module_name}}App.CommandLine
     , parseCommand
     ) where
 
-{% for m in (app_module_names + other_module_names | sort) -%}
+{% for m in (lib_module_names + other_module_names | sort) -%}
 import           {{m}}
 {% endfor %}
 data Command =

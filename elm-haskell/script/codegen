@@ -9,4 +9,4 @@ source $repo_dir/.env
 cd $repo_dir/backend
 stack setup
 stack build --fast
-stack ghci {{project_name}}:exe:{{project_name}}-app
+stack exec {{project_name}}-codegen -- $repo_dir/frontend/src/{{module_name}}/Codegen.elm {{module_name}}.Codegen

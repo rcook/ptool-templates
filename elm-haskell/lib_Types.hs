@@ -1,12 +1,14 @@
 {{hs_copyright}}
+{-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE DeriveGeneric #-}
 
-module {{module_name}}App.Types
+module {{module_name}}.Types
     ( User (..)
     ) where
 
 import           Data.Aeson
 import           Data.Time.Calendar
+import           Elm
 import           GHC.Generics
 
 data User = User
@@ -14,6 +16,6 @@ data User = User
     , age :: Int
     , email :: String
     , registrationDate :: Day
-    } deriving (Eq, Show, Generic)
+    } deriving (ElmType, Eq, Show, Generic)
 
 instance ToJSON User

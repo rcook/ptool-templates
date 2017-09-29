@@ -1,7 +1,7 @@
 {{hs_copyright}}
 {-# LANGUAGE TemplateHaskell #-}
 
-module {{module_name}}App.VersionInfo (fullVersionString) where
+module {{module_name}}.VersionInfo (fullVersionString) where
 
 import           Data.Version
 import           Distribution.VcsRevision.Git

@@ -1,9 +1,9 @@
-{%- set app_module_names = ["API", "Types"] | to_app_module_names -%}
+{%- set lib_module_names = ["API", "Types"] | to_lib_module_names -%}
 {%- set other_module_names = ["Data.Time.Calendar", "Servant"] -%}
 {{hs_copyright}}
 module {{module_name}}App.App (app) where
 
-{% for m in (app_module_names + other_module_names | sort) -%}
+{% for m in (lib_module_names + other_module_names | sort) -%}
 import           {{m}}
 {% endfor %}
 isaac :: User

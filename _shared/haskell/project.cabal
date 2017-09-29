@@ -28,22 +28,34 @@ library
 {%- endblock %}
   hs-source-dirs:                           lib
   ghc-options:                              {{common_ghc_options}}
-  exposed-modules:                          {{module_name}}
-  build-depends:                            base >= 4.7 && < 5
+{%- for d in lib_dependencies | sort %}
+{%- if loop.first %}
+  build-depends:                            {{d}}
+{%- else %}
+                                          , {{d}}
+{%- endif -%}
+{% endfor %}
+{%- for m in ([module_name] + lib_exposed_modules | to_lib_module_names) | sort %}
+{%- if loop.first %}
+  exposed-modules:                          {{m}}
+{%- else %}
+                                          , {{m}}
+{%- endif -%}
+{% endfor %}
 
 executable {{project_name}}-app
 {{- self.common_settings() }}
   hs-source-dirs:                           app
   main-is:                                  Main.hs
   ghc-options:                              -threaded -rtsopts -with-rtsopts=-N {{common_ghc_options}}
-{%- for m in app_other_module_suffixes | to_app_module_names | sort %}
+{%- for m in app_other_modules | to_app_module_names | sort %}
 {%- if loop.first %}
   other-modules:                            {{m}}
 {%- else %}
                                           , {{m}}
 {%- endif -%}
 {% endfor %}
-{%- for d in (["base >= 4.7 && < 5", project_name] + app_dependencies) | sort %}
+{%- for d in ([project_name] + app_dependencies) | sort %}
 {%- if loop.first %}
   build-depends:                            {{d}}
 {%- else %}
@@ -58,7 +70,21 @@ test-suite {{project_name}}-test
   main-is:                                  Spec.hs
   ghc-options:                              -threaded -rtsopts -with-rtsopts=-N {{common_ghc_options}}
   other-modules:                            {{module_name}}Spec
-{%- for d in (["base >= 4.7 && < 5", "hspec", project_name] + test_dependencies) | sort %}
+{%- for d in ([project_name] + test_dependencies) | sort %}
+{%- if loop.first %}
+  build-depends:                            {{d}}
+{%- else %}
+                                          , {{d}}
+{%- endif -%}
+{% endfor %}
+
+executable {{project_name}}-codegen
+{{- self.common_settings() }}
+  hs-source-dirs:                           codegen
+  main-is:                                  Main.hs
+  ghc-options:                              -threaded -rtsopts -with-rtsopts=-N {{common_ghc_options}}
+  other-modules:                            {{module_name}}Codegen.CommandLine
+{%- for d in ([project_name] + codegen_dependencies) | sort %}
 {%- if loop.first %}
   build-depends:                            {{d}}
 {%- else %}
