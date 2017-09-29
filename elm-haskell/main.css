@@ -1,3 +1,5 @@
+{% extends "_shared/elm/src/main.css" %}
+
 {% block additional_styles %}
 /* Global styles */
 .sk-fading-circle {
