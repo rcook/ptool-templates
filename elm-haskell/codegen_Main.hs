@@ -1,7 +1,4 @@
---------------------------------------------------
--- Copyright (C) 2017, All rights reserved.
---------------------------------------------------
-
+{{hs_copyright}}
 {-# LANGUAGE OverloadedStrings #-}
 
 module Main (main) where

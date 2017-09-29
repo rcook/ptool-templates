@@ -1,6 +1,7 @@
 {%-
     set imported_module_names =
         (["VersionInfo"] | map("child_module_name") | list) +
+        (["Types"] | map("child_module_name", "App") | list) +
         [paths_module_name, "Data.Monoid", "Network.Wai.Handler.Warp", "Options.Applicative"]
 -%}
 {{hs_copyright}}
@@ -13,7 +14,7 @@ module {{module_name}}App.CommandLine
 import           {{m}}
 {% endfor %}
 data Command =
-    RunCommand Port
+    RunCommand Port Milliseconds
     | VersionCommand
 
 portP :: Parser Port
@@ -24,8 +25,16 @@ portP = option auto
     <> metavar "PORT"
     <> help "Port")
 
+delayP :: Parser Milliseconds
+delayP = Milliseconds <$> option auto
+    (long "delay"
+    <> short 'd'
+    <> value 0
+    <> metavar "DELAY"
+    <> help "Delay (ms)")
+
 runCommandP :: Parser Command
-runCommandP = RunCommand <$> portP
+runCommandP = RunCommand <$> portP <*> delayP
 
 versionCommandP :: Parser Command
 versionCommandP = flag' VersionCommand (short 'v' <> long "version" <> help "Show version")

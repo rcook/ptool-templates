@@ -27,6 +27,7 @@ type alias Model =
     , logoPath : String
     , apiRootUrl : String
     , users : WebData (List User)
+    , activeRequestCount : Int
     }
 
 
@@ -36,6 +37,7 @@ init flags =
       , logoPath = flags.logoPath
       , apiRootUrl = dropTrailingPathSeparator flags.apiRootUrl
       , users = NotAsked
+      , activeRequestCount = 0
       }
     , Cmd.none
     )
@@ -58,10 +60,10 @@ update msg model =
             ( model, Cmd.none )
 
         GetUsers ->
-            ( model, getUsers model )
+            getUsers model
 
         UsersResponse response ->
-            ( { model | users = response }, Cmd.none )
+            ( { model | activeRequestCount = model.activeRequestCount - 1, users = response }, Cmd.none )
 
 
 
@@ -73,6 +75,7 @@ view model =
     div []
         [ img [ src model.logoPath ] []
         , div [] [ text model.message ]
+        , div [] [ text <| "Active requests: " ++ toString model.activeRequestCount ]
         , button [ onClick GetUsers ] [ text "Get users" ]
         , usersView model
         ]
@@ -141,9 +144,10 @@ main =
 ---- DECODERS ----
 
 
-getUsers : Model -> Cmd Msg
+getUsers : Model -> ( Model, Cmd Msg )
 getUsers model =
-    get (model.apiRootUrl ++ "/users") users
+    ( { model | activeRequestCount = model.activeRequestCount + 1 }
+    , get (model.apiRootUrl ++ "/users") users
         |> sendRequest
         |> Cmd.map UsersResponse
-
+    )

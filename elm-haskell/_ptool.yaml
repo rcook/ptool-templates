@@ -33,6 +33,7 @@ template-values:
   app_other_modules:
   - App
   - CommandLine
+  - Types
   - Util
   test_dependencies:
   - base >= 4.7 && < 5
@@ -111,6 +112,8 @@ files:
   output-path: backend/app/{{module_name}}App/App.hs
 - path: app_CommandLine.hs
   output-path: backend/app/{{module_name}}App/CommandLine.hs
+- path: app_Types.hs
+  output-path: backend/app/{{module_name}}App/Types.hs
 - path: app_Util.hs
   output-path: backend/app/{{module_name}}App/Util.hs
 - path: lib_API.hs
