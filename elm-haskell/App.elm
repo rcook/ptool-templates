@@ -10,7 +10,7 @@
     "Html exposing (Attribute, Html, div, img, li, text, ul)",
     "Html.Attributes exposing (src, style)",
     "Html.Events exposing (onClick)",
-    "Http exposing (Error, get, send)"
+    "Http exposing (Error, get, send)",
     "RemoteData exposing (RemoteData(..), sendRequest)"
     ] -%}
 {{elm_copyright}}
