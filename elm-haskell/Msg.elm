@@ -11,5 +11,6 @@ import {{i}}
 {% endfor %}
 
 type Msg
-    = GetUsers
+    = ShowSpinner
+    | GetUsers
     | UsersResponse (WebData (List User))

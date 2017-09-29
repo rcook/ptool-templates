@@ -1,6 +1,6 @@
 {%- set imports = [
     "{}.Decode exposing (users)".format(module_name),
-    "{}.Model exposing (Model, initModel)".format(module_name),
+    "{}.Model exposing (Model, decrementRequestCount, incrementRequestCount, initModel)".format(module_name),
     "{}.Msg exposing (Msg(..))".format(module_name),
     "{}.Types exposing (Flags, User)".format(module_name),
     "{}.View.Util exposing (requestButton, wrappedView)".format(module_name),
@@ -27,11 +27,14 @@ import {{i}}
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        ShowSpinner ->
+            ( { model | showSpinner = model.requestCount > 0 }, Cmd.none )
+
         GetUsers ->
             getUsers model
 
         UsersResponse response ->
-            ( { model | requestCount = model.requestCount - 1, users = response }, Cmd.none )
+            ( decrementRequestCount { model | users = response }, Cmd.none )
 
 
 
@@ -110,13 +113,13 @@ main =
 
 
 
----- DECODERS ----
+---- API ----
 
 
 getUsers : Model -> ( Model, Cmd Msg )
 getUsers model =
-    ( { model | requestCount = model.requestCount + 1 }
-    , get (model.apiRootUrl ++ "/users") users
+    get (model.apiRootUrl ++ "/users") users
         |> sendRequest
         |> Cmd.map UsersResponse
-    )
+        |> incrementRequestCount model
+
