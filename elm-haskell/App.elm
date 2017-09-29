@@ -79,7 +79,7 @@ usersStyle =
 userView : User -> Html msg
 userView user =
     div []
-        [ user.name
+        [ text user.name
         , ul []
             [ li [] [ text <| "E-mail: " ++ user.email ]
             , li [] [ text <| "Age: " ++ toString user.age ]
