@@ -1,0 +1,8 @@
+#!/usr/env/bin ruby
+
+require 'gem-template'
+
+options, free_args = GemTemplate::Cli.new(ARGV).run
+puts options.inspect
+puts free_args.inspect
+

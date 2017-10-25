@@ -1,0 +1,31 @@
+description: Simple Ruby gem
+
+template-values:
+  ruby_copyright: |
+    ##################################################
+    # Copyright (C) 2017, All rights reserved.
+    ##################################################
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+- .gitignore
+- .hgignore
+- .hgportrc
+- .travis.yml
+- Gemfile
+- README.md
+- Rakefile
+- bin/gem-template
+- gem-template.gemspec
+- lib/gem-template.rb
+- lib/gem-template/cli.rb
+- lib/gem-template/gem_info.rb
+- test/cli_test.rb
+- test/test_helper.rb
+
+commands:
+- git init
+- git remote add origin {{ project_name | git_url(git_server) }}
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"

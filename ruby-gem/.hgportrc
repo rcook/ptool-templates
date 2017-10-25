@@ -1,0 +1,2 @@
+version_template: release-:major.:minor.:patch
+
