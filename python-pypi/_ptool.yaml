@@ -1,0 +1,30 @@
+description: Simple Python tool for distribution via PyPI etc.
+
+template-values:
+  py_copyright: |
+    ##################################################
+    # Copyright (C) 2017, All rights reserved.
+    ##################################################
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+- .gitignore
+- MANIFEST.in
+- README.md
+- path: mypackage/__init__.py
+  output-path: "{{project_name}}/__init__.py"
+- path: mypackage/__main__.py
+  output-path: "{{project_name}}/__main__.py"
+- path: mypackage/util.py
+  output-path: "{{project_name}}/util.py"
+- path: mypackage/tests/__init__.py
+  output-path: "{{project_name}}/tests/__init__.py"
+- setup.py
+
+commands:
+- git init
+- git remote add origin {{ project_name | git_url(git_server) }}
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
+- git add .

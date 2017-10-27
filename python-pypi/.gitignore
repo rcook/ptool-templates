@@ -1,0 +1,9 @@
+*.pyc
+/.Python
+/.eggs/
+/bin/
+/dist/
+/include/
+/lib/
+/pip-selfcheck.json
+/{{project_name}}.egg-info/
