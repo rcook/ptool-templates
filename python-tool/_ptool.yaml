@@ -10,15 +10,21 @@ files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
+- path: config.py
+  output-path: "{{project_name}}/config.py"
+- path: env.cmd
+  output-path: script/env.cmd
 - README.md
-- path: bootstrap.cmd
-  output-path: script/bootstrap.cmd
-- path: project.cmd
-  output-path: script/{{project_name}}.cmd
-- path: project.py
-  output-path: script/{{project_name}}.py
-- path: requirements.txt
-  output-path: script/requirements.txt
+- requirements.txt
+- setup.py
+- path: tests__init__.py
+  output-path: "{{project_name}}/tests/__init__.py"
+- path: virtualenv.cmd
+  output-path: script/virtualenv.cmd
+- path: __init__.py
+  output-path: "{{project_name}}/__init__.py"
+- path: __main__.py
+  output-path: "{{project_name}}/__main__.py"
 
 commands:
 - git init
@@ -27,12 +33,12 @@ commands:
 - git config user.email "{{author_email}}"
 - git add .
 - git-execute-attribute:
-    path: script/bootstrap.cmd
+    path: script/env.cmd
 - git-execute-attribute:
-    path: script/{{project_name}}.cmd
+    path: script/virtualenv.cmd
 - git-symlink:
-    source-path: script/bootstrap.cmd
-    target-path: script/bootstrap
+    source-path: script/env.cmd
+    target-path: script/env
 - git-symlink:
-    source-path: script/{{project_name}}.cmd
-    target-path: script/{{project_name}}
+    source-path: script/virtualenv.cmd
+    target-path: script/virtualenv

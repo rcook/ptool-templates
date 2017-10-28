@@ -1,4 +1,4 @@
-#{{py_copyright}}
+{{py_copyright}}
 from __future__ import print_function
 import doctest
 import importlib
