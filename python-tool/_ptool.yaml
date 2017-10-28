@@ -11,12 +11,14 @@ files:
   output-path: LICENSE
 - .gitignore
 - README.md
-- script/bootstrap.cmd
-- path: script/project.cmd
+- path: bootstrap.cmd
+  output-path: script/bootstrap.cmd
+- path: project.cmd
   output-path: script/{{project_name}}.cmd
-- path: script/project.py
+- path: project.py
   output-path: script/{{project_name}}.py
-- script/requirements.txt
+- path: requirements.txt
+  output-path: script/requirements.txt
 
 commands:
 - git init
