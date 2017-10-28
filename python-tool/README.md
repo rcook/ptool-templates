@@ -22,7 +22,7 @@ This will allow edits to the scripts to be picked up automatically
 ## Run main script in virtual environment
 
 ```
-script/env {{project_name}} version
+script/env {{project_name}} --version
 ```
 
 ## Build package
