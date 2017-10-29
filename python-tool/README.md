@@ -5,6 +5,7 @@ Python tool with virtual environment wrappers
 {% endblock %}
 
 {% block content -%}
+
 ## Set up Python virtual environment
 
 ```
