@@ -31,8 +31,8 @@ exit $?
 
 {% block cmd %}
 setlocal
-set script_name=%1
-for /f "tokens=1,* delims= " %%a in ("%*") do set args=%%b
+set script_name=%~1
+for /f "tokens=1,* delims= " %%a in ("%*") do set args=%%~b
 call :Main "%~dp0" "%~dp0.." || exit /b 1
 exit /b 0
 
