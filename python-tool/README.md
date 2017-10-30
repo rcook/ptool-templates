@@ -1,6 +1,8 @@
 {% extends "_shared/README.md" %}
 
 {% block description %}
+[![View on PyPI](https://img.shields.io/pypi/v/{{project_name}}.svg)](https://pypi.python.org/pypi/{{project_name}})
+
 Python tool with virtual environment wrappers
 {% endblock %}
 
