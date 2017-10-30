@@ -19,10 +19,10 @@ def _read_properties(project_name):
 
     return props
 
-_PROPERTIES = _read_properties(_PROJECT_NAME)
-project_name = _PROPERTIES["project_name"]
-version = _PROPERTIES["version"]
-description = _PROPERTIES["description"]
+props = _read_properties(_PROJECT_NAME)
+project_name = props["project_name"]
+version = props["version"]
+description = props["description"]
 
 setup(
     name=project_name,
