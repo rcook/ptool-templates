@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 {{py_copyright}}
 from __future__ import print_function
 import argparse
