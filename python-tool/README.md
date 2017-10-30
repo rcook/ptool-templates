@@ -2,6 +2,7 @@
 
 {% block description %}
 [![View on PyPI](https://img.shields.io/pypi/v/{{project_name}}.svg)](https://pypi.python.org/pypi/{{project_name}})
+[![Licence](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/{{ git_server | git_group }}/{{project_name}}/master/LICENSE)
 
 Python tool with virtual environment wrappers
 {% endblock %}
