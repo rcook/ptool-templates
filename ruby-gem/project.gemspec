@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.homepage = 'https://github.com/{{ git_server | git_group }}/{{project_name}}'
 
-  s.add_dependency 'rclopts', '~> 0.1.1'
+  spec.add_dependency 'rclopts', '~> 0.1.1'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
