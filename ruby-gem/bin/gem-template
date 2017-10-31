@@ -1,8 +1,7 @@
 #!/usr/env/bin ruby
 
-require 'gem-template'
+require '{{project_name}}'
 
-options, free_args = GemTemplate::Cli.new(ARGV).run
+options, free_args = {{ project_name | underscore | camelize }}::Cli.new(ARGV).run
 puts options.inspect
 puts free_args.inspect
-

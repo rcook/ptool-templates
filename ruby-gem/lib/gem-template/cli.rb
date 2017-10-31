@@ -1,6 +1,6 @@
 require 'rclopts'
 
-module GemTemplate
+module {{ project_name | underscore | camelize }}
   class Cli
     attr_reader :args
 
@@ -23,7 +23,7 @@ module GemTemplate
         end
 
         p.on_tail '--version', 'Show version' do
-          puts GemTemplate::GemInfo.version_string
+          puts {{ project_name | underscore | camelize }}::GemInfo.version_string
           exit
         end
       end
@@ -32,4 +32,3 @@ module GemTemplate
     end
   end
 end
-

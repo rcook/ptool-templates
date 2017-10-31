@@ -10,7 +10,6 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task :build do
-  result = system('gem build gem-template.gemspec')
+  result = system('gem build {{project_name}}.gemspec')
   raise RuntimeError.new('gem build failed') unless result
 end
-

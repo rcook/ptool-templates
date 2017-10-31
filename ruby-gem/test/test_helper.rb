@@ -1,3 +1,2 @@
 require 'test/unit'
-require 'gem-template'
-
+require '{{project_name}}'

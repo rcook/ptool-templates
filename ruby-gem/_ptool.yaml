@@ -10,17 +10,20 @@ files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
-- .hgignore
-- .hgportrc
 - .travis.yml
 - Gemfile
 - README.md
 - Rakefile
-- bin/gem-template
-- gem-template.gemspec
-- lib/gem-template.rb
-- lib/gem-template/cli.rb
-- lib/gem-template/gem_info.rb
+- path: bin/gem-template
+  output-path: bin/{{project_name}}
+- path: gem-template.gemspec
+  output-path: "{{project_name}}.gemspec"
+- path: lib/gem-template.rb
+  output-path: lib/{{project_name}}.rb
+- path: lib/gem-template/cli.rb
+  output-path: lib/{{project_name}}/cli.rb
+- path: lib/gem-template/gem_info.rb
+  output-path: lib/{{project_name}}/gem_info.rb
 - test/cli_test.rb
 - test/test_helper.rb
 

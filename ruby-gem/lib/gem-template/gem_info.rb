@@ -1,4 +1,4 @@
-module GemTemplate
+module {{ project_name | underscore | camelize }}
   module GemInfo
     MAJOR_VERSION = 0
     MINOR_VERSION = 0
@@ -9,4 +9,3 @@ module GemTemplate
     end
   end
 end
-

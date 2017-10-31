@@ -1,3 +1,7 @@
-# gem-template [![Build status](https://travis-ci.org/rcook/gem-template.png)](https://travis-ci.org/rcook/gem-template)
+{% extends "_shared/README.md" %}
 
-General-purpose gem template
+{% block description %}
+[![Build status](https://travis-ci.org/rcook/gem-template.png)](https://travis-ci.org/rcook/gem-template)
+
+A Ruby gem
+{% endblock %}

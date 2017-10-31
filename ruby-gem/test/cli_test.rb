@@ -4,15 +4,15 @@ else
   require_relative 'test_helper'
 end
 
-module GemTemplateTest
+module {{ project_name | underscore | camelize }}Test
   class CliTest < Test::Unit::TestCase
     def test_args
-      cli = GemTemplate::Cli.new(['first', 'second', 'third'])
+      cli = {{ project_name | underscore | camelize }}::Cli.new(['first', 'second', 'third'])
       assert_equal ['first', 'second', 'third'], cli.args
     end
 
     def test_run
-      cli = GemTemplate::Cli.new(['--test', 'TEST', 'free-arg0', 'free-arg1'])
+      cli = {{ project_name | underscore | camelize }}::Cli.new(['--test', 'TEST', 'free-arg0', 'free-arg1'])
 
       options = nil
       begin
