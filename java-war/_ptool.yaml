@@ -21,12 +21,12 @@ files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
+- path: index.jsp
+  output-path: src/main/webapp/index.jsp
 - pom.xml
 - README.md
 - path: web.xml
   output-path: src/main/webapp/WEB-INF/web.xml
-- path: index.jsp
-  output-path: src/main/webapp/index.jsp
 
 commands:
 - git init
