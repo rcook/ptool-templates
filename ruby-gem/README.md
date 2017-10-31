@@ -7,4 +7,21 @@ A Ruby gem
 {% endblock %}
 
 {% block content -%}
+## Prerequisites
+
+```
+gem install bundler
+```
+
+## Set up environment
+
+```
+bundle install
+```
+
+## Run tests
+
+```
+bundle exec rake test
+```
 {% endblock %}

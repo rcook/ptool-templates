@@ -3,19 +3,23 @@ $:.unshift(lib) unless $:.include?(lib)
 
 require '{{project_name}}/gem_info'
 
-Gem::Specification.new do |s|
-  s.name = '{{project_name}}'
-  s.version = {{ project_name | underscore | camelize }}::GemInfo.version_string
-  s.date = Date.today rescue '1970-01-01'
-  s.executables << '{{project_name}}'
-  s.summary = '{{project_name}}'
-  s.description = 'Simple Ruby gem template'
-  s.license = 'MIT'
-  s.authors = '{{author}}'
-  s.email = '{{author_email}}'
-  s.files = ['LICENSE'] + Dir.glob('lib/**/*.rb')
-  s.require_paths = ['lib']
-  s.homepage = 'https://github.com/{{ git_server | git_group }}/{{project_name}}'
+Gem::Specification.new do |spec|
+  spec.name = '{{project_name}}'
+  spec.version = {{ project_name | underscore | camelize }}::GemInfo.version_string
+  spec.date = Date.today rescue '1970-01-01'
+  spec.executables << '{{project_name}}'
+  spec.summary = '{{project_name}}'
+  spec.description = 'Simple Ruby gem template'
+  spec.license = 'MIT'
+  spec.authors = '{{author}}'
+  spec.email = '{{author_email}}'
+  spec.files = ['LICENSE'] + Dir.glob('lib/**/*.rb')
+  spec.require_paths = ['lib']
+  spec.homepage = 'https://github.com/{{ git_server | git_group }}/{{project_name}}'
 
   s.add_dependency 'rclopts', '~> 0.1.1'
+
+  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'test-unit'
 end
