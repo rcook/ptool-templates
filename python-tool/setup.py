@@ -5,10 +5,8 @@ import re
 
 from setuptools import setup
 
-_PROJECT_NAME = "{{project_name}}"
-
-def _read_properties(project_name):
-    init_path = os.path.abspath(os.path.join(project_name, "__init__.py"))
+def _read_properties():
+    init_path = os.path.abspath(os.path.join("{{module_name}}", "__init__.py"))
     regex = re.compile("^\\s*__(?P<key>.*)__\\s*=\\s*\"(?P<value>.*)\"\\s*$")
     with open(init_path, "rt") as f:
         props = {}
@@ -19,13 +17,12 @@ def _read_properties(project_name):
 
     return props
 
-props = _read_properties(_PROJECT_NAME)
-project_name = props["project_name"]
+props = _read_properties()
 version = props["version"]
 description = props["description"]
 
 setup(
-    name=project_name,
+    name="{{project_name}}",
     version=version,
     description=description,
     setup_requires=["setuptools-markdown"],
@@ -35,19 +32,19 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 2.7",
     ],
-    url="{{project_name}} | git_url(git_server) }}",
+    url="{{project_name | git_url(git_server) }}",
     author="{{author}}",
     author_email="{{author_email}}",
     license="MIT",
-    packages=[project_name],
+    packages=["{{module_name}}"],
     install_requires=[
         # TODO: Add dependencies here: requirements.txt will use this list too
     ],
     entry_points={
         "console_scripts": [
-            "{0} = {0}.__main__:_main".format(project_name)
+            "{{project_name}} = {{module_name}}.__main__:_main"
         ]
     },
     include_package_data=True,
-    test_suite="{}.tests.suite".format(project_name),
+    test_suite="{{module_name}}.tests.suite",
     zip_safe=False)

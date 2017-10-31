@@ -2,5 +2,5 @@
 /build/
 /dist/
 /env/
-/{{project_name}}.egg-info/
+/{{ project_name | replace("-", "_") }}.egg-info/
 *.pyc

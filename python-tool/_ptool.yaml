@@ -6,25 +6,28 @@ template-values:
     # Copyright (C) 2017, All rights reserved.
     ##################################################
 
+template-globals:
+  module_name: "{{ project_name | replace(\"_\", \"\") | replace(\"-\", \"\") }}"
+
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
 - path: config.py
-  output-path: "{{project_name}}/config.py"
+  output-path: "{{module_name}}/config.py"
 - path: env.cmd
   output-path: script/env.cmd
 - README.md
 - requirements.txt
 - setup.py
 - path: tests__init__.py
-  output-path: "{{project_name}}/tests/__init__.py"
+  output-path: "{{module_name}}/tests/__init__.py"
 - path: virtualenv.cmd
   output-path: script/virtualenv.cmd
 - path: __init__.py
-  output-path: "{{project_name}}/__init__.py"
+  output-path: "{{module_name}}/__init__.py"
 - path: __main__.py
-  output-path: "{{project_name}}/__main__.py"
+  output-path: "{{module_name}}/__main__.py"
 
 commands:
 - git init

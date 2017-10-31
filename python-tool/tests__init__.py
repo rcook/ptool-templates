@@ -16,7 +16,7 @@ def _get_test_suite(module_name):
 
 def suite():
     suite = unittest.TestSuite()
-    for module_name in _get_module_names("{{project_name}}"):
+    for module_name in _get_module_names("{{module_name}}"):
         tests = _get_test_suite(module_name)
         if tests:
             suite.addTests(tests)
