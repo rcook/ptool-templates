@@ -32,3 +32,4 @@ commands:
 - git remote add origin {{ project_name | git_url(git_server) }}
 - git config user.name "{{author}}"
 - git config user.email "{{author_email}}"
+- git add .
