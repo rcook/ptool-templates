@@ -1,3 +1,4 @@
+<%@ page import="{{reversed_domain}}.Widget" %>
 <html>
 <head>
 <title>Hello from {{project_name}}!</title>
@@ -10,4 +11,7 @@
     <p>
         You are coming from 
         <%= request.getRemoteAddr() %></p>
+    <p>
+        Widget:
+        <%= new Widget().join("aaa", "bbb") %></p>
 </body>

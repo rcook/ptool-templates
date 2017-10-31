@@ -27,6 +27,8 @@ files:
 - README.md
 - path: web.xml
   output-path: src/main/webapp/WEB-INF/web.xml
+- path: Widget.java
+  output-path: src/main/java/{{domain_file_path}}/Widget.java
 
 commands:
 - git init
