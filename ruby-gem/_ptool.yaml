@@ -14,15 +14,15 @@ files:
 - Gemfile
 - README.md
 - Rakefile
-- path: bin/gem-template
+- path: bin/project
   output-path: bin/{{project_name}}
-- path: gem-template.gemspec
+- path: project.gemspec
   output-path: "{{project_name}}.gemspec"
-- path: lib/gem-template.rb
+- path: lib/project.rb
   output-path: lib/{{project_name}}.rb
-- path: lib/gem-template/cli.rb
+- path: lib/project/cli.rb
   output-path: lib/{{project_name}}/cli.rb
-- path: lib/gem-template/gem_info.rb
+- path: lib/project/gem_info.rb
   output-path: lib/{{project_name}}/gem_info.rb
 - test/cli_test.rb
 - test/test_helper.rb
