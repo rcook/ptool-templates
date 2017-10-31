@@ -11,7 +11,6 @@
     <packaging>war</packaging>
     <name>Hello world</name>
     <description>Simplest possible Java web application built using Maven</description>
-
     <build>
         <plugins>
             <plugin>
@@ -29,5 +28,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
