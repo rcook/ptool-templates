@@ -5,3 +5,6 @@
 
 A Ruby gem
 {% endblock %}
+
+{% block content -%}
+{% endblock %}
