@@ -24,4 +24,10 @@ bundle install
 ```
 bundle exec rake test
 ```
+
+## Run script
+
+```
+bundle exec {{project_name}}
+```
 {% endblock %}
