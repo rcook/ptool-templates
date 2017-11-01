@@ -1,6 +1,5 @@
 /.eggs/
 /build/
 /dist/
-/env/
 /{{ project_name | replace("-", "_") }}.egg-info/
 *.pyc

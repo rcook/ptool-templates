@@ -15,15 +15,11 @@ files:
 - .gitignore
 - path: config.py
   output-path: "{{module_name}}/config.py"
-- path: env.cmd
-  output-path: script/env.cmd
 - README.md
 - requirements.txt
 - setup.py
 - path: tests__init__.py
   output-path: "{{module_name}}/tests/__init__.py"
-- path: virtualenv.cmd
-  output-path: script/virtualenv.cmd
 - path: __init__.py
   output-path: "{{module_name}}/__init__.py"
 - path: __main__.py
