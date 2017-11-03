@@ -1,5 +1,6 @@
 {{java_copyright}}
 package {{reversed_domain}};
+
 import org.springframework.boot.SpringApplication;
 
 public final class App
