@@ -1,0 +1,5 @@
+/.eggs/
+/build/
+/dist/
+/{{ project_name | replace("-", "_") }}.egg-info/
+*.pyc

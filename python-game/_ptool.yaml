@@ -6,19 +6,26 @@ template-values:
     # Copyright (C) 2017, All rights reserved.
     ##################################################
 
+template-globals:
+  module_name: "{{ project_name | replace(\"_\", \"\") | replace(\"-\", \"\") }}"
+
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
-- README.md
-- bootstrap.cmd
+- path: config.py
+  output-path: "{{module_name}}/config.py"
 - path: intro_ball.gif
   preprocess: false
-- path: project.cmd
-  output-path: "{{project_name}}.cmd"
-- path: project.py
-  output-path: "{{project_name}}.py"
+- README.md
 - requirements.txt
+- setup.py
+- path: tests__init__.py
+  output-path: "{{module_name}}/tests/__init__.py"
+- path: __init__.py
+  output-path: "{{module_name}}/__init__.py"
+- path: __main__.py
+  output-path: "{{module_name}}/__main__.py"
 
 commands:
 - git init
@@ -26,13 +33,3 @@ commands:
 - git config user.name "{{author}}"
 - git config user.email "{{author_email}}"
 - git add .
-- git-execute-attribute:
-    path: bootstrap.cmd
-- git-execute-attribute:
-    path: "{{project_name}}.cmd"
-- git-symlink:
-    source-path: bootstrap.cmd
-    target-path: bootstrap
-- git-symlink:
-    source-path: "{{project_name}}.cmd"
-    target-path: "{{project_name}}"
