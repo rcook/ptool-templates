@@ -1,3 +1,4 @@
+{{ruby_copyright}}
 require 'rclopts'
 
 module {{ project_name | underscore | camelize }}

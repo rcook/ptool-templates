@@ -1,3 +1,4 @@
+{{ruby_copyright}}
 module {{ project_name | underscore | camelize }}
   module GemInfo
     MAJOR_VERSION = 0

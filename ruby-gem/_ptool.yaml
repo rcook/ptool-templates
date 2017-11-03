@@ -11,21 +11,23 @@ files:
   output-path: LICENSE
 - .gitignore
 - .travis.yml
-- Gemfile
-- README.md
-- Rakefile
-- path: bin/project
+- path: bin.rb
   output-path: bin/{{project_name}}
+- path: cli.rb
+  output-path: lib/{{project_name}}/cli.rb
+- path: cli_test.rb
+  output-path: test/cli_test.rb
+- Gemfile
+- path: gem_info.rb
+  output-path: lib/{{project_name}}/gem_info.rb
 - path: project.gemspec
   output-path: "{{project_name}}.gemspec"
-- path: lib/project.rb
+- path: project.rb
   output-path: lib/{{project_name}}.rb
-- path: lib/project/cli.rb
-  output-path: lib/{{project_name}}/cli.rb
-- path: lib/project/gem_info.rb
-  output-path: lib/{{project_name}}/gem_info.rb
-- test/cli_test.rb
-- test/test_helper.rb
+- Rakefile
+- README.md
+- path: test_helper.rb
+  output-path: test/test_helper.rb
 
 commands:
 - git init

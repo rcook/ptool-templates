@@ -1,3 +1,4 @@
+{{ruby_copyright}}
 if RUBY_VERSION < '1.9.0'
   require File.expand_path('../test_helper', __FILE__)
 else
@@ -28,4 +29,3 @@ module {{ project_name | underscore | camelize }}Test
     end
   end
 end
-

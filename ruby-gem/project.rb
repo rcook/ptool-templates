@@ -1,3 +1,4 @@
+{{ruby_copyright}}
 if RUBY_VERSION < '1.9.0'
   require File.expand_path('../{{project_name}}/cli', __FILE__)
   require File.expand_path('../{{project_name}}/gem_info', __FILE__)
