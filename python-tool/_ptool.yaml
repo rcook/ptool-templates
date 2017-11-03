@@ -1,4 +1,4 @@
-description: Simple Python tool with virtual environment
+description: Simple Python tool
 
 template-values:
   py_copyright: |
