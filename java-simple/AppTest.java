@@ -1,5 +1,5 @@
 {{java_copyright}}
-package {{reversed_domain}}.app;
+package {{reversed_domain}};
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,5 +1,5 @@
 {{java_copyright}}
-package {{reversed_domain}}.app;
+package {{reversed_domain}};
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,6 +32,11 @@ public final class App
 {
     public static void main(String[] args)
     {
+        for (String arg : args)
+        {
+            System.out.println("arg=" + arg);
+        }
+
         System.out.println("Hello from {{project_name}}");
 
         Container items = new Container();

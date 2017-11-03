@@ -19,17 +19,19 @@ files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
-- .vscode/launch.json
-- README.md
-- pom.xml
 - path: App.java
-  output-path: src/main/java/{{domain_file_path}}/app/App.java
-- path: Example.java
-  output-path: src/main/java/{{domain_file_path}}/app/Example.java
+  output-path: src/main/java/{{domain_file_path}}/App.java
 - path: AppTest.java
-  output-path: src/test/java/{{domain_file_path}}/app/AppTest.java
+  output-path: src/test/java/{{domain_file_path}}/AppTest.java
+- path: Example.java
+  output-path: src/main/java/{{domain_file_path}}/Example.java
 - path: ExampleTest.java
-  output-path: src/test/java/{{domain_file_path}}/app/ExampleTest.java
+  output-path: src/test/java/{{domain_file_path}}/ExampleTest.java
+- exec.cmd
+- path: launch.json
+  output-path: .vscode/launch.json
+- pom.xml
+- README.md
 
 commands:
 - git init
