@@ -18,11 +18,12 @@ template-globals:
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
-- .vscode/launch.json
 - .gitignore
 - path: App.java
   output-path: src/main/java/{{domain_file_path}}/App.java
 - exec.cmd
+- path: launch.json
+  output-path: .vscode/launch.json
 - pom.xml
 - README.md
 - path: SampleController.java
