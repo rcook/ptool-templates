@@ -1,0 +1,39 @@
+description: Simple Ruby gem using GLI command-line parser
+
+template-values:
+  ruby_copyright: |
+    ##################################################
+    # Copyright (C) 2017, All rights reserved.
+    ##################################################
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+- .gitignore
+- .travis.yml
+- path: bin.rb
+  output-path: bin/{{project_name}}
+- path: foo.rb
+  output-path: lib/{{project_name}}/foo.rb
+- path: foo_test.rb
+  output-path: test/foo_test.rb
+- Gemfile
+- path: gem_info.rb
+  output-path: lib/{{project_name}}/gem_info.rb
+- path: project.gemspec
+  output-path: "{{project_name}}.gemspec"
+- path: project.rb
+  output-path: lib/{{project_name}}.rb
+- README.md
+- Rakefile
+- path: test_helper.rb
+  output-path: test/test_helper.rb
+- path: to_do_list.rb
+  output-path: lib/{{project_name}}/to_do_list.rb
+
+commands:
+- git init
+- git remote add origin {{ project_name | git_url(git_server) }}
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
+- git add .
