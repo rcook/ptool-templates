@@ -8,7 +8,7 @@ end
 module {{ project_name | underscore | camelize }}Test
   class FooTest < Test::Unit::TestCase
     def test_value
-      assert_equal 'abc', Testapp::Foo.new('abc').value
+      assert_equal 'abc', {{ project_name | underscore | camelize }}::Foo.new('abc').value
     end
   end
 end

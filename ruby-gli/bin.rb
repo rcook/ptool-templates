@@ -11,7 +11,7 @@ desc 'To-do list file name'
 flag [:f, :file], default_value: File.join(ENV['HOME'],'.{{project_name}}')
 
 pre do |global_options, command, options, args|
-  $to_do_list = {{ project_name | camelize }}::ToDoList.new(global_options[:file])
+  $to_do_list = {{ project_name | underscore | camelize }}::ToDoList.new(global_options[:file])
 end
 
 desc 'Add to-do item'
