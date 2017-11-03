@@ -1,0 +1,38 @@
+description: Simple Spring Boot project using Maven
+
+template-values:
+  java_domain: mycompany.com
+  java_copyright: |
+    //////////////////////////////////////////////////
+    // Copyright (C) 2017, All rights reserved.
+    //////////////////////////////////////////////////
+
+template-filters:
+  to_reversed_domain: "lambda ctx, s: \".\".join(reversed(s.split(\".\")))"
+  to_domain_file_path: "lambda ctx, s: \"/\".join(reversed(s.split(\".\")))"
+
+template-globals:
+  reversed_domain: "{{ java_domain | to_reversed_domain }}"
+  domain_file_path: "{{ java_domain | to_domain_file_path }}"
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+- .vscode/launch.json
+- .gitignore
+- path: App.java
+  output-path: src/main/java/{{domain_file_path}}/App.java
+- exec.cmd
+- pom.xml
+- README.md
+- path: SampleController.java
+  output-path: src/main/java/{{domain_file_path}}/SampleController.java
+- path: SampleControllerTest.java
+  output-path: src/test/java/{{domain_file_path}}/SampleControllerTest.java
+
+commands:
+- git init
+- git remote add origin {{ project_name | git_url(git_server) }}
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
+- git add .
