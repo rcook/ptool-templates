@@ -8,6 +8,12 @@ Java application with app built using Maven
 ## Build
 
 ```
+mvn compile
+```
+
+## Package
+
+```
 mvn package
 ```
 
@@ -16,6 +22,6 @@ This builds and runs test before generating the output package.
 ## Run
 
 ```
-java -cp target/{{project_name}}-1.0-SNAPSHOT.jar {{reversed_domain}}.app.App
+mvn exec:java -q
 ```
 {% endblock %}
