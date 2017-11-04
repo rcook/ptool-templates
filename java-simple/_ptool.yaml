@@ -16,6 +16,10 @@ template-globals:
   domain_file_path: "{{ java_domain | to_domain_file_path }}"
 
 files:
+- path: ../_shared/exec.cmd
+  output-path: exec.cmd
+- path: ../_shared/launch.json
+  output-path: .vscode/launch.json
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
@@ -27,9 +31,6 @@ files:
   output-path: src/main/java/{{domain_file_path}}/Example.java
 - path: ExampleTest.java
   output-path: src/test/java/{{domain_file_path}}/ExampleTest.java
-- exec.cmd
-- path: launch.json
-  output-path: .vscode/launch.json
 - pom.xml
 - README.md
 
