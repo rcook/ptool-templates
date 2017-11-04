@@ -16,6 +16,6 @@ This builds and runs test before generating the output package.
 ## Run
 
 ```
-java -cp target/{{project_name}}-1.0-SNAPSHOT.jar {{reversed_domain}}.app.App
+mvn spring-boot:run
 ```
 {% endblock %}

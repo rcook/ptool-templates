@@ -16,8 +16,6 @@ template-globals:
   domain_file_path: "{{ java_domain | to_domain_file_path }}"
 
 files:
-- path: ../_shared/exec.cmd
-  output-path: exec.cmd
 - path: ../_shared/launch.json
   output-path: .vscode/launch.json
 - path: ../_shared/LICENSE
@@ -38,8 +36,3 @@ commands:
 - git config user.name "{{author}}"
 - git config user.email "{{author_email}}"
 - git add .
-- git-execute-attribute:
-    path: exec.cmd
-- git-symlink:
-    source-path: exec.cmd
-    target-path: exec
