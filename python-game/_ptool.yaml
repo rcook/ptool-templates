@@ -15,8 +15,11 @@ files:
 - .gitignore
 - path: config.py
   output-path: "{{module_name}}/config.py"
-- path: intro_ball.gif
+- path: images__init__.py
+  output-path: "{{module_name}}/images/__init__.py"
+- path: intro-ball.gif
   preprocess: false
+  output-path: "{{module_name}}/images/intro-ball.gif"
 - README.md
 - requirements.txt
 - setup.py

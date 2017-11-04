@@ -2,7 +2,7 @@
 import os
 import re
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 def _read_properties():
     init_path = os.path.abspath(os.path.join("{{module_name}}", "__init__.py"))
@@ -35,7 +35,7 @@ setup(
     author="{{author}}",
     author_email="{{author_email}}",
     license="MIT",
-    packages=["{{module_name}}"],
+    packages=find_packages(),
     install_requires=[
         "pygame"
     ],
@@ -45,5 +45,6 @@ setup(
         ]
     },
     include_package_data=True,
+    package_data={ "{{module_name}}.images": ["*.gif", "*.jpg", "*.png"] },
     test_suite="{{module_name}}.tests.suite",
     zip_safe=False)

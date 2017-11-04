@@ -9,6 +9,8 @@ import time
 from {{module_name}} import __description__, __project_name__, __version__
 from {{module_name}}.config import Config
 
+_IMAGES_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "images"))
+
 def _run_game(config, args):
     pygame.init()
 
@@ -19,7 +21,8 @@ def _run_game(config, args):
     pygame.display.set_caption("Welcome to {{project_name}}!")
     screen = pygame.display.set_mode(size)
 
-    ball = pygame.image.load("intro_ball.gif")
+    intro_ball_path = os.path.join(_IMAGES_DIR, "intro-ball.gif")
+    ball = pygame.image.load(intro_ball_path)
     ballrect = ball.get_rect()
 
     while True:
