@@ -7,8 +7,12 @@ IFS=$'\n\t'
 
 this_dir=$(cd $(dirname $0); pwd -P)
 cd $this_dir
-args=(${@// /\\ })
-mvn exec:java -Dexec.mainClass="{{reversed_domain}}.App" -Dexec.args="${args[*]}"
+if [ "$#" -eq 0 ]; then
+  mvn exec:java -Dexec.mainClass="{{reversed_domain}}.App"
+else
+  args=(${@// /\\ })
+  mvn exec:java -Dexec.mainClass="{{reversed_domain}}.App" -Dexec.args="${args[*]}"
+fi
 exit $?
 {% endblock %}
 
