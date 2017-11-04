@@ -1,7 +1,10 @@
 /.idea/
+/.mvn/
 /.settings/
 /.vscode/
 /target/
 /.classpath
 /.project
+/mvnw
+/mvnw.cmd
 {{project_name}}.iml
