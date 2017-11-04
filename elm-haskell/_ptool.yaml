@@ -1,4 +1,4 @@
-description: Simple Elm frontend with Haskell/Servant backend
+description: Elm frontend with Haskell/Servant backend
 
 template-values:
   default_stack_resolver: lts-9.3

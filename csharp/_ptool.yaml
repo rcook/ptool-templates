@@ -1,4 +1,4 @@
-description: Simple C# project using MSBuild
+description: C# project using MSBuild
 
 template-values:
   cs_copyright: |

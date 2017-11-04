@@ -1,4 +1,4 @@
-description: Simple Ruby gem using GLI command-line parser
+description: Ruby gem using GLI command-line parser
 
 template-values:
   ruby_copyright: |

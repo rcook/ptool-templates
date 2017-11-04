@@ -1,4 +1,4 @@
-description: Simple Haskell project using Stack build tool
+description: Haskell project using Stack build tool
 
 template-values:
   default_stack_resolver: lts-9.3

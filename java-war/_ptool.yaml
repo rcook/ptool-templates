@@ -1,6 +1,6 @@
 # Inspired by https://github.com/efsavage/hello-world-war
 
-description: Simple Java web app using Maven
+description: Java web app using Maven
 
 template-values:
   java_domain: mycompany.com

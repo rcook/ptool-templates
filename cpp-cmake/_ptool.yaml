@@ -1,4 +1,4 @@
-description: Simple C++14 project using CMake
+description: C++14 project using CMake
 
 template-values:
   cmake_copyright: |

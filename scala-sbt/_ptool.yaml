@@ -1,4 +1,4 @@
-description: Simple Scala project using SBT
+description: Scala project using SBT
 
 template-values:
   scala_copyright: |

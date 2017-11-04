@@ -1,4 +1,4 @@
-description: Simple Java project using Maven
+description: Java project using Maven
 
 template-values:
   java_domain: mycompany.com

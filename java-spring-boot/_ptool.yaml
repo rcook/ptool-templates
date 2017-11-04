@@ -1,4 +1,4 @@
-description: Simple Spring Boot project using Maven
+description: Spring Boot project using Maven
 
 template-values:
   java_domain: mycompany.com
