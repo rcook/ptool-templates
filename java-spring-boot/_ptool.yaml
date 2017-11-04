@@ -37,3 +37,8 @@ commands:
 - git config user.name "{{author}}"
 - git config user.email "{{author_email}}"
 - git add .
+- git-execute-attribute:
+    path: exec.cmd
+- git-symlink:
+    source-path: exec.cmd
+    target-path: exec
