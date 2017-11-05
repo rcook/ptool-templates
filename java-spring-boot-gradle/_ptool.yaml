@@ -1,4 +1,4 @@
-description: Spring Boot project using Maven
+description: Spring Boot project using Gradle
 
 template-values:
   java_domain: mycompany.com
@@ -27,8 +27,9 @@ files:
 - path: ../_shared/SampleControllerTest.java
   output-path: src/test/java/{{domain_file_path}}/SampleControllerTest.java
 - .gitignore
-- pom.xml
 - README.md
+- build.gradle
+- settings.gradle
 
 commands:
 - git init
