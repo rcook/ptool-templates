@@ -5,7 +5,7 @@ add_executable({{project_name}}-test
 )
 
 target_include_directories({{project_name}}-test PUBLIC
-  ../external/catch/include
+  ../external/Catch2/single_include
   ../lib/public
 )
 
