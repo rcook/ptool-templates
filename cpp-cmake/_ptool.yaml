@@ -44,7 +44,7 @@ commands:
 - git config user.email "{{author_email}}"
 - git submodule add --depth 1 https://github.com/arsenm/sanitizers-cmake.git external/sanitizers-cmake
 - git config --file .gitmodules submodule.external/sanitizers-cmake.shallow true
-- git submodule add --depth 1 https://github.com/philsquared/Catch.git external/catch
+- git submodule add --depth 1 https://github.com/catchorg/Catch.git external/catch
 - git config --file .gitmodules submodule.external/catch.shallow true
 - git add .
 - git-execute-attribute:

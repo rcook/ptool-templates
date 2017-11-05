@@ -48,5 +48,5 @@ Once a `_build` directory exists, this script will build and run the `test` targ
 {% endblock %}
 
 {% block end_matter %}
-[catch]: https://github.com/philsquared/Catch
+[catch]: https://github.com/catchorg/Catch
 {% endblock %}
