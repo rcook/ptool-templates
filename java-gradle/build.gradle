@@ -1,0 +1,19 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+// Example: gradle main -PmainArgs=a,b,c
+task main(type: JavaExec) {
+    description = 'Run main entrypoint'
+    main = '{{reversed_domain}}.App'
+    classpath sourceSets.main.runtimeClasspath
+    if (project.hasProperty('mainArgs')) {
+        args mainArgs.split(',')
+    }
+}

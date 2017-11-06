@@ -1,0 +1,38 @@
+description: Java project using Gradle
+
+template-values:
+  java_domain: mycompany.com
+  java_copyright: |
+    //////////////////////////////////////////////////
+    // Copyright (C) 2017, All rights reserved.
+    //////////////////////////////////////////////////
+
+template-filters:
+  to_reversed_domain: "lambda ctx, s: \".\".join(reversed(s.split(\".\")))"
+  to_domain_file_path: "lambda ctx, s: \"/\".join(reversed(s.split(\".\")))"
+
+template-globals:
+  reversed_domain: "{{ java_domain | to_reversed_domain }}"
+  domain_file_path: "{{ java_domain | to_domain_file_path }}"
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+- path: ../_shared/java-simple/App.java
+  output-path: src/main/java/{{domain_file_path}}/App.java
+- path: ../_shared/java-simple/AppTest.java
+  output-path: src/test/java/{{domain_file_path}}/AppTest.java
+- path: ../_shared/java-simple/Example.java
+  output-path: src/main/java/{{domain_file_path}}/Example.java
+- path: ../_shared/java-simple/ExampleTest.java
+  output-path: src/test/java/{{domain_file_path}}/ExampleTest.java
+- .gitignore
+- build.gradle
+- README.md
+
+commands:
+- git init
+- git remote add origin {{ project_name | git_url(git_server) }}
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
+- git add .
