@@ -22,15 +22,15 @@ files:
   output-path: .vscode/launch.json
 - path: ../_shared/LICENSE
   output-path: LICENSE
-- .gitignore
-- path: App.java
+- path: ../_shared/java-simple/App.java
   output-path: src/main/java/{{domain_file_path}}/App.java
-- path: AppTest.java
+- path: ../_shared/java-simple/AppTest.java
   output-path: src/test/java/{{domain_file_path}}/AppTest.java
-- path: Example.java
+- path: ../_shared/java-simple/Example.java
   output-path: src/main/java/{{domain_file_path}}/Example.java
-- path: ExampleTest.java
+- path: ../_shared/java-simple/ExampleTest.java
   output-path: src/test/java/{{domain_file_path}}/ExampleTest.java
+- .gitignore
 - pom.xml
 - README.md
 
