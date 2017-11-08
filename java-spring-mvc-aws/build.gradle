@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+
+group = '{{reversed_domain}}'
+version = '1.0'
+description = 'Sample app'
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+
+repositories {
+    maven { url 'http://repo.maven.apache.org/maven2' }
+}
+
+dependencies {
+    compile group: 'org.springframework', name: 'spring-context', version:'4.2.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'4.2.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'4.2.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'4.2.6.RELEASE'
+    compile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version:'1.3.2'
+}
+
+task explodedWar(type: Sync) {
+    into "${buildDir}/ROOT"
+    with war
+}

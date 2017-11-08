@@ -1,0 +1,53 @@
+description: Spring Boot project using Gradle for AWS
+
+template-values:
+  java_domain: mycompany.com
+  java_copyright: |
+    //////////////////////////////////////////////////
+    // Copyright (C) 2017, All rights reserved.
+    //////////////////////////////////////////////////
+
+template-filters:
+  to_reversed_domain: "lambda ctx, s: \".\".join(reversed(s.split(\".\")))"
+  to_domain_file_path: "lambda ctx, s: \"/\".join(reversed(s.split(\".\")))"
+
+template-globals:
+  reversed_domain: "{{ java_domain | to_reversed_domain }}"
+  domain_file_path: "{{ java_domain | to_domain_file_path }}"
+  package_base_name: "{{ project_name | underscore | camelize }}"
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+- .gitignore
+- path: AppInitializer.java
+  output-path: src/main/java/{{domain_file_path}}/{{package_base_name}}AppInitializer.java
+- path: application.properties
+  output-path: src/main/resources/application.properties
+- path: ApplicationConfig.java
+  output-path: src/main/java/{{domain_file_path}}/configuration/ApplicationConfig.java
+- build.gradle
+- buildspec.yml
+- path: Controller.java
+  output-path: src/main/java/{{domain_file_path}}/controller/{{package_base_name}}Controller.java
+- path: gradients.css
+  output-path: src/main/webapp/resources/gradients.css
+- path: index.jsp
+  output-path: src/main/webapp/WEB-INF/views/index.jsp
+- path: MvcConfig.java
+  output-path: src/main/java/{{domain_file_path}}/configuration/MvcConfig.java
+- README.md
+- path: set-background.js
+  output-path: src/main/webapp/resources/set-background.js
+- settings.gradle
+- path: sshd.config
+  output-path: .ebextensions/sshd.config
+- path: styles.css
+  output-path: src/main/webapp/resources/styles.css
+
+commands:
+- git init
+- git remote add origin {{ project_name | git_url(git_server) }}
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
+- git add .
