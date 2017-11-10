@@ -1,10 +1,19 @@
+configurations {
+    jasper
+}
+
+repositories {
+    maven { url 'http://repo.maven.apache.org/maven2' }
+    mavenCentral()
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'war'
 
 group = '{{reversed_domain}}'
-version = '1.0'
 description = '{{project_name}}'
+version = '1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -12,15 +21,14 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-repositories {
-    maven { url 'http://repo.maven.apache.org/maven2' }
-}
-
 dependencies {
     compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
     compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
     compile group: 'org.apache.tomcat', name: 'jasper', version: '6.0.33'
     testCompile 'junit:junit:4.12'
+    jasper 'org.apache.tomcat:jasper:6.0.33',
+        'javax.servlet:jstl:1.1.2',
+        'taglibs:standard:1.1.2'
 }
 
 sourceSets {
@@ -30,20 +38,6 @@ sourceSets {
             srcDirs "$buildDir/jspc"
         }
     }
-}
-
-configurations {
-    jasper
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    jasper 'org.apache.tomcat:jasper:6.0.33',
-        'javax.servlet:jstl:1.1.2',
-        'taglibs:standard:1.1.2'
 }
 
 compileJava.doFirst {
