@@ -9,7 +9,7 @@
         It is now
         <%= new java.util.Date() %></p>
     <p>
-        You are coming from 
+        You are coming from
         <%= request.getRemoteAddr() %></p>
     <p>
         Widget:
