@@ -17,9 +17,9 @@ gradle build
 gradle test
 ```
 
-## Run application
+## Build WAR archive
 
 ```
-gradle run
+gradle war
 ```
 {% endblock %}
