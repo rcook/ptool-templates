@@ -28,6 +28,8 @@ files:
   output-path: src/main/webapp/WEB-INF/web.xml
 - path: Widget.java
   output-path: src/main/java/{{domain_file_path}}/Widget.java
+- path: WidgetTest.java
+  output-path: src/test/java/{{domain_file_path}}/WidgetTest.java
 
 commands:
 - git init
