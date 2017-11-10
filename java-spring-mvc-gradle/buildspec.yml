@@ -12,12 +12,12 @@ phases:
   build:
     commands:
       - echo Entering build phase...
-      - echo Build started on `date`
+      - echo Build started on $(date)
       - gradle explodedWar
   post_build:
     commands:
       - echo Entering post_build phase...
-      - echo Build completed on `date`
+      - echo Build completed on $(date)
       - mv build/ROOT .
 artifacts:
   type: zip
