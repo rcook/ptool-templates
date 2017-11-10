@@ -1,0 +1,37 @@
+description: Precompiled Java web app with Gradle build
+
+template-values:
+  java_domain: mycompany.com
+  java_copyright: |
+    //////////////////////////////////////////////////
+    // Copyright (C) 2017, All rights reserved.
+    //////////////////////////////////////////////////
+
+template-filters:
+  to_reversed_domain: "lambda ctx, s: \".\".join(reversed(s.split(\".\")))"
+  to_domain_file_path: "lambda ctx, s: \"/\".join(reversed(s.split(\".\")))"
+
+template-globals:
+  reversed_domain: "{{ java_domain | to_reversed_domain }}"
+  domain_file_path: "{{ java_domain | to_domain_file_path }}"
+
+files:
+- path: ../_shared/LICENSE
+  output-path: LICENSE
+- .gitignore
+- build.gradle
+- path: index.jsp
+  output-path: src/main/webapp/index.jsp
+- README.md
+- settings.gradle
+- path: web.xml
+  output-path: src/main/webapp/WEB-INF/web.xml
+- path: Widget.java
+  output-path: src/main/java/{{domain_file_path}}/Widget.java
+
+commands:
+- git init
+- git remote add origin {{ project_name | git_url(git_server) }}
+- git config user.name "{{author}}"
+- git config user.email "{{author_email}}"
+- git add .

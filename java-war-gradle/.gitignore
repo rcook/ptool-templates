@@ -1,0 +1,12 @@
+# Gradle wrappers etc.
+/.gradle/
+/gradle/
+/gradlew
+/gradlew.bat
+
+# Build output
+/bin/
+/build/
+/.classpath
+/.project
+/.settings
