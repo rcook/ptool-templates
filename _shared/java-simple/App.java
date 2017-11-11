@@ -21,8 +21,8 @@ final class Container
         return _namesImmutable;
     }
 
-    private ArrayList<String> _names = new ArrayList<String>();
-    private List<String> _namesImmutable = Collections.unmodifiableList(_names);
+    private final ArrayList<String> _names = new ArrayList<String>();
+    private final List<String> _namesImmutable = Collections.unmodifiableList(_names);
 }
 
 /**
@@ -32,19 +32,19 @@ public final class App
 {
     public static void main(String[] args)
     {
-        for (String arg : args)
+        for (final String arg : args)
         {
             System.out.println("arg=" + arg);
         }
 
         System.out.println("Hello from {{project_name}}");
 
-        Container items = new Container();
+        final Container items = new Container();
         items.addName("One");
         items.addName("Two");
         items.addName("Three");
 
-        for (String name : items.names())
+        for (final String name : items.names())
         {
             System.out.println("name=" + name);
         }
