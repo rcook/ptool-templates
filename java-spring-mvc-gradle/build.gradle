@@ -3,10 +3,10 @@ apply plugin: 'maven'
 apply plugin: 'war'
 
 group = '{{reversed_domain}}'
-version = '1.0'
-description = 'Sample app'
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+description = '{{project_name}}'
+version = '0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     maven { url 'http://repo.maven.apache.org/maven2' }

@@ -1,3 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+
+group = '{{reversed_domain}}'
+description = '{{project_name}}'
+version = '0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 configurations {
     jasper
 }
@@ -5,20 +15,6 @@ configurations {
 repositories {
     maven { url 'http://repo.maven.apache.org/maven2' }
     mavenCentral()
-}
-
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'war'
-
-group = '{{reversed_domain}}'
-description = '{{project_name}}'
-version = '1.0'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
 }
 
 dependencies {
@@ -29,6 +25,10 @@ dependencies {
     jasper 'org.apache.tomcat:jasper:6.0.33',
         'javax.servlet:jstl:1.1.2',
         'taglibs:standard:1.1.2'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 sourceSets {

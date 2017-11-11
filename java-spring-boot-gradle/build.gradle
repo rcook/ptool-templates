@@ -2,17 +2,13 @@ apply plugin: 'application'
 apply plugin: 'java'
 apply plugin: 'maven'
 
-description = '{{project_name}}'
 group = '{{reversed_domain}}'
-version = '0.0-SNAPSHOT'
-sourceCompatibility = 1.5
-targetCompatibility = 1.5
+description = '{{project_name}}'
+version = '0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 mainClassName = '{{reversed_domain}}.App'
 applicationDefaultJvmArgs = ['-Dspring.output.ansi.enabled=ALWAYS']
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
 
 repositories {
     maven { url "http://repo.maven.apache.org/maven2" }
@@ -21,4 +17,8 @@ repositories {
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.8.RELEASE'
     testCompile group: 'junit', name: 'junit', version: '3.8.1'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }

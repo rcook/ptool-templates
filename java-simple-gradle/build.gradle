@@ -1,8 +1,14 @@
+apply plugin: 'java'
+
+group = '{{reversed_domain}}'
+description = '{{project_name}}'
+version = '0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 repositories {
     mavenCentral()
 }
-
-apply plugin: 'java'
 
 dependencies {
     testCompile 'junit:junit:4.12'
