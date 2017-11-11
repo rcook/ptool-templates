@@ -1,12 +1,14 @@
-# Gradle wrappers etc.
+# Gradle wrapper
 /.gradle/
 /gradle/
 /gradlew
 /gradlew.bat
 
 # Build output
+/.idea/
+/.settings/
+/.vscode/
 /bin/
 /build/
 /.classpath
 /.project
-/.settings

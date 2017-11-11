@@ -17,9 +17,10 @@ template-globals:
   package_base_name: "{{ project_name | underscore | camelize }}"
 
 files:
+- path: ../_shared/java-simple/.gitignore
+  output-path: .gitignore
 - path: ../_shared/LICENSE
   output-path: LICENSE
-- .gitignore
 - path: AppInitializer.java
   output-path: src/main/java/{{domain_file_path}}/{{package_base_name}}AppInitializer.java
 - path: application.properties

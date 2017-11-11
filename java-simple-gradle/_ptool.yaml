@@ -16,6 +16,8 @@ template-globals:
   domain_file_path: "{{ java_domain | to_domain_file_path }}"
 
 files:
+- path: ../_shared/java-simple/.gitignore
+  output-path: .gitignore
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - path: ../_shared/java-simple/App.java
@@ -26,7 +28,6 @@ files:
   output-path: src/main/java/{{domain_file_path}}/Example.java
 - path: ../_shared/java-simple/ExampleTest.java
   output-path: src/test/java/{{domain_file_path}}/ExampleTest.java
-- .gitignore
 - build.gradle
 - README.md
 

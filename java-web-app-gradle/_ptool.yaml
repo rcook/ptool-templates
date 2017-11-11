@@ -16,9 +16,10 @@ template-globals:
   domain_file_path: "{{ java_domain | to_domain_file_path }}"
 
 files:
+- path: ../_shared/java-simple/.gitignore
+  output-path: .gitignore
 - path: ../_shared/LICENSE
   output-path: LICENSE
-- .gitignore
 - build.gradle
 - path: index.jsp
   output-path: src/main/webapp/index.jsp
