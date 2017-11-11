@@ -18,8 +18,6 @@ template-globals:
 files:
 - path: ../_shared/exec.cmd
   output-path: exec.cmd
-- path: ../_shared/launch.json
-  output-path: .vscode/launch.json
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - path: ../_shared/java-simple/App.java

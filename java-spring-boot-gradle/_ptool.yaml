@@ -20,8 +20,6 @@ files:
   output-path: .gitignore
 - path: ../_shared/App.java
   output-path: src/main/java/{{domain_file_path}}/App.java
-- path: ../_shared/launch.json
-  output-path: .vscode/launch.json
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - path: ../_shared/SampleController.java
