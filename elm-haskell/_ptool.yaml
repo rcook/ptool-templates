@@ -60,88 +60,91 @@ template-globals:
   paths_module_name: "{{ project_name | to_paths_module_name }}"
 
 files:
-- README.md
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - path: ../_shared/elm/.gitignore
   output-path: frontend/.gitignore
-- .env.template
-- path: .env.template
-  output-path: .env
-- .gitignore
-- path: elm-package.json
-  output-path: frontend/elm-package.json
 - path: ../_shared/elm/package.json
   output-path: frontend/package.json
-- path: App.elm
-  output-path: frontend/src/App.elm
 - path: ../_shared/elm/src/favicon.ico
   output-path: frontend/src/favicon.ico
   preprocess: false
 - path: ../_shared/elm/src/index.html
   output-path: frontend/src/index.html
-- path: index.js
-  output-path: frontend/src/index.js
 - path: ../_shared/elm/src/logo.svg
   output-path: frontend/src/logo.svg
   preprocess: false
-- path: main.css
-  output-path: frontend/src/main.css
-- path: Codegen.elm
-  output-path: frontend/src/{{module_name}}/Codegen.elm
-- path: Decode.elm
-  output-path: frontend/src/{{module_name}}/Decode.elm
-- path: Model.elm
-  output-path: frontend/src/{{module_name}}/Model.elm
-- path: Msg.elm
-  output-path: frontend/src/{{module_name}}/Msg.elm
-- path: Types.elm
-  output-path: frontend/src/{{module_name}}/Types.elm
-- path: Util.elm
-  output-path: frontend/src/{{module_name}}/Util.elm
-- path: view_Util.elm
-  output-path: frontend/src/{{module_name}}/View/Util.elm
 - path: ../_shared/elm/tests/Tests.elm
   output-path: frontend/tests/Tests.elm
 - path: ../_shared/elm/tests/elm-package.json
   output-path: frontend/tests/elm-package.json
 - path: ../_shared/haskell/.gitignore
   output-path: backend/.gitignore
-- path: stack.yaml
-  output-path: backend/stack.yaml
 - path: ../_shared/haskell/Setup.hs
   output-path: backend/Setup.hs
 - path: ../_shared/haskell/project.cabal
   output-path: backend/{{project_name}}.cabal
-- path: app_Main.hs
-  output-path: backend/app/Main.hs
-- path: app_App.hs
-  output-path: backend/app/{{module_name}}App/App.hs
-- path: app_CommandLine.hs
-  output-path: backend/app/{{module_name}}App/CommandLine.hs
-- path: app_Types.hs
-  output-path: backend/app/{{module_name}}App/Types.hs
-- path: app_Util.hs
-  output-path: backend/app/{{module_name}}App/Util.hs
-- path: lib_API.hs
-  output-path: backend/lib/{{module_name}}/API.hs
-- path: lib_Types.hs
-  output-path: backend/lib/{{module_name}}/Types.hs
-- path: lib_VersionInfo.hs
-  output-path: backend/lib/{{module_name}}/VersionInfo.hs
 - path: ../_shared/haskell/lib/Project.hs
   output-path: backend/lib/{{module_name}}.hs
 - path: ../_shared/haskell/test/Spec.hs
   output-path: backend/test/Spec.hs
 - path: ../_shared/haskell/test/ProjectSpec.hs
   output-path: backend/test/{{module_name}}Spec.hs
+- .env.template
+- path: .env.template
+  output-path: .env
+- .gitignore
+- path: App.elm
+  output-path: frontend/src/App.elm
+- path: app_App.hs
+  output-path: backend/app/{{module_name}}App/App.hs
+- path: app_CommandLine.hs
+  output-path: backend/app/{{module_name}}App/CommandLine.hs
+- path: app_Main.hs
+  output-path: backend/app/Main.hs
+- path: app_Types.hs
+  output-path: backend/app/{{module_name}}App/Types.hs
+- path: app_Util.hs
+  output-path: backend/app/{{module_name}}App/Util.hs
+- path: backend
+  output-path: script/backend
+- path: codegen
+  output-path: script/codegen
+- path: Codegen.elm
+  output-path: frontend/src/{{module_name}}/Codegen.elm
 - path: codegen_CommandLine.hs
   output-path: backend/codegen/{{module_name}}Codegen/CommandLine.hs
 - path: codegen_Main.hs
   output-path: backend/codegen/Main.hs
-- script/backend
-- script/codegen
-- script/frontend
+- path: Decode.elm
+  output-path: frontend/src/{{module_name}}/Decode.elm
+- path: elm-package.json
+  output-path: frontend/elm-package.json
+- path: frontend
+  output-path: script/frontend
+- path: index.js
+  output-path: frontend/src/index.js
+- path: lib_API.hs
+  output-path: backend/lib/{{module_name}}/API.hs
+- path: lib_Types.hs
+  output-path: backend/lib/{{module_name}}/Types.hs
+- path: lib_VersionInfo.hs
+  output-path: backend/lib/{{module_name}}/VersionInfo.hs
+- path: main.css
+  output-path: frontend/src/main.css
+- path: Model.elm
+  output-path: frontend/src/{{module_name}}/Model.elm
+- path: Msg.elm
+  output-path: frontend/src/{{module_name}}/Msg.elm
+- README.md
+- path: stack.yaml
+  output-path: backend/stack.yaml
+- path: Types.elm
+  output-path: frontend/src/{{module_name}}/Types.elm
+- path: Util.elm
+  output-path: frontend/src/{{module_name}}/Util.elm
+- path: view_Util.elm
+  output-path: frontend/src/{{module_name}}/View/Util.elm
 
 commands:
 - git init
