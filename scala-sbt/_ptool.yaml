@@ -16,11 +16,12 @@ files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
 - .gitignore
-- README.md
+- path: build.properties
+  output-path: project/build.properties
 - build.sbt
-- project/build.properties
-- path: src/main/scala/Project.scala
+- path: Project.scala
   output-path: src/main/scala/{{module_name}}.scala
+- README.md
 
 commands:
 - git init
