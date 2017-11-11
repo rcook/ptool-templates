@@ -16,7 +16,7 @@ import {{reversed_domain}}.controller.{{package_base_name}}Controller;
 @Configuration
 @ComponentScan({ "{{reversed_domain}}.configuration" })
 @PropertySource("classpath:application.properties")
-public final class ApplicationConfig
+public class ApplicationConfig
 {
     /**
      * Retrieved from properties file.
