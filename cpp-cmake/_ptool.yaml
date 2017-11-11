@@ -19,23 +19,35 @@ template-globals:
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
-- app/CMakeLists.txt
-- app/main.cpp
-- cmake/sanitizers.cmake
-- cmake/threads.cmake
-- path: lib/public/projectlib/Example.h
-  output-path: lib/public/{{project_name}}lib/Example.h
-- lib/CMakeLists.txt
-- lib/Example.cpp
-- script/build.cmd
-- script/setup.cmd
-- script/test.cmd
-- test/CMakeLists.txt
-- test/ExampleTest.cpp
-- test/main.cpp
 - .gitignore
+- path: app_CMakeLists.txt
+  output-path: app/CMakeLists.txt
+- path: app_main.cpp
+  output-path: app/main.cpp
+- path: build.cmd
+  output-path: script/build.cmd
 - CMakeLists.txt
+- path: Example.cpp
+  output-path: lib/Example.cpp
+- path: Example.h
+  output-path: lib/public/{{project_name}}lib/Example.h
+- path: ExampleTest.cpp
+  output-path: test/ExampleTest.cpp
+- path: lib_CMakeLists.txt
+  output-path: lib/CMakeLists.txt
 - README.md
+- path: sanitizers.cmake
+  output-path: cmake/sanitizers.cmake
+- path: setup.cmd
+  output-path: script/setup.cmd
+- path: test.cmd
+  output-path: script/test.cmd
+- path: test_CMakeLists.txt
+  output-path: test/CMakeLists.txt
+- path: test_main.cpp
+  output-path: test/main.cpp
+- path: threads.cmake
+  output-path: cmake/threads.cmake
 
 commands:
 - git init
