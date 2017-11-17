@@ -10,12 +10,6 @@ template-values:
     // Copyright (C) 2017, All rights reserved.
     //////////////////////////////////////////////////
 
-template-filters:
-  namespace: "lambda ctx, s: \"_\".join(ctx.tokenize(s))"
-
-template-globals:
-  namespace: "{{ project_name | namespace }}"
-
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
