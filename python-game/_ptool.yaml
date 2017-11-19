@@ -6,9 +6,6 @@ template-values:
     # Copyright (C) 2017, All rights reserved.
     ##################################################
 
-template-globals:
-  module_name: "{{ project_name | replace(\"_\", \"\") | replace(\"-\", \"\") }}"
-
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE

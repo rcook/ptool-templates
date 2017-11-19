@@ -7,3 +7,6 @@ def domain_file_path(s):
 
 def reversed_domain(s):
     return ".".join(reversed(s.split(".")))
+
+def python_module_name(s):
+    return s.replace("_", "").replace("-", "")
