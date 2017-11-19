@@ -1,10 +1,9 @@
-def _domain_file_path(s):
-    return "/".join(reversed(s.split(".")))
-
-def _reversed_domain(s):
-    return ".".join(reversed(s.split(".")))
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", )))
+from _ptool.util import *
 
 def ptool_register(ctx):
     java_domain = ctx.java_domain
-    ctx.globals["domain_file_path"] = _domain_file_path(java_domain)
-    ctx.globals["reversed_domain"] = _reversed_domain(java_domain)
+    ctx.globals["domain_file_path"] = domain_file_path(java_domain)
+    ctx.globals["reversed_domain"] = reversed_domain(java_domain)
