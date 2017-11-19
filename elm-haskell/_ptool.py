@@ -8,7 +8,7 @@ def _to_paths_module_name(ctx, s):
     return "Paths_{}".format("_".join(map(lambda s: s.lower(), ctx.tokenize(s))))
 
 def ptool_register(ctx):
-    project_name = ctx.globals["project_name"]
+    project_name = ctx.project_name
     ctx.globals["env_project_name"] = _to_env_project_name(ctx, project_name)
     ctx.globals["module_name"] = _to_module_name(ctx, project_name)
     ctx.globals["paths_module_name"] = _to_paths_module_name(ctx, project_name)

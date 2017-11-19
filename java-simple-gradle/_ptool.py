@@ -5,5 +5,6 @@ def _reversed_domain(s):
     return ".".join(reversed(s.split(".")))
 
 def ptool_register(ctx):
-    ctx.globals["domain_file_path"] = _domain_file_path(ctx.globals["java_domain"])
-    ctx.globals["reversed_domain"] = _reversed_domain(ctx.globals["java_domain"])
+    java_domain = ctx.java_domain
+    ctx.globals["domain_file_path"] = _domain_file_path(java_domain)
+    ctx.globals["reversed_domain"] = _reversed_domain(java_domain)
