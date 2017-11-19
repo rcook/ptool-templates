@@ -48,17 +48,6 @@ template-values:
   - servant-elm
   - text
 
-template-filters:
-  child_module_name: "lambda ctx, s, module_suffix=\"\": \"{}{}.{}\".format(ctx.module_name, module_suffix, s)"
-  to_env_project_name: "lambda ctx, s: \"_\".join(map(lambda s: s.upper(), ctx.tokenize(s)))"
-  to_module_name: "lambda ctx, s: \"\".join(map(lambda s: s.title(), ctx.tokenize(s)))"
-  to_paths_module_name: "lambda ctx, s: \"Paths_{}\".format(\"_\".join(map(lambda s: s.lower(), ctx.tokenize(s))))"
-
-template-globals:
-  env_project_name: "{{ project_name | to_env_project_name }}"
-  module_name: "{{ project_name | to_module_name }}"
-  paths_module_name: "{{ project_name | to_paths_module_name }}"
-
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
