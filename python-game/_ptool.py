@@ -1,3 +1,7 @@
+##################################################
+# Copyright (C) 2017, All rights reserved.
+##################################################
+
 from ptoollib.util import *
 
 def ptool_register(ctx):
