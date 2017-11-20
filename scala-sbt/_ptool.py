@@ -2,8 +2,7 @@
 # Copyright (C) 2017, All rights reserved.
 ##################################################
 
-def _module_name(ctx, s):
-    return "".join(map(lambda s: s.title(), ctx.tokenize(s)))
+from ptoollib.util import *
 
 def ptool_register(ctx):
     """
@@ -14,7 +13,7 @@ def ptool_register(ctx):
     >>> globals["module_name"]
     'XxxYyy'
     """
-    ctx.globals["module_name"] = _module_name(ctx, ctx.project_name)
+    ctx.globals["module_name"] = module_name(ctx, ctx.project_name)
 
 if __name__ == "__main__":
     import doctest

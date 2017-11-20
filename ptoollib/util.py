@@ -22,3 +22,6 @@ def python_module_name(s):
     'aaa.bbb.ccc'
     """
     return s.replace("_", "").replace("-", "")
+
+def module_name(ctx, s):
+    return "".join(map(lambda s: s.title(), ctx.tokenize(s)))
