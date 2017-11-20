@@ -9,14 +9,6 @@ template-values:
     // Copyright (C) 2017, All rights reserved.
     //////////////////////////////////////////////////
 
-template-filters:
-  to_reversed_domain: "lambda ctx, s: \".\".join(reversed(s.split(\".\")))"
-  to_domain_file_path: "lambda ctx, s: \"/\".join(reversed(s.split(\".\")))"
-
-template-globals:
-  reversed_domain: "{{ java_domain | to_reversed_domain }}"
-  domain_file_path: "{{ java_domain | to_domain_file_path }}"
-
 files:
 - path: ../_shared/LICENSE
   output-path: LICENSE
