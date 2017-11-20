@@ -2,6 +2,12 @@
 
 Collection of project templates for [ptool][ptool] project-generation tool
 
+## Test all template modules
+
+```
+python run.py test
+```
+
 ## Licence
 
 Released under [MIT License][licence]
