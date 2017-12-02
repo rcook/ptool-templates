@@ -9,6 +9,7 @@ Python tool with virtual environment wrappers
 
 {% block content -%}
 
+
 ## Developer notes
 
 Various package properties are defined in `{{project_name}}/__init__py`:
