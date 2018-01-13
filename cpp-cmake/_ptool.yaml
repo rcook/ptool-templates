@@ -3,11 +3,11 @@ description: C++14 project using CMake
 template-values:
   cmake_copyright: |
     ##################################################
-    # Copyright (C) 2017, All rights reserved.
+    # Copyright (C) 2018, All rights reserved.
     ##################################################
   cpp_copyright: |
     //////////////////////////////////////////////////
-    // Copyright (C) 2017, All rights reserved.
+    // Copyright (C) 2018, All rights reserved.
     //////////////////////////////////////////////////
 
 files:

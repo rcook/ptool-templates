@@ -6,7 +6,7 @@ template-values:
   java_domain: mycompany.com
   java_copyright: |
     //////////////////////////////////////////////////
-    // Copyright (C) 2017, All rights reserved.
+    // Copyright (C) 2018, All rights reserved.
     //////////////////////////////////////////////////
 
 files:

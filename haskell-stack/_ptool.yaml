@@ -4,7 +4,7 @@ template-values:
   default_stack_resolver: lts-9.3
   hs_copyright: |
     --------------------------------------------------
-    -- Copyright (C) 2017, All rights reserved.
+    -- Copyright (C) 2018, All rights reserved.
     --------------------------------------------------
   lib_dependencies:
   - base >= 4.7 && < 5

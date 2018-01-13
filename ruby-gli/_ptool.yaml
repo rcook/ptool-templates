@@ -3,7 +3,7 @@ description: Ruby gem using GLI command-line parser
 template-values:
   ruby_copyright: |
     ##################################################
-    # Copyright (C) 2017, All rights reserved.
+    # Copyright (C) 2018, All rights reserved.
     ##################################################
 
 files:

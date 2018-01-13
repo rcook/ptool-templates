@@ -3,7 +3,7 @@ description: C# project using MSBuild
 template-values:
   cs_copyright: |
     //////////////////////////////////////////////////
-    // Copyright (C) 2017, All rights reserved.
+    // Copyright (C) 2018, All rights reserved.
     //////////////////////////////////////////////////
 
 files:

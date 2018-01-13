@@ -4,11 +4,11 @@ template-values:
   default_stack_resolver: lts-9.3
   elm_copyright: |
     --------------------------------------------------
-    -- Copyright (C) 2017, All rights reserved.
+    -- Copyright (C) 2018, All rights reserved.
     --------------------------------------------------
   hs_copyright: |
     --------------------------------------------------
-    -- Copyright (C) 2017, All rights reserved.
+    -- Copyright (C) 2018, All rights reserved.
     --------------------------------------------------
   lib_dependencies:
   - aeson

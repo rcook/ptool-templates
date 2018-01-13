@@ -3,7 +3,7 @@ description: Python game using PyGame
 template-values:
   py_copyright: |
     ##################################################
-    # Copyright (C) 2017, All rights reserved.
+    # Copyright (C) 2018, All rights reserved.
     ##################################################
 
 files:
