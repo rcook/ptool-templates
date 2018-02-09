@@ -1,4 +1,4 @@
-{% set common_ghc_options = "-W -Wall -fwarn-incomplete-patterns -fwarn-unused-imports" %}
+{% set common_ghc_options = "-W\n                                            -Wall\n                                            -Werror=incomplete-patterns\n                                            -Werror=missing-methods\n                                            -fwarn-unused-imports" %}
 name:                                       {{project_name}}
 version:                                    0.1.0.0
 homepage:                                   {{ project_name | git_url(git_server) }}#readme
@@ -47,7 +47,10 @@ executable {{project_name}}-app
 {{- self.common_settings() }}
   hs-source-dirs:                           app
   main-is:                                  Main.hs
-  ghc-options:                              -threaded -rtsopts -with-rtsopts=-N {{common_ghc_options}}
+  ghc-options:                              -threaded
+                                            -rtsopts
+                                            -with-rtsopts=-N
+                                            {{common_ghc_options}}
 {%- for m in app_other_modules | map("child_module_name", "App") | sort %}
 {%- if loop.first %}
   other-modules:                            {{m}}
@@ -68,7 +71,10 @@ test-suite {{project_name}}-test
 {{- self.common_settings() }}
   hs-source-dirs:                           test
   main-is:                                  Spec.hs
-  ghc-options:                              -threaded -rtsopts -with-rtsopts=-N {{common_ghc_options}}
+  ghc-options:                              -threaded
+                                            -rtsopts
+                                            -with-rtsopts=-N
+                                            {{common_ghc_options}}
   other-modules:                            {{module_name}}Spec
 {%- for d in ([project_name] + test_dependencies) | sort %}
 {%- if loop.first %}
